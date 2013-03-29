@@ -1,5 +1,7 @@
 config/config.php
-web/foro/conf/config.php
+community/foro/conf/config.php
+community/foro/cache/*
+community/foro/uploads/*
 .buildpath
 .project
 .settings/*

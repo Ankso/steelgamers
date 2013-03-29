@@ -35,7 +35,6 @@ if (isset($_GET['username']) && isset($_GET['activation']))
 <html>
 <head>
 	<title>Verificar cuenta - Steel Gamers</title>
-	<link rel="icon" type="image/png" href="/favicon.png">
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>

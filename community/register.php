@@ -109,14 +109,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                 $data = $db->BuildStmtArray("sssssisi", $username, CreateSha1Pass($username, $password), $email, NULL, $ip, 0, "1000-01-01 00:00:00", 0);
             else
                 $data = $db->BuildStmtArray("sssssisi", $username, CreateSha1Pass($username, $password), $email, $ip, NULL, 0, "1000-01-01 00:00:00", 0);
-            
             // Here we start the DB operations
             if ($db->ExecuteStmt(Statements::INSERT_USERS, $data))
             {
+                $db->BeginTransaction();
                 // Now we can initialize the User object. Note that this is for obtain the user ID to create the rows in any related tables.
                 $user = new User($username);
                 // Begin the transaction and insert the data. This is to create all the rows in the related tables of the users Database. Not used btw.
-                $db->BeginTransaction();
                 $hash = md5("cosSjv .adf%" . microtime() * rand(0, 999999));
                 if ($db->ExecuteStmt(Statements::INSERT_USERS_EMAIL_VERIFICATION, $db->BuildStmtArray("iss", $user->GetId(), $hash, date("Y-m-d H:i:s"))))
                 {
@@ -125,7 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                         $ranks .= USER_RANK_EMAIL_NOT_VERIFIED;
                     if ($db->ExecuteStmt(Statements::INSERT_USERS_RANKS, $db->BuildStmtArray("is", $user->GetId(), $ranks)))
                     {
-                        $db->CommitTransaction();
                         // Send verification mail
                         $from    = "noreply@steelgamers.com";
                         $to      = $email;
@@ -158,10 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                         
                         $mail = $smtp->send($to, $headers, $body);
                         if (PEAR::isError($mail))
-                        {
-                            var_dump($mail);
                             $allOk = false;
-                        }
                     }
                 }
                 else
@@ -177,6 +172,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                     $db->ExecuteStmt(Statements::DELETE_USERS, $db->BuildStmtArray("i", $user->GetId()));
                 $errors['critical'] = ERROR_INVALID;
             }
+            else
+                $db->CommitTransaction();
         }
     }
     else
