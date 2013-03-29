@@ -82,7 +82,7 @@ $.fn.jsconnect = function(options) {
             }
             // $(elems).show();
             // Trigger auto-sign in
-            window.location.replace("http://steelgamers.es/foro/entry/jsconnect?client_id=" + client_id);
+            window.location.replace("http://steelgamers.es/foro/index.php?p=entry/jsconnect?client_id=" + client_id);
          },
          error: function(data, x, y) {
             $(elems).find('.JsConnect-Connect').hide();
