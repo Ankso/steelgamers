@@ -82,7 +82,7 @@ $.fn.jsconnect = function(options) {
             }
             // $(elems).show();
             // Trigger auto-sign in
-            $('a#jsConnectAutoSignIn').trigger('click');
+            window.location.replace("http://localhost/foro/entry/jsconnect?client_id=" + client_id);
          },
          error: function(data, x, y) {
             $(elems).find('.JsConnect-Connect').hide();
