@@ -1,0 +1,247 @@
+@font-face {
+	font-family: minecraftfont;
+	src: url('minecraft.ttf'),
+	     url('minecraft.eot'),
+	     url('minecraft.svg'),
+	     url('minecraft.woff');
+}
+.Photo img {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+body {
+	background: url('stone.png') repeat;
+}
+#Frame {
+	background: url('minecraft.png') repeat-x;
+}
+.Head {
+	height: 220px; width: 960px;
+	margin: 0 auto;
+}
+.Banner {
+	height: 128px; width: 960px;
+}
+.Logo {
+	float: left; margin: 50px 0 0 20px !important;
+	font-size: 60px; font-family: minecraftfont;
+	color: white;
+}
+.ProfileBox {
+	float: right; width: 140px;
+	margin-right: 20px; margin-top: 5px;
+	padding: 5px;
+	list-style: none;
+	background: white;
+	border-radius: 40px;
+	-webkit-border-radius: 40px;
+}
+.ProfileBox .Photo img {
+	float: left;
+	vertical-align: middle;
+	padding: 7px 0 7px 10px;
+}
+.Menu {
+	height: 92px;
+}
+.Menu>ul>li {
+	float: left; 
+	margin-right: 10px; margin-top: 30px;
+	padding: 4px;
+	font-family: minecraftfont; font-size: 22px;
+}
+.Menu>ul>li>a {
+	color: white;
+}
+/* search box */
+.SearchBox {
+	float: right;
+	margin-top: 30px;
+}
+#Form_Search {
+	margin-right: 5px;
+}
+input.SmallInput, input.InputBox {
+    padding: 3px;
+}
+/* sub menu */
+.Tabs {
+	background: none;
+	border: none;
+	padding: 5px 0;
+}
+.TabLink {
+	background: #f0f0f0 !important;
+	border: #ccc 1px solid !important;
+}
+.TabLink>span {
+	background: #D00 !important;
+	color: white;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.SubTab {
+	background: #f0f0f0 !important;
+	border: #ccc 1px solid !important;
+	border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+	margin-top: 2px !important;
+	padding: 5px 10px !important;
+}
+/* bookmarking */
+a.Bookmark,
+a.Bookmarking {
+	float: right;
+   display: block;
+   background: url(star_sprite.png) top center no-repeat;
+   height: 22px;
+   width: 22px;
+   margin: 0px 4px;
+   position: relative;
+   bottom: 1px;
+}
+a.Bookmark span,
+a.Bookmarking span {
+   display: none;
+}
+a.Bookmarked {
+   background: url(star_sprite.png) center center no-repeat;
+}
+a.Bookmarking {
+   background: url(star_sprite.png) bottom center no-repeat;
+}
+/* discussions */
+li.Item {
+	background: #f0f0f0;
+	border: #ccc 1px solid !important;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	margin-bottom: 5px !important;
+}
+li.Alt {
+	background: rgba(239, 239, 239, 0.8);
+}
+span.Announcement {
+	background-color: #D00 !important;
+}
+.ItemHeading {
+	background: #f0f0f0;
+	border: #cdcdcd 2px solid;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px 8px;
+}
+#DiscussionForm h1 {
+	background:#f0f0f0;
+	border: #ccc 2px solid;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 5px 8px;
+}
+#DiscussionForm form {
+	background:#f0f0f0;
+	border: #ccc 2px solid;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	padding: 5px 8px;
+}
+.Message {
+	width: 99%;
+	margin: 0 auto !important;
+}
+.Message img {
+	max-width: 99%;
+	margin: 0 auto;
+}
+.Options {
+	width: 100px;
+}
+/* links */
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	color: #333;
+	text-decoration: underline;
+}
+/* panel */
+.Box {
+	background: #f0f0f0;
+	border: #cdcdcd 2px solid;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.PanelInfo {
+	border: none !important;
+}
+.PanelInfo li {
+	border: none;
+	background: none;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	margin-top: 3px;
+	color: white !important;
+}
+.PanelInfo .Active {
+	background: rgba(0, 0, 0, 0.1);
+	border: none;
+}
+.MessageForm, .CommentForm {
+	border: #ccc 1px solid !important;
+	background: #f0f0f0;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+.GuestBox p {
+	padding: 0;
+}
+.GuestBox>h4 {
+	display: none;
+}
+.GuestBox {
+	float: right;
+	background: white;
+	border: 1px solid white;
+	border-radius: 25px;
+	-webkit-border-radius: 25px;
+	padding: 4px;
+	position: absolute;
+	top: 5px;
+	width: 230px;
+	text-align: center;
+}
+.UserPhotoDisc .ProfilePhotoMedium {
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+/* activity */
+li.Activity {
+	padding: 5px 8px !important;
+}
+form.Activity {
+	margin-bottom: 3px;
+	background: #f0f0f0;
+	border: #ccc 2px solid;
+	padding: 8px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.ActivityTabs {
+	background: #f0f0f0 !important;
+	border: #ccc 1px solid !important;
+	border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+	margin-bottom: 3px !important;
+	padding: 5px 10px !important;
+	font-family: minecraftfont;
+}
+/* profile */
+.User h1 {
+	background: #f0f0f0;
+	border: #ccc 2px solid;
+	border-radius:3px;
+	-webkit-border-radius: 3px;
+	padding: 5px 8px !important;
+}

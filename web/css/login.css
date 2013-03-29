@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+
+.badInput {
+    border:2px solid #FF0000;
+}
+
+.formWrapper {
+    float:left;
+    width:350px;
+}
+
+.formItemLabel {
+    float:left;
+    width:150px;
+}
+
+.formItemInput {
+    float:left;
+}
+
+.formItemSubmit {
+    margin-left:103px;
+}
+
+.formItemNewAccount {
+    margin-left:91px;
+}
+
+.formErrorsWrapper {
+    float:left;
+    width:250px;
+}
+
+.recoverForm {
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+.recoverFormResalted {
+	border:1px solid #FF0000;
+	padding:19px;
+}

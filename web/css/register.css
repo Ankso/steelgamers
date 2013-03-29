@@ -1,0 +1,28 @@
+@CHARSET "ISO-8859-1";
+
+.badInput {
+    border:2px solid #FF0000;
+}
+
+.formWrapper {
+	float:left;
+    width:350px;
+}
+
+.formErrorsWrapper {
+    float:left;
+    width:280px;
+}
+
+.formItemLabel {
+    float:left;
+    width:150px;
+}
+
+.formItemInput {
+    float:left;
+}
+
+.formItemSubmit {
+    text-align:center;
+}

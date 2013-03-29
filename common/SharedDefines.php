@@ -1,0 +1,52 @@
+<?php
+/*
+ * Common definitions for the entire application
+ * @author Ankso
+ */
+// The config file is included here because, really, it's part of this file.
+// But it's more user friendly to have a separate config file with common changing variables.
+require("../config/config.php");
+
+/**
+ * General
+ */
+define("USER_DOESNT_EXISTS", -1);
+define("PASSWORD_MIN_LENGHT", 7);
+define("USERNAME_MIN_LENGHT", 4);
+
+/**
+ * For the registration system
+ */
+define("ERROR_NONE", 0);
+define("ERROR_CRITICAL", -1);
+define("ERROR_UNFILLED", -2);
+define("ERROR_INVALID", -3);
+define("ERROR_LOGIN_PASSWORD", -4);
+define("ERROR_LOGIN_USERNAME", -5);
+define("ERROR_LOGIN_VERIFICATION", -6);
+
+/**
+ * User ranks
+ */
+define("USER_RANK_NONE", 0);
+define("USER_RANK_EMAIL_NOT_VERIFIED", 1);
+define("USER_RANK_MEMBER", 2);
+define("USER_RANK_PREMIUM_MEMBER", 3);
+define("USER_RANK_MODERATOR", 4);
+define("USER_RANK_COMMUNITY_MANAGER", 5);
+define("USER_RANK_ADMINISTRATOR", 6);
+define("USER_RANK_SUPERADMIN", 7);
+/**
+ * Site supported games (each game has his own webpage)
+ */
+define("GAME_NONE", -1);
+define("GAME_OVERALL", 0);
+define("GAME_ARMA2", 1);
+define("GAME_BATTLEFIELD_3", 2);
+define("GAME_DAYZ", 3);
+define("GAME_DOTA_2", 4);
+define("GAME_MINECRAFT", 5);
+define("GAME_WAR_THUNDER", 6);
+define("GAME_WORLD_OF_TANKS", 7);
+define("GAMES_COUNT", 7);
+?>

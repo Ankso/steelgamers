@@ -1,0 +1,38 @@
+ul.CatAccordion, li.CatAccordion{
+	padding:0!important;
+	margin:0!important;
+	border:none!important;
+	background:none!important;
+}
+
+ul.CatAccordionNone{
+	position:absolute;
+	height:1px;
+}
+
+li.CatAccordionHead, li.CatAccordionHead.Active{
+	padding-left:20px;
+	/*not active Accordion Root*/
+	background-image:url('arrow.png');
+	background-repeat:no-repeat;
+	background-position:8px center;
+	/*not active Accordion Root*/
+}
+
+li.CatAccordionHead.ui-state-default, li.CatAccordionHead.Active.ui-state-default{
+	background-image:url('arrow.png');
+	background-repeat:no-repeat;
+	background-position:8px center;
+}
+
+li.CatAccordionHead.ui-state-active, li.CatAccordionHead.Active.ui-state-active{
+	/*active Accordion Root*/
+	background-image:url('arrowdown.png');
+	background-repeat:no-repeat;
+	background-position:6px center;
+	/*active Accordion Root*/
+}
+
+ul.PanelCategories li.Heading{
+	cursor:pointer;
+}
