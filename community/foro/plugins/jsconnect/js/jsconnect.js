@@ -76,13 +76,13 @@ $.fn.jsconnect = function(options) {
 
                $(elems).find('.JsConnect-Connect').show();
                $(elems).find('.JsConnect-Guest').hide();
+               // Trigger auto-sign in
+               window.location.replace(connectUrl);
             } else {
                $(elems).find('.JsConnect-Connect').hide();
                $(elems).find('.JsConnect-Guest').show();
             }
             // $(elems).show();
-            // Trigger auto-sign in
-            window.location.replace(connectUrl);
          },
          error: function(data, x, y) {
             $(elems).find('.JsConnect-Connect').hide();
