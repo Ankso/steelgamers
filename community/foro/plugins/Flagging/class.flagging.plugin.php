@@ -35,11 +35,11 @@ class FlaggingPlugin extends Gdn_Plugin {
          ->GroupBy('ForeignURL')
          ->Get()->NumRows();
       
-      $LinkText = T('Contenido reportado');
+      $LinkText = T('Flagged Content');
       if ($NumFlaggedItems)
          $LinkText .= " ({$NumFlaggedItems})";
       $Menu = $Sender->EventArguments['SideMenu'];
-      $Menu->AddItem('Forum', T('Foro'));
+      $Menu->AddItem('Forum', T('Forum'));
       $Menu->AddLink('Forum', $LinkText, 'plugin/flagging', 'Garden.Settings.Manage');
    }
    
@@ -48,8 +48,8 @@ class FlaggingPlugin extends Gdn_Plugin {
     */
    public function ProfileController_AfterPreferencesDefined_Handler($Sender) {
       if (Gdn::Session()->CheckPermission('Plugins.Flagging.Notify')) {
-         $Sender->Preferences['Notifications']['Email.Flag'] = T('Notificarme cuando un comentario sea reportado.');
-         $Sender->Preferences['Notifications']['Popup.Flag'] = T('Notificarme cuando un comentario sea reportado.');
+         $Sender->Preferences['Notifications']['Email.Flag'] = T('Notify me when a comment is flagged.');
+         $Sender->Preferences['Notifications']['Popup.Flag'] = T('Notify me when a comment is flagged.');
       }
    }
    
@@ -121,7 +121,7 @@ class FlaggingPlugin extends Gdn_Plugin {
       } else {
          $Saved = $Sender->Form->Save();
          if($Saved) {
-            $Sender->InformMessage(T("Tus cambios han sido guardados."));
+            $Sender->InformMessage(T("Your changes have been saved."));
          }
       }
       
@@ -215,7 +215,7 @@ class FlaggingPlugin extends Gdn_Plugin {
             return;
       }
       $EncodedURL = str_replace('=','-',base64_encode($URL));
-      $Sender->Options .= '<span>'.Anchor(T('Reportar'), "discussion/flag/{$Context}/{$ElementID}/{$ElementAuthorID}/".Gdn_Format::Url($ElementAuthor)."/{$EncodedURL}", 'FlagContent Popup') . '</span>';
+      $Sender->Options .= '<span>'.Anchor(T('Flag'), "discussion/flag/{$Context}/{$ElementID}/{$ElementAuthorID}/".Gdn_Format::Url($ElementAuthor)."/{$EncodedURL}", 'FlagContent Popup') . '</span>';
    }
    
    // Note: Mark added this slick code. Tim does not approve.
@@ -349,7 +349,7 @@ class FlaggingPlugin extends Gdn_Plugin {
          // Notify users with permission who've chosen to be notified
          if (!$FlagResult) { // Only send if this is first time it's being flagged.
             $Sender->SetData('Plugin.Flagging.DiscussionID', $DiscussionID);
-            $Subject = (isset($PrefixedDiscussionName)) ? $PrefixedDiscussionName : T('FlagDiscussion', 'Una discusi&oacute;n ha sido reportada');
+            $Subject = (isset($PrefixedDiscussionName)) ? $PrefixedDiscussionName : T('FlagDiscussion', 'A discussion was flagged');
             $EmailBody = $Sender->FetchView($this->GetView('reportemail.php'));
             $NotifyUsers = C('Plugins.Flagging.NotifyUsers', array());
             
@@ -365,7 +365,7 @@ class FlaggingPlugin extends Gdn_Plugin {
             }
          }
                   
-         $Sender->InformMessage(T('FlagSent', "Tu queja ha sido registrada."));
+         $Sender->InformMessage(T('FlagSent', "Your complaint has been registered."));
       }
       $Sender->Render($this->GetView('flag.php'));
    }

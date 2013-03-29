@@ -1,7 +1,7 @@
 <?php if (!defined('APPLICATION')) exit(); ?>
 <h1><?php echo T($this->Data['Title']); ?></h1>
 <div class="Info">
-   <?php echo T('FlaggedContent', 'El siguiente contenido ha sido reportado por los usuarios para que sea revisado por un moderador.'); ?>
+   <?php echo T('FlaggedContent', 'The following content has been flagged by users for moderator review.'); ?>
 </div>
 <div class="FilterMenu">
    <?php

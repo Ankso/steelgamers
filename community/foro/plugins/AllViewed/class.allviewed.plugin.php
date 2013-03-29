@@ -37,7 +37,7 @@ class AllViewedPlugin extends Gdn_Plugin {
       $Session = Gdn::Session();
       if ($Sender->Menu && $Session->IsValid()) {
          // Comment out this next line if you want to put the link somewhere else manually
-         $Sender->Menu->AddLink('AllViewed', T('Todo le&iacute;do'), '/discussions/markallviewed');
+         $Sender->Menu->AddLink('AllViewed', T('Mark All Viewed'), '/discussions/markallviewed');
       }
    }
    
