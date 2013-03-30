@@ -56,7 +56,7 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
 </div>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="http://steelgamers.es/index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
+		<a href="/index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
