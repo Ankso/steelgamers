@@ -25,8 +25,8 @@ if (!isset($_SESSION['userId']))
 }
 $loggedIn = true;
 $user = new User($_SESSION['userId']);
-$userRank = $user->GetRanks(GAME_OVERALL);
-$isAdmin = ($userRank > 2);
+$userRank = $user->GetRanks(GAME_MINECRAFT);
+$isAdmin = ($userRank > USER_RANK_MODERATOR);
 if ($isAdmin)
 {
     if ($_SERVER['REQUEST_METHOD'] == "POST")

@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     }
 }
 $userRank = $user->GetRanks(GAME_OVERALL);
-$isAdmin = ($userRank > 4);
+$isAdmin = ($userRank > USER_RANK_MODERATOR);
 ?>
 <html>
 <head>

@@ -51,9 +51,9 @@ class Statements
     const INSERT_USER_CHARACTER           = "INSERT INTO xauth_account (playername, password, pwtype, email, registerdate, registerip, lastlogindate, lastloginip, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const DELETE_USER_CHARACTER           = "DELETE FROM xauth_account WHERE playername = ?";
     // Minecraft news system
-    const INSERT_MINECRAFT_NEWS              = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
-    const SELECT_MINECRAFT_NEWS              = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
-    const DELETE_MINECRAFT_NEWS              = "DELETE FROM minecraft_news WHERE id = ?";
+    const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_MINECRAFT_NEWS           = "DELETE FROM minecraft_news WHERE id = ?";
     
 }
 ?>
