@@ -98,31 +98,31 @@ function PrintTopBar(/* $user */)
             	<div class="subMenuWrapper">
                 	<div id="topBarSubMenuJuegos" class="topBarSubMenu">
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/arma2_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/arma2_cover.jpg"></div>
             				<div>ArmA 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/battlefield3_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/battlefield3_cover.jpg"></div>
             				<div>Battlefield 3</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/dayz_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/dayz_cover.jpg"></div>
             				<div>DayZ</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/dota2_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/dota2_cover.jpg"></div>
             				<div>Dota 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://minecraft.steelgamers.es"><img src="images/games/topbar_covers/minecraft_cover.jpg"></a></div>
+            				<div><a href="http://minecraft.steelgamers.es"><img src="/images/games/topbar_covers/minecraft_cover.jpg"></a></div>
             				<div>Minecraft</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/warthunder_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/warthunder_cover.jpg"></div>
             				<div>War Thunder</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/worldoftanks_cover.jpg"></div>
+            				<div><img src="/images/games/topbar_covers/worldoftanks_cover.jpg"></div>
             				<div>World of Tanks</div>
             			</div>
             		</div>
@@ -147,7 +147,7 @@ function PrintTopBar(/* $user */)
             			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
             		</div>
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem serverItem"><img src="images/servers/topbar/mitracraft.png"></div>
+            			<div class="topBarSubMenuItem serverItem"><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
             		</div>
         		</div>
     		</div>';

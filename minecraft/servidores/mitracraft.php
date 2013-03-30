@@ -25,54 +25,43 @@ if (isset($_SESSION['userId']))
     $loggedIn = true;
     $user = new User($_SESSION['userId']);
 }
-$db = new Database($DATABASES['USERS']);
-$news = array();
-if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEWS))
-{
-    while ($row = $result->fetch_assoc())
-    {
-        $news[] = array(
-            'id'        => $row['id'],
-            'writer'    => $row['writer_name'],
-            'title'     => $row['title'],
-            'body'      => $row['body'],
-            'timestamp' => $row['timestamp'],
-        );
-    }
-}
 ?>
 <html>
 <head>
 	<title>Minecraft - Steel Gamers</title>
-	<link type="text/css" rel="stylesheet" href="css/main.css">
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link type="text/css" rel="stylesheet" href="../css/main.css">
+	<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.9.0.custom.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="http://steelgamers.es/index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
+		<a href="http://steelgamers.es/index.php"><img class="bannerLabelImg" src="../images/banner_label.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php PrintTopBar(); ?>
-    		<div class="latestNewsLabel">&Uacute;ltimas noticias</div>
-    		<?php 
-    		foreach ($news as $i => $new)
-    		{
-    		?>
+    		<div class="latestNewsLabel">Servidor: Mitracraft</div>
     		<div class="new">
-    			<h1><?php echo $new['title']; ?></h1>
     			<div class="newContainer">
-    				<?php echo $new['body']; ?>
-    				<div class="newDetails" data-newId="<?php echo $new['id']; ?>">Por <b><?php echo $new['writer']; ?></b> <span class="timestamp" data-timestamp="<?php echo strtotime($new['timestamp']); ?>">desconocido</span></div>
+    				<h2>Conexi&oacute;n</h2>
+    				<ul><li>Direcci&oacute;n IP: mitracraft.es</li></ul>
+    				<h2>Caracter&iacute;sticas</h2>
+    				<ul>
+    					<li>Procesador: 3.1GHz x4</li>
+    					<li>Memoria: 16Gb DDR3</li>
+    					<li>Ancho de banda: 100Mbps sin l&iacute;mite.</li>
+    				</ul>
+    				<h2>Descripci&oacute;n</h2>
+    				<ul>
+    			    	<li>Foro propio: Si (<a href="http://mitracraft.es">http://mitracraft.es</a>)</li>
+    					<li>Conectado a la red Steel Gamers: Si</li>
+    					<li>Informaci&oacute;n detallada: <a href="http://mitracraft.es/index.php?p=/discussion/6/presentacion-de-mitracraft">http://mitracraft.es/index.php?p=/discussion/6/presentacion-de-mitracraft</a></li>
+    				</ul>
     			</div>
     		</div>
-    		<?php
-            }
-            ?>
     	</div>
     	<div class="rightWrapper">
         	<div class="rightContainer">
@@ -87,7 +76,7 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
         				</div>
         				<div>
             				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-            				<a class="plainLink" href="controlpanel.php"><div class="button">Panel de control</div></a>
+            				<a class="plainLink" href="../controlpanel.php"><div class="button">Panel de control</div></a>
             				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=minecraft"><div class="button">Desconectarse</div></a>
         				</div>
         			</div>

@@ -5,7 +5,7 @@
  */
 // The config file is included here because, really, it's part of this file.
 // But it's more user friendly to have a separate config file with common changing variables.
-require("../config/config.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../config/config.php");
 
 /**
  * General
