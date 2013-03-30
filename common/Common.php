@@ -128,7 +128,7 @@ function PrintTopBar(/* $user */)
             		</div>
             		<div id="topBarSubMenuForos" class="topBarSubMenu">
             			<div>
-            				<a class="plainLink" href="foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center;">General</div></a>
+            				<a class="plainLink" href="http://steelgamers.es/foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center;">General</div></a>
             			</div>
             			<div style="margin-top:10px;">
             				<div class="topBarSubMenuItem forumItem">ArmA 2</div>
