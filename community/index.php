@@ -53,7 +53,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="#"><img class="bannerLabelImg" src="images/banner_label.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

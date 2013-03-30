@@ -114,7 +114,7 @@ function PrintTopBar(/* $user */)
             				<div>Dota 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="images/games/topbar_covers/minecraft_cover.jpg"></div>
+            				<div><a href="http://minecraft.steelgamers.es"><img src="images/games/topbar_covers/minecraft_cover.jpg"></a></div>
             				<div>Minecraft</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
@@ -135,7 +135,7 @@ function PrintTopBar(/* $user */)
                 			<div class="topBarSubMenuItem forumItem">Battlefield 3</div>
                 			<div class="topBarSubMenuItem forumItem">DayZ</div>
                 			<div class="topBarSubMenuItem forumItem">Dota 2</div>
-                			<div class="topBarSubMenuItem forumItem">Minecraft</div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
                 			<div class="topBarSubMenuItem forumItem">War Thunder</div>
                 			<div class="topBarSubMenuItem forumItem">World of Tanks</div>
             			</div>
@@ -143,7 +143,7 @@ function PrintTopBar(/* $user */)
             		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
             			<div class="topBarSubMenuItem communityItem">Miembros</div>
             			<div class="topBarSubMenuItem communityItem">Normas</div>
-            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="faq.php">FAQ</a></div>
+            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/faq.php">FAQ</a></div>
             			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
             		</div>
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">

@@ -8,14 +8,24 @@ class Database
 {
     /**
      * Class constructor, establishes a MySQL connection to the specified DB (or retrieves one active connection from the connections pool)
-     * @param $dbToConnect Database where the operations are going to be executed.
+     * @param string $dbToConnect Database where the operations are going to be executed.
+     * @param array $connectionInfo [OPTIONAL] Connection information (host, user, password). Only necessary if it's a connection to a remote MySQL server.
      */
-    function __construct($dbToConnect)
+    function __construct($dbToConnect, $connectionInfo = NULL)
     {
         if (!isset($dbToConnect))
             die("Fatal error: Missing argument when initializing the Database class.");
         global $SERVER_INFO;
-        $this->_mysqli = new mysqli(/*"p:" . */$SERVER_INFO['HOST'], $SERVER_INFO['USERNAME'], $SERVER_INFO['PASSWORD'], $dbToConnect);
+        $host = $SERVER_INFO['HOST'];
+        $user = $SERVER_INFO['USERNAME'];
+        $password = $SERVER_INFO['PASSWORD'];
+        if ($connectionInfo !== NULL)
+        {
+            $host = $connectionInfo['HOST'];
+            $user = $connectionInfo['USERNAME'];
+            $password = $connectionInfo['PASSWORD'];
+        }
+        $this->_mysqli = new mysqli(/*"p:" . */$host, $user, $password, $dbToConnect);
         if ($this->_mysqli->connect_errno)
             die("Fatal error ". $this->_mysqli->connect_errno .": ". $this->_mysqli->connect_error);
     }

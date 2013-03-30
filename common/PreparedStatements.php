@@ -44,5 +44,16 @@ class Statements
     const INSERT_FAQ                      = "INSERT INTO faq (writer_id, writer_name, question, answer, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_FAQ                      = "SELECT * FROM faq ORDER BY id";
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
+    // Minecraft servers network specific queries
+    const SELECT_USER_CHARACTERS          = "SELECT * FROM xauth_account WHERE email = ?";
+    const SELECT_USER_CHARACTER_BY_NAME   = "SELECT * FROM xauth_account WHERE playername = ?";
+    const UPDATE_USER_CHARACTER_EMAIL     = "UPDATE xauth_account SET email = ? WHERE playername = ?";
+    const INSERT_USER_CHARACTER           = "INSERT INTO xauth_account (playername, password, pwtype, email, registerdate, registerip, lastlogindate, lastloginip, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const DELETE_USER_CHARACTER           = "DELETE FROM xauth_account WHERE playername = ?";
+    // Minecraft news system
+    const INSERT_MINECRAFT_NEWS              = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_MINECRAFT_NEWS              = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_MINECRAFT_NEWS              = "DELETE FROM minecraft_news WHERE id = ?";
+    
 }
 ?>

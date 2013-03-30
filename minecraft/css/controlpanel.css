@@ -1,0 +1,75 @@
+@CHARSET "ISO-8859-1";
+
+.badInput {
+    border:2px solid #FF0000;
+}
+
+.formWrapper {
+    float:left;
+    width:390px;
+}
+
+.formItemLabel {
+    float:left;
+    width:190px;
+}
+
+.formItemInput {
+    float:left;
+}
+
+.formItemSubmit {
+    margin-left:145px;
+}
+
+.formItemCharacterData {
+    float:left;
+    width:500px;
+}
+
+.formItemDisabled {
+    background-color:#E0E0E0;
+    color:#343434;
+}
+
+.formErrorsWrapper {
+    float:left;
+    width:280px;
+}
+
+.formBottomBorder {
+    border-bottom:1px solid #909090;
+    padding-bottom:15px;
+    margin-bottom:15px;
+}
+
+.adminError {
+	float:left;
+    width:740px;
+    padding:10px;
+    margin-top:10px;
+    border-radius:7px;
+    background-color:#D72424;
+}
+
+.noAdminError {
+	float:left;
+    width:740px;
+    padding:10px;
+    margin-top:10px;
+    border-radius:7px;
+    background-color:#23AF36;
+}
+
+.characterDataContainer {
+	float:left;
+    border-bottom:1px solid #909090;
+    margin-top:5px;
+    margin-bottom:15px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.formSubLabel {
+    margin-bottom:20px;
+}
