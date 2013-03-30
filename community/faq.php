@@ -44,7 +44,7 @@ $db = new Database($DATABASES['USERS']);
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php PrintTopBar(); ?>
-    		<div class="latestNewsLabel"><a class="plainLink" href="controlpanel.php">FAQ</a></div>
+    		<div class="latestNewsLabel">FAQ</div>
     		<?php
     		if ($result = $db->Execute(Statements::SELECT_FAQ))
     		{

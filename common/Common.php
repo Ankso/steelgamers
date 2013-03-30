@@ -76,7 +76,7 @@ function UserExists($identifier)
  */
 function GenerateGravatarUrl($email, $size = 0)
 {
-    if (!$size)
+    if ($size == 0)
         $size = 80;
     $url="http://www.gravatar.com/avatar/" . md5(strtolower(trim($email))) . "?s=" . $size;
     return $url;
@@ -147,7 +147,9 @@ function PrintTopBar(/* $user */)
             			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
             		</div>
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem serverItem"><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
+            			<div class="topBarSubMenuItem gameItem">
+            				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
+            			</div>
             		</div>
         		</div>
     		</div>';
