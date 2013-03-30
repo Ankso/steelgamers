@@ -36,6 +36,9 @@ if (isset($_SESSION['userId']))
 	<script type="text/javascript" src="../js/common.js"></script>
 </head>
 <body>
+<div class="backToMainPageContainer">
+	<a href="http://steelgamers.es"><img src="/images/back_logo.png"></a>
+</div>
 <div class="wrapper">
 	<div class="bannerContainer">
 		<a href="http://steelgamers.es/index.php"><img class="bannerLabelImg" src="../images/banner_label.png"></a>
