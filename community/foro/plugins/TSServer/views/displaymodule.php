@@ -26,7 +26,7 @@ class displaymodule extends Gdn_Module {
     $tsQueryPass = C('TSServer.QueryPass');
 
     $ts = new TSStatus($tsHost, $tsQueryPort, $tsID);
-    $ts->imagePath = Gdn_Url::WebRoot(TRUE).'plugins/TSServer/design/images/';
+    $ts->imagePath = Gdn_Url::WebRoot(TRUE).'/plugins/TSServer/design/images/';
 
     $ts->showNicknameBox = C('TSServer.ShowNicknameBox');
     $ts->showPasswordBox = C('TSServer.ShowPasswordBox');
