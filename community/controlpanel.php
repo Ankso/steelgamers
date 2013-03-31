@@ -83,7 +83,7 @@ if (!$ts3Token)
     try
     {
         $ts3Rank = $RANK_NAMES[$userRank];
-        if ($ts3Rank = $RANK_NAMES[USER_RANK_SUPERADMIN])
+        if ($ts3Rank == $RANK_NAMES[USER_RANK_SUPERADMIN])
             $ts3Rank = $RANK_NAMES[USER_RANK_ADMINISTRATOR];
         $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/");
         $ts3_VirtualServer = $ts3_ServerInstance->serverGetByPort($TEAMSPEAK3['VOICE_PORT']);
