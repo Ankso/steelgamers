@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                         }
                         if ($ts3UserToken != "")
                         {
-                            if (!$user->SetToken($ts3UserToken))
+                            if (!$user->SetTs3Token($ts3UserToken))
                                 $allOk = false;
                         }
                     }
