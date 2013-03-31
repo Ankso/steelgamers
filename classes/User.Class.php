@@ -410,6 +410,32 @@ Class User
         return false;
     }
     
+    /**
+     * Obtains the token of this user in the TS3
+     * @return string The user's ts3 token, or false if something fails.
+     */
+    public function GetTs3Token()
+    {
+        if ($result = $this->_db->ExecuteStmt(Statements::SELECT_USERS_TS3_TOKEN, $this->_db->BuildStmtArray("i", $this->GetId())))
+            if ($row = $result->fetch_assoc())
+                return $row['token'];
+        
+        return false;
+    }
+    
+    /**
+     * Sets the TS3 token for this user.
+     * @param string $newToken The new user token.
+     * @return boolean True if nothing fails, else false.
+     */
+    public function SetTs3Token($newToken)
+    {
+        if ($this->_db->ExecuteStmt(Statements::INSERT_USERS_TS3_TOKEN, $this->_db->BuildStmtArray("is", $this->GetId(), $newToken)))
+            return true;
+        
+        return false;
+    }
+    
     private $_id;                // The user's unique ID
     private $_username;          // The user's username (nickname)
     private $_passwordSha1;      // The encripted user's password

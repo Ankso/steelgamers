@@ -7,6 +7,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Functions.jsConnect.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../libs/TeamSpeak3/TeamSpeak3.php");
 // PEAR Mail.php is compatible with php 4, and in php 5 it has a E_STRICT error, so turn off E_STRICT error reporting for this script
 error_reporting(E_NOTICE);
 require "Mail.php";
@@ -156,6 +157,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                         
                         $mail = $smtp->send($to, $headers, $body);
                         if (PEAR::isError($mail))
+                            $allOk = false;
+                            
+                        TeamSpeak3::init();
+                        $ts3UserToken = "";
+                        try
+                        {
+                            $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/");
+                            $ts3_VirtualServer = $ts3_ServerInstance->serverGetByPort($TEAMSPEAK['VOICE_PORT']);
+                            $ts3_ServerGroup = $ts3_VirtualServer->serverGroupGetByName($RANK_NAMES[USER_RANK_MEMBER]);
+                            $ts3UserToken = $ts3_ServerGroup->privilegeKeyCreate("Token creado para el usuario " . $user->GetUsername(), "ident=web_username value=" . $user->GetUsername() . "\pident=web_id value=" . $user->GetId());
+                            $ts3UserToken = $ts3UserToken->toString();
+                        }
+                        catch(Exception $e)
+                        {
+                            // It's not neccesary to cancel account creation here, token can be created also from the control panel
+                            /* $allOk = false; */ 
+                        }
+                        if ($ts3UserToken != "")
+                        {
+                            if (!$user->SetToken($ts3UserToken))
+                                $allOk = false;
+                        }
+                        else
                             $allOk = false;
                     }
                 }

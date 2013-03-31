@@ -44,6 +44,10 @@ class Statements
     const INSERT_FAQ                      = "INSERT INTO faq (writer_id, writer_name, question, answer, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_FAQ                      = "SELECT * FROM faq ORDER BY id";
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
+    // TS3 related queries
+    const INSERT_USERS_TS3_TOKEN          = "INSERT INTO users_ts3_token VALUES (?, ?)";
+    const SELECT_USERS_TS3_TOKEN          = "SELECT token FROM users_ts3_token WHERE user_id = ?";
+    const DELETE_USERS_TS3_TOKEN          = "DELETE FROM users_ts3_token WHERE user_id = ?";
     // Minecraft servers network specific queries
     const SELECT_USER_CHARACTERS          = "SELECT * FROM xauth_account WHERE email = ?";
     const SELECT_USER_CHARACTER_BY_NAME   = "SELECT * FROM xauth_account WHERE playername = ?";

@@ -5,6 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../libs/TeamSpeak3/TeamSpeak3.php");
 
 $sessionsHandler = new CustomSessionsHandler();
 session_set_save_handler(
@@ -73,6 +74,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
 }
 $userRank = $user->GetRanks(GAME_OVERALL);
 $isAdmin = ($userRank > USER_RANK_MODERATOR);
+$ts3Token = $user->GetTs3Token();
+if (!$ts3Token)
+{
+    // Create new token for this user
+    TeamSpeak3::init();
+    $ts3UserToken = "";
+    try
+    {
+        $ts3Rank = $RANK_NAMES[$userRank];
+        if ($ts3Rank = $RANK_NAMES[USER_RANK_SUPERADMIN])
+            $ts3Rank = $RANK_NAMES[USER_RANK_ADMINISTRATOR];
+        $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/");
+        $ts3_VirtualServer = $ts3_ServerInstance->serverGetByPort($TEAMSPEAK['VOICE_PORT']);
+        $ts3_ServerGroup = $ts3_VirtualServer->serverGroupGetByName($ts3Rank);
+        $ts3UserToken = $ts3_ServerGroup->privilegeKeyCreate("Token creado para el usuario " . $user->GetUsername(), "ident=web_username value=" . $user->GetUsername() . "\pident=web_id value=" . $user->GetId());
+        $ts3UserToken = $ts3UserToken->toString();
+        $user->SetTs3Token($ts3UserToken);
+        $ts3Token = $ts3UserToken;
+    }
+    catch(Exception $e)
+    {
+        $ts3Token = false;
+    }
+}
 ?>
 <html>
 <head>
@@ -168,6 +193,31 @@ $isAdmin = ($userRank > USER_RANK_MODERATOR);
     				}
     				?>
     			</div>
+    		</div>
+    		<div class="new">
+    			<h1>Team Speak 3</h1>
+    			<div class="newContainer">
+    			    <?php
+            		if ($ts3Token)
+            		{
+            		?>
+        			<div class="formItem formItemLabel">Token:</div>
+            		<div class="formItem formItemInput"><?php echo $ts3Token; ?></div>
+            		<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
+            		<div class="formItem formItemLabel"><a href="ts3server://voice.teamspeak.com?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>/">Haz click aqu&iacute;</a></div>
+        			<?php
+            		}
+            		else
+            		{
+        			?>
+        			<div class="formItem formItemLabel">Token:</div>
+            		<div class="formItem formItemInput">Error: no se ha podido crear un token de usuario. Es posible que el servidor de TeamSpeak 3 no est&eacute; disponible temporalmente.</div>
+            		<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
+            		<div class="formItem formItemLabel">El link no est&aacute; disponible en estos momentos. Recarga la p&aacute;gina para volver a intentarlo.</div>
+        			<?php
+            		}
+        			?>
+        		</div>
     		</div>
     		<div class="new">
     			<h1>Rango de usuario</h1>
