@@ -205,7 +205,7 @@ if (!$ts3Token)
         				<div class="formItem formItemLabel">Token:</div>
             			<div class="formItem formItemInput"><?php echo $ts3Token; ?></div>
             		</div>
-            		</div>
+            		<div>
             			<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
             			<div class="formItem formItemInput"><a href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>/">Haz click aqu&iacute;</a></div>
         			</div>
@@ -220,7 +220,7 @@ if (!$ts3Token)
                 	</div>
                 	<div>
                 		<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
-                		<div class="formItem formItemLabel">El link no est&aacute; disponible en estos momentos. Recarga la p&aacute;gina para volver a intentarlo.</div>
+                		<div class="formItem formItemInput">El link no est&aacute; disponible en estos momentos. Recarga la p&aacute;gina para volver a intentarlo.</div>
                 	</div>
         			<?php
             		}
