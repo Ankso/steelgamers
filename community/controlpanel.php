@@ -201,28 +201,15 @@ if (!$ts3Token)
             		if ($ts3Token)
             		{
             		?>
-            		<div>
-        				<div class="formItem formItemLabel">Token:</div>
-            			<div class="formItem formItemInput"><?php echo $ts3Token; ?></div>
-            		</div>
-            		<div>
-            			<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
-            			<div class="formItem formItemInput"><a href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>/">Haz click aqu&iacute;</a></div>
-        			</div>
+        			<div class="formItem">Token: <?php echo $ts3Token; ?></div>
+            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>/">Conectarse</a></div>
             		<?php
             		}
             		else
             		{
         			?>
-        			<div>
-            			<div class="formItem formItemLabel">Token:</div>
-                		<div class="formItem formItemInput">Error: no se ha podido crear un token de usuario. Es posible que el servidor de TeamSpeak 3 no est&eacute; disponible temporalmente.</div>
-                	</div>
-                	<div>
-                		<div class="formItem formItemLabel">Link de conexi&oacute;n:</div>
-                		<div class="formItem formItemInput">El link no est&aacute; disponible en estos momentos. Recarga la p&aacute;gina para volver a intentarlo.</div>
-                	</div>
-        			<?php
+        			<div class="formItem">Token: Error: no se ha podido crear un token de usuario. Es posible que el servidor de TeamSpeak 3 no est&eacute; disponible temporalmente.</div>
+            		<?php
             		}
         			?>
         		</div>
