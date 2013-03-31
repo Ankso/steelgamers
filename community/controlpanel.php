@@ -202,7 +202,7 @@ if (!$ts3Token)
             		{
             		?>
         			<div class="formItem">Token: <?php echo $ts3Token; ?></div>
-            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>/">Conectarse</a></div>
+            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Conectarse</a></div>
             		<?php
             		}
             		else
