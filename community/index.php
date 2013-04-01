@@ -42,6 +42,34 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     }
 }
 ?>
+<!--                                                 
+          SSSSSSS                                                         
+        SSSSSSSSSS                                                        
+       SSSS     SSS                                                       
+       SSS       SS                                                       
+      SSSS                                                                
+      SSSS           TTTTTTTTTT  EEEEEEEEE  EEEEEEEEE  LL                 
+       SSSSSS        TTTTTTTTTT  EEEEEEEEE  EEEEEEEEE  LL                 
+        SSSSSSSSS        TT      EE         EE         LL                 
+             SSSSS       TT      EE         EE         LL                 
+                 SS      TT      EEEEEE     EEEEEE     LL                 
+     SSS         SS      TT      EEEEEE     EEEEEE     LL                 
+     SSS        SS       TT      EE         EE         LL                 
+      SS       SSS       TT      EE         EE         LL                 
+      SSSSSSSSSSS        TT      EEEEEEEEE  EEEEEEEEE  LLLLLLLLLL         
+       SSSSSSSS          TT      EEEEEEEEE  EEEEEEEEE  LLLLLLLLLL         
+                                                                          
+                                                                          
+                        GGGGGG  AAAAAAAA  MM     MM EEEEEEE RRRRR   SSSS  
+                      GGG       AA    AA  MMM   MMM EE      RR  RR SSSSSS 
+                     GG         AA    AA  M MM MM M E       R    R S    S 
+                     G          AA    AA  M  MMM  M E       R   RR SS     
+                     G          AAAAAAAA  M       M EEEEEE  R RR    SSS   
+                     G    GGG   AA    AA  M       M E       RRR       SS  
+                     G      GG  AA    AA  M       M E       R RRR      SS 
+                     GGG    GG  AA    AA  M       M EE      R   RRRS   SS 
+                      GGGGGGG   AA    AA  M       M EEEEEEE R     RSSSSS  
+-->
 <html>
 <head>
 	<title>Steel Gamers</title>
