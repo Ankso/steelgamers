@@ -5,6 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../libs/TeamSpeak3/TeamSpeak3.php");
 
 $sessionsHandler = new CustomSessionsHandler();
 session_set_save_handler(
@@ -66,7 +67,7 @@ $db = new Database($DATABASES['USERS']);
     		?>
     		</div>
     	<div class="rightContainer">
-    		<div class="userProfile">
+    		<div class="rightItem">
     		<?php 
     		if ($loggedIn)
     		{
@@ -98,6 +99,7 @@ $db = new Database($DATABASES['USERS']);
     		}
     		?>
     		</div>
+    		<?php PrintTs3Status(); ?>
     	</div>
 	</div>
 	<div class="bottomBarContainer">

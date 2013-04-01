@@ -6,6 +6,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Functions.jsConnect.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../libs/TeamSpeak3/TeamSpeak3.php");
 
 $sessionsHandler = new CustomSessionsHandler();
 session_set_save_handler(
@@ -76,7 +77,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     	</div>
     	<div class="rightWrapper">
         	<div class="rightContainer">
-        		<div class="userProfile">
+        		<div class="rightItem">
         		<?php 
         		if ($loggedIn)
         		{
@@ -108,6 +109,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
         		}
         		?>
         		</div>
+        		<?php PrintTs3Status(); ?>
         	</div>
         </div>
 	</div>

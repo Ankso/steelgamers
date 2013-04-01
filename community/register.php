@@ -305,7 +305,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
     		</div>
     	</div>
     	<div class="rightContainer">
-    		<div class="userProfile">
+    		<div class="rightItem">
     			<form class="loginForm" action="login.php" method="post">
     				<div class="formItem">Usuario</div>
     				<div class="formItem"><input type="text" name="username"></div>

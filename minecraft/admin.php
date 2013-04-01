@@ -63,9 +63,6 @@ if ($isAdmin)
             header("Location:" . $_POST['from'] . ".php?adminError=false");
     }
 }
-else
-{
-    header("Location:index.php");
-}
+header("Location:controlpanel.php");
 
 ?>

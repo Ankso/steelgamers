@@ -299,6 +299,9 @@ a.plainLink {
 
 .rightContainer {
 	float:left;
+}
+
+.rightItem {
     width:220px;
     background:#C0C0C0;
     margin-top:10px;
@@ -322,6 +325,43 @@ a.plainLink {
     margin-left:32px;
     margin-bottom:10px;
 }
+
+/* TEAMSPEAK 3 STATUS */
+
+.teamSpeak3StatusContainer {
+    text-align:center;
+}
+
+.teamSpeak3StatusContainer h3 {
+    margin-top:2px;
+    margin-bottom:15px;
+}
+
+.teamSpeak3Status {
+    padding:7px;
+    border-radius:5px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.online {
+    background-color:#23AF36;
+}
+
+.offline {
+    background-color:#D72424;
+}
+
+.unknown {
+    background-color:#CC6600;
+}
+
+.teamSpeakStatusLabel {
+    padding:5px;
+    font-size:15px;
+}
+
+/* TEAMSPEAK 3 STATUS END */
 
 /* END RIGHT COLUMN CONTENT */
 

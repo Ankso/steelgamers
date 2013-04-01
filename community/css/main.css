@@ -254,7 +254,7 @@ a.plainLink {
     background:#222222;
     margin-top:10px;
     padding:5px 5px 15px 5px;
-    border:5px solid rgba(100, 100, 100, 0.1);
+    border:5px solid 2B2B2B;
     text-align:justify;
 }
 
@@ -285,11 +285,14 @@ a.plainLink {
 
 .rightContainer {
 	float:left;
+}
+
+.rightItem {
     width:220px;
     background:#222222;
     margin-top:10px;
     padding:10px 10px 10px 10px;
-    border:5px solid rgba(100, 100, 100, 0.1);
+    border:5px solid #2B2B2B;
 }
 
 .loginForm {
@@ -302,12 +305,49 @@ a.plainLink {
 }
 
 .avatarWrapper {
-    border:3px solid rgba(100, 100, 100, 0.1);
+    border:3px solid 2B2B2B;
     border-radius:2px;
     width:150px;
     margin-left:32px;
     margin-bottom:10px;
 }
+
+/* TEAMSPEAK 3 STATUS */
+
+.teamSpeak3StatusContainer {
+    text-align:center;
+}
+
+.teamSpeak3StatusContainer h3 {
+    margin-top:2px;
+    margin-bottom:15px;
+}
+
+.teamSpeak3Status {
+    padding:7px;
+    border-radius:5px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.online {
+    background-color:#23AF36;
+}
+
+.offline {
+    background-color:#D72424;
+}
+
+.unknown {
+    background-color:#CC6600;
+}
+
+.teamSpeakStatusLabel {
+    padding:5px;
+    font-size:15px;
+}
+
+/* TEAMSPEAK 3 STATUS END */
 
 /* END RIGHT COLUMN CONTENT */
 

@@ -132,7 +132,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
     		</div>
     	</div>
     	<div class="rightContainer">
-    		<div class="userProfile">
+    		<div class="rightItem">
     			<form class="recoverForm <?php echo ($error == ERROR_LOGIN_PASSWORD) ? "recoverFormResalted" : ""; ?>" action="recoverpassword.php" method="post">
     				<div class="formItem">&iquest;Has olvidado tu contrase&ntilde;a? Introduce tu correo electr&oacute;nico para recuperarla:</div>
     				<div class="formItem"><input type="text" name="email"></div>

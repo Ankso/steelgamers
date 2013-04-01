@@ -5,6 +5,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../libs/TeamSpeak3/TeamSpeak3.php");
 
 /**
  * xAuth function for compare hashed passwords
@@ -436,6 +437,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     		}
     		?>
     		</div>
+    		<?php PrintTs3Status(); ?>
     	</div>
 	</div>
 	<div class="bottomBarContainer">

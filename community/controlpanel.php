@@ -402,7 +402,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     		?>
     	</div>
     	<div class="rightContainer">
-    		<div class="userProfile">
+    		<div class="rightItem">
     		<?php 
     		if ($loggedIn)
     		{

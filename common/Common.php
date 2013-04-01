@@ -156,6 +156,48 @@ function PrintTopBar(/* $user */)
 }
 
 /**
+ * Prints the TeamSpeak 3 status (server online, number of online players, etc)
+ */
+function PrintTs3Status()
+{
+    global $TEAMSPEAK3;
+    TeamSpeak3::init();
+    $error = false;
+    try
+    {
+        $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/?server_port=" . $TEAMSPEAK3['VOICE_PORT'] . "&use_offline_as_virtual=1&no_query_clients=1");
+        $ts3_isOnline = $ts3_ServerInstance->getProperty("virtualserver_status");
+        $ts3_usersOnline = $ts3_ServerInstance->getProperty("virtualserver_clientsonline") - $ts3_ServerInstance->getProperty("virtualserver_queryclientsonline");
+        $ts3_maxUsers = $ts3_ServerInstance->getProperty("virtualserver_maxclients");
+    }
+    catch(Exception $e)
+    {
+        $error = true;
+    }
+    echo '		<div class="rightItem">
+        			<div class="teamSpeak3StatusContainer">
+            			<div><h3>Servidor TeamSpeak 3</h3></div>';
+    if ($error)
+    {
+        echo '			<div class="teamSpeak3Status unknown">Desconocido</div>
+        				<div class="teamSpeakStatusLabel">Gamers conectados: -/-</div>';
+    }
+    elseif ($ts3_isOnline == "online")
+    {
+        echo '			<div class="teamSpeak3Status online">Online</div>
+        				<div class="teamSpeakStatusLabel">Gamers conectados: ' . $ts3_usersOnline . '/' . $ts3_maxUsers . '</div>';
+    }
+    else
+    {
+        echo '			<div class="teamSpeak3Status offline">Offline</div>
+        				<div class="teamSpeakStatusLabel">Gamers conectados: -/-</div>';
+    }
+    echo '				<div class="teamSpeakStatusLabel">steelgamers.es:9987</div>
+					</div>
+				</div>';
+}
+
+/**
  * Gets the total number of online users based in the number of active PHP sessions.
  * @return mixed Returns an integer representing the number of online users, or false if something fails.
  */
