@@ -80,7 +80,7 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
     	</div>
     	<div class="rightWrapper">
         	<div class="rightContainer">
-        		<div class="userProfile">
+        		<div class="rightItem">
         		<?php 
         		if ($loggedIn)
         		{

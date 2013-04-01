@@ -69,7 +69,7 @@ if (isset($_SESSION['userId']))
     	</div>
     	<div class="rightWrapper">
         	<div class="rightContainer">
-        		<div class="userProfile">
+        		<div class="rightItem">
         		<?php 
         		if ($loggedIn)
         		{

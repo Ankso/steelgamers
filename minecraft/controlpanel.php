@@ -405,7 +405,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     		?>
     	</div>
     	<div class="rightContainer">
-    		<div class="userProfile">
+    		<div class="rightItem">
     		<?php 
     		if ($loggedIn)
     		{
