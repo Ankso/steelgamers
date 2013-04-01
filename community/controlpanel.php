@@ -433,6 +433,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     		}
     		?>
     		</div>
+    		<?php PrintTs3Status(); ?>
     	</div>
 	</div>
 	<div class="bottomBarContainer">
