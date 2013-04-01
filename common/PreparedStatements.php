@@ -44,6 +44,8 @@ class Statements
     const INSERT_FAQ                      = "INSERT INTO faq (writer_id, writer_name, question, answer, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_FAQ                      = "SELECT * FROM faq ORDER BY id";
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
+    // Users management
+    const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username = ? AND b.user_id = a.id";
     // TS3 related queries
     const INSERT_USERS_TS3_TOKEN          = "INSERT INTO users_ts3_token VALUES (?, ?)";
     const SELECT_USERS_TS3_TOKEN          = "SELECT token FROM users_ts3_token WHERE user_id = ?";

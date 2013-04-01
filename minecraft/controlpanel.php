@@ -415,6 +415,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     				</div>
     				<div>
         				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
+        				<a class="plainLink" href="http://steelgamers.es/controlpanel.php"><div class="button">Ir al panel principal</div></a>
         				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=minecraft"><div class="button">Desconectarse</div></a>
     				</div>
     			</div>

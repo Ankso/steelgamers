@@ -32,6 +32,33 @@ $errors = array(
     'server'         => ERROR_NONE,
 );
 $user = new User($_SESSION['userId']);
+$userRank = $user->GetRanks(GAME_OVERALL);
+$isAdmin = ($userRank > USER_RANK_MODERATOR);
+$ts3Token = $user->GetTs3Token();
+if (!$ts3Token)
+{
+    // Create new token for this user
+    TeamSpeak3::init();
+    $ts3UserToken = "";
+    try
+    {
+        $ts3Rank = $RANK_NAMES[$userRank];
+        if ($ts3Rank == $RANK_NAMES[USER_RANK_SUPERADMIN])
+            $ts3Rank = $RANK_NAMES[USER_RANK_ADMINISTRATOR];
+        $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/");
+        $ts3_VirtualServer = $ts3_ServerInstance->serverGetByPort($TEAMSPEAK3['VOICE_PORT']);
+        $ts3_ServerGroup = $ts3_VirtualServer->serverGroupGetByName($ts3Rank);
+        $ts3UserToken = $ts3_ServerGroup->privilegeKeyCreate("Token creado para el usuario " . $user->GetUsername(), "ident=web_username value=" . $user->GetUsername() . "\pident=web_id value=" . $user->GetId());
+        $ts3UserToken = $ts3UserToken->toString();
+        $user->SetTs3Token($ts3UserToken);
+        $ts3Token = $ts3UserToken;
+    }
+    catch(Exception $e)
+    {
+        $ts3Token = false;
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
     $noChange = true;
@@ -71,31 +98,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         else
             $errors['email'] = ERROR_INVALID;
     }
-}
-$userRank = $user->GetRanks(GAME_OVERALL);
-$isAdmin = ($userRank > USER_RANK_MODERATOR);
-$ts3Token = $user->GetTs3Token();
-if (!$ts3Token)
-{
-    // Create new token for this user
-    TeamSpeak3::init();
-    $ts3UserToken = "";
-    try
+    if ($isAdmin)
     {
-        $ts3Rank = $RANK_NAMES[$userRank];
-        if ($ts3Rank == $RANK_NAMES[USER_RANK_SUPERADMIN])
-            $ts3Rank = $RANK_NAMES[USER_RANK_ADMINISTRATOR];
-        $ts3_ServerInstance = TeamSpeak3::factory("serverquery://" . $TEAMSPEAK3['USER'] . ":" . $TEAMSPEAK3['PASSWORD'] . "@" . $TEAMSPEAK3['HOST'] . ":" . $TEAMSPEAK3['QUERY_PORT'] . "/");
-        $ts3_VirtualServer = $ts3_ServerInstance->serverGetByPort($TEAMSPEAK3['VOICE_PORT']);
-        $ts3_ServerGroup = $ts3_VirtualServer->serverGroupGetByName($ts3Rank);
-        $ts3UserToken = $ts3_ServerGroup->privilegeKeyCreate("Token creado para el usuario " . $user->GetUsername(), "ident=web_username value=" . $user->GetUsername() . "\pident=web_id value=" . $user->GetId());
-        $ts3UserToken = $ts3UserToken->toString();
-        $user->SetTs3Token($ts3UserToken);
-        $ts3Token = $ts3UserToken;
-    }
-    catch(Exception $e)
-    {
-        $ts3Token = false;
+        if (isset($_POST['search_username']))
+        {
+            $db = new Database($DATABASES['USERS']);
+            if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_DATA_ADMIN, $db->BuildStmtArray("s", $_POST['search_username'])))
+            {
+                if ($row = $result->fetch_assoc())
+                {
+                    $userData = array(
+                        'id' => $row['id'],
+                        'username' => $row['username'],
+                        'email' => $row['email'],
+                        'lastIp' => $row['ip_v4'],
+                        'lastLogin' => $row['last_login'],
+                        'active' => $row['active'],
+                        'rank' => str_split($row['rank_mask']),
+                    );
+                    
+                    if ($userData['rank'][GAME_OVERALL] <= $userRank && $userRank < USER_RANK_SUPERADMIN)
+                        $userData = ERROR_NOT_ALLOWED;
+                }
+            }
+        }
     }
 }
 ?>
@@ -169,7 +195,7 @@ if (!$ts3Token)
 							<li <?php echo ($errors['email'] == ERROR_CRITICAL ? "" : 'style="display:none"'); ?>>El e-mail introducido ya est&aacute; en uso.
 							<li <?php echo ($errors['server'] != ERROR_NONE ? "" : 'style="display:none"'); ?>>Se ha producido un error en la base de datos. Es posible que uno de los servidores est&eacute; saturado o ca&iacute;do. Por favor, int&eacute;ntalo de nuevo m&aacute;s tarde.
 						</ul>
-						<?php if (isset($noChange) && $noChange) { ?>
+						<?php if (isset($noChange) && $noChange && !isset($_POST['search_user'])) { ?>
 						<br>No se ha producido ning&uacute;n cambio.
 						<?php } ?>
 					</div>
@@ -195,20 +221,20 @@ if (!$ts3Token)
     			</div>
     		</div>
     		<div class="new">
-    			<h1>Team Speak 3</h1>
+    			<h1>TeamSpeak 3</h1>
     			<div class="newContainer">
     			    <?php
             		if ($ts3Token)
             		{
             		?>
-        			<div class="formItem">Token: <?php echo $ts3Token; ?></div>
-            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Conectarse</a></div>
+        			<div class="formItem">Desde aqu&iacute; puedes conectarte por primera vez a nuestro servidor de TeamSpeak 3, o si tu rango ha cambiado, puedes obtener los nuevos permisos haciendo click en el bot&oacute;n. &iexcl;Recuerda a&ntilde;adir el servidor a tus bookmarks!</div>
+            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Sincronizar</a></div>
             		<?php
             		}
             		else
             		{
         			?>
-        			<div class="formItem">Token: Error: no se ha podido crear un token de usuario. Es posible que el servidor de TeamSpeak 3 no est&eacute; disponible temporalmente.</div>
+        			<div class="formItem">Error: no se ha podido crear un token de usuario. Es posible que el servidor de TeamSpeak 3 no est&eacute; disponible temporalmente. Por favor, int&eacute;ntalo de nuevo m&aacute;s tarde.</div>
             		<?php
             		}
         			?>
@@ -238,6 +264,76 @@ if (!$ts3Token)
     		    }
     		        
     		?>
+    		<div class="new">
+    			<h1>Gesti&oacute;n de usuarios</h1>
+    			<div class="newContainer">
+    				<form class="formBottomBorder" action="controlpanel.php" method="post">
+    					<input type="hidden" name="from" value="controlpanel">
+            			<div class="formItem formItemLabel">Nombre de usuario:</div>
+                		<div class="formItem"><input type="text" name="search_username"></div>
+                		<div class="formItem"><input class="button" type="submit" value="Buscar"></div>
+            		</form>
+            		<?php
+            		if (isset($userData))
+            		{
+            		    if ($userData == ERROR_NOT_ALLOWED)
+            		    {
+            		?>
+            		<div>No tienes permisos suficientes para ver los datos de este usuario.</div>
+            		<?php 
+            		    }
+            		    else
+            		    {
+            		?>
+            		<form action="admin.php" method="post">
+            			<input type="hidden" name="from" value="controlpanel">
+            			<input type="hidden" name="editUserId" value="<?php echo $userData['id']; ?>">
+            			<div class="formItem formItemLabel">ID de usuario:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['id']; ?>"></div>
+            			<div class="formItem formItemLabel">Nombre de usuario:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['username']; ?>"></div>
+        				<div class="formItem formItemLabel">Email:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['email']; ?>"></div>
+        				<div class="formItem formItemLabel">&Uacute;ltima IP:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['lastIp']; ?>"></div>
+        				<div class="formItem formItemLabel">&Uacute;ltima conexi&oacute;n:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['lastLogin']; ?>"></div>
+        				<div class="formItem formItemLabel">Estado de la cuenta:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['active'] == 0 ? "No activada" : "Activada"; ?>"></div>
+        				<?php 
+        				foreach ($GAME_NAMES as $i => $gameName)
+        				{
+        				?>
+        				<div class="formItem formItemLabel">Permisos <?php echo $gameName; ?>:</div>
+        				<div class="formItem">
+        					<select name="<?php echo $i; ?>">
+        					<?php 
+        					foreach ($RANK_NAMES as $j => $rankName)
+        					{
+        					?>
+        						<option value="<?php echo $j; ?>" <?php echo ($userData['rank'][$i] == $j) ? "selected" : ""; ?>><?php echo $rankName; ?></option>
+        					<?php
+        					}
+        					?>
+        					</select>
+        				</div>
+        				<?php
+        				}
+        				?>
+        				<div class="formItem"><input class="button" type="submit" value="Actualizar"></div>
+            		</form>
+            		<?php
+            		    }
+            		}
+            		elseif (isset($_POST['search_username']))
+            		{
+            		?>
+            		<div>No se ha encontrado ning&uacute;n usuario en la base de datos llamado &quot;<?php echo $_POST['search_username']; ?>&quot;</div>
+            		<?php
+            		}
+            		?>
+    			</div>
+    		</div>
     		<div class="new">
     			<h1>Gesti&oacute;n &uacute;ltimas noticias</h1>
     			<div class="newContainer">

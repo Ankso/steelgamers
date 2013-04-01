@@ -24,6 +24,7 @@ define("ERROR_INVALID", -3);
 define("ERROR_LOGIN_PASSWORD", -4);
 define("ERROR_LOGIN_USERNAME", -5);
 define("ERROR_LOGIN_VERIFICATION", -6);
+define("ERROR_NOT_ALLOWED", -7);
 
 /**
  * User ranks
@@ -36,6 +37,7 @@ define("USER_RANK_MODERATOR", 4);
 define("USER_RANK_COMMUNITY_MANAGER", 5);
 define("USER_RANK_ADMINISTRATOR", 6);
 define("USER_RANK_SUPERADMIN", 7);
+define("USER_RANKS_COUNT", 8);
 /**
  * Site supported games (each game has his own webpage)
  */
@@ -48,5 +50,18 @@ define("GAME_DOTA_2", 4);
 define("GAME_MINECRAFT", 5);
 define("GAME_WAR_THUNDER", 6);
 define("GAME_WORLD_OF_TANKS", 7);
-define("GAMES_COUNT", 7);
+define("GAMES_COUNT", 7); // GAME_OVERALL is not really a game
+/**
+ * Array with the game names used in the webpage
+ */
+$GAME_NAMES = array(
+    0 => "Globales",
+    1 => "Arma 2",
+    2 => "Battlefield 3",
+    3 => "DayZ",
+    4 => "DOTA 2",
+    5 => "Minecraft",
+    6 => "War Thunder",
+    7 => "World of Tanks",
+);
 ?>

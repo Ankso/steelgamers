@@ -83,6 +83,17 @@ if ($isAdmin)
             if ($db->ExecuteStmt(Statements::DELETE_FAQ, $db->BuildStmtArray("i", $_POST["faq_delete"])))
                 $error = false;
         }
+        // Admin wants to edit a user
+        if (isset($_POST['editUserId']) && isset($_POST['0']) && isset($_POST['1']) && isset($_POST['2']) && isset($_POST['3']) && isset($_POST['4']) && isset($_POST['5']) && isset($_POST['6']) && isset($_POST['7']))
+        {
+            $db = new Database($DATABASES['USERS']);
+            $rankMask = $_POST['0'] . $_POST['1'] . $_POST['2'] . $_POST['3'] . $_POST['4'] . $_POST['5'] . $_POST['6'] . $_POST['7'];
+            if ($db->ExecuteStmt(Statements::UPDATE_USERS_RANKS, $db->BuildStmtArray("si", $rankMask, $_POST['editUserId'])))
+            {
+                if ($db->ExecuteStmt(Statements::DELETE_USERS_TS3_TOKEN, $db->BuildStmtArray("i", $_POST['editUserId'])))
+                    $error = false;
+            }
+        }
         if ($error)
             header("Location:" . $_POST['from'] . ".php?adminError=true");
         else
