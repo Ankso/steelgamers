@@ -102,15 +102,15 @@ function PrintTopBar(/* $user */)
             				<div>ArmA 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/battlefield3_cover.jpg"></div>
+            				<div><a href="http://battlefield.steelgamers.es"><img src="/images/games/topbar_covers/battlefield3_cover.jpg"></a></div>
             				<div>Battlefield 3</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/dayz_cover.jpg"></div>
+            				<div><a href="http://dayz.steelgamers.es"><img src="/images/games/topbar_covers/dayz_cover.jpg"></a></div>
             				<div>DayZ</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/dota2_cover.jpg"></div>
+            				<div><a href="http://dota2.steelgamers.es"><img src="/images/games/topbar_covers/dota2_cover.jpg"></a></div>
             				<div>Dota 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
@@ -118,11 +118,11 @@ function PrintTopBar(/* $user */)
             				<div>Minecraft</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/warthunder_cover.jpg"></div>
+            				<div><a href="http://warthunder.steelgamers.es"><img src="/images/games/topbar_covers/warthunder_cover.jpg"></a></div>
             				<div>War Thunder</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/worldoftanks_cover.jpg"></div>
+            				<div><a href="http://worldoftanks.steelgamers.es"><img src="/images/games/topbar_covers/worldoftanks_cover.jpg"></a></div>
             				<div>World of Tanks</div>
             			</div>
             		</div>
