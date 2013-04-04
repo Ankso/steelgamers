@@ -61,8 +61,8 @@ class Statements
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
     const DELETE_MINECRAFT_NEWS           = "DELETE FROM minecraft_news WHERE id = ?";
     // ArmA 2 news system
-    const INSERT_ARMA2_NEWS               = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
-    const SELECT_ARMA2_NEWS               = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
-    const DELETE_ARMA2_NEWS               = "DELETE FROM minecraft_news WHERE id = ?";
+    const INSERT_ARMA2_NEWS               = "INSERT INTO arma2_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_ARMA2_NEWS               = "SELECT * FROM arma2_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_ARMA2_NEWS               = "DELETE FROM arma2_news WHERE id = ?";
 }
 ?>
