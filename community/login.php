@@ -58,6 +58,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
                             case "minecraft":
                                 header("Location:http://minecraft.steelgamers.es");
                                 break;
+                            case "arma2":
+                                header("Location:http://arma2.steelgamers.es");
+                                exit();
                             default:
                                 header("Location:index.php");
                                 break;

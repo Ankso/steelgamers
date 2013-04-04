@@ -98,7 +98,7 @@ function PrintTopBar(/* $user */)
             	<div class="subMenuWrapper">
                 	<div id="topBarSubMenuJuegos" class="topBarSubMenu">
             			<div class="topBarSubMenuItem gameItem">
-            				<div><img src="/images/games/topbar_covers/arma2_cover.jpg"></div>
+            				<div><a href="http://arma2.steelgamers.es"><img src="/images/games/topbar_covers/arma2_cover.jpg"></a></div>
             				<div>ArmA 2</div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
@@ -131,13 +131,13 @@ function PrintTopBar(/* $user */)
             				<a class="plainLink" href="http://steelgamers.es/foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center;">General</div></a>
             			</div>
             			<div style="margin-top:10px;">
-            				<div class="topBarSubMenuItem forumItem">ArmA 2</div>
-                			<div class="topBarSubMenuItem forumItem">Battlefield 3</div>
-                			<div class="topBarSubMenuItem forumItem">DayZ</div>
-                			<div class="topBarSubMenuItem forumItem">Dota 2</div>
+            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/arma">ArmA 2</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/battlefield-3">Battlefield 3</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/dayz">DayZ</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/dota-2">Dota 2</a></div>
                 			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
-                			<div class="topBarSubMenuItem forumItem">War Thunder</div>
-                			<div class="topBarSubMenuItem forumItem">World of Tanks</div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/war-thunder">War Thunder</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/world-of-tanks">World of Tanks</a></div>
             			</div>
             		</div>
             		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
@@ -149,6 +149,9 @@ function PrintTopBar(/* $user */)
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">
             			<div class="topBarSubMenuItem gameItem">
             				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
+            			</div>
+            			<div class="topBarSubMenuItem gameItem">
+            				<div><a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php"><img src="/images/servers/topbar/sgc1_arma2.png"></a></div>
             			</div>
             		</div>
         		</div>

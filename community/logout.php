@@ -38,6 +38,9 @@ if (isset($_GET['redirect']))
         case "minecraft":
             header("Location:http://minecraft.steelgamers.es");
             exit();
+        case "arma2":
+            header("Location:http://arma2.steelgamers.es");
+            exit();
         default:
             break;
     }
