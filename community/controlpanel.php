@@ -125,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Panel de control - Steel Gamers</title>
@@ -146,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

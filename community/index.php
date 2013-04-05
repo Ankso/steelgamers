@@ -70,6 +70,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
                      GGG    GG  AA    AA  M       M EE      R   RRRS   SS 
                       GGGGGGG   AA    AA  M       M EEEEEEE R     RSSSSS  
 -->
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Steel Gamers</title>
@@ -82,7 +83,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

@@ -74,13 +74,19 @@
 
 #fancybox-content {
 	width: 0;
-	height: 0;
+	height: 500px !important;
 	padding: 0;
 	outline: none;
 	position: relative;
 	overflow: hidden;
 	z-index: 1102;
 	border: 0px solid #fff;
+	border-right:0px;
+	border-radius:5px;
+	color:#FFFFFF;
+	background-color:#111111;
+	padding:15px;
+	overflow:auto !important;
 }
 
 #fancybox-hide-sel-frame {

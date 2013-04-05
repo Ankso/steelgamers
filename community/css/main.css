@@ -106,9 +106,7 @@ a.plainLink {
 }
 
 .bannerLabelImg {
-    margin-top:110px;
-    margin-left:-34px;
-    display:none;
+    border-radius:5px 5px 0px 5px;
 }
 
 /* END BANNER */
@@ -242,11 +240,10 @@ a.plainLink {
     width:764px;
     height:32px;
     font-size:20px;
-    background:#111111 url('../images/latest_news_bar.png') no-repeat center;
+    background:#2B2B2B /*url('../images/latest_news_bar.png') no-repeat center*/;
     padding-top:8px;
     padding-left:10px;
     border-top-left-radius:10px;
-    border-bottom-left-radius:10px;
 }
 
 .new {
@@ -362,6 +359,7 @@ a.plainLink {
     height:40px;
     margin-top:10px;
     background:#151515/*url('../images/bottom_bar_background.png') no-repeat center*/;
+    border-radius:0px 0px 5px 5px;
 }
 
 /* END BOTTOM BAR */

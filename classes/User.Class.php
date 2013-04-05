@@ -54,6 +54,7 @@ Class User
                 $this->_ip = $userData['ip_v6'];
             $this->_isOnline = $userData['is_online'];
             $this->_lastLogin = $userData['last_login'];
+            $this->_registerDate = $userData['register_date'];
             $this->_active = $userData['active'];
             $this->_ranks = NULL; // This is initialized on demand
             return true;
@@ -443,6 +444,7 @@ Class User
     private $_ip;                // The user's last used IP address
     private $_isOnline;          // True if the user is online, else false
     private $_lastLogin;         // Date and time of the last user's login.
+    private $_registerDate;      // Date of the registration.
     private $_active;            // 0 if the user's account has not been activated yet, else 1.
     private $_db;                // The database object
     private $_ranks;             // Array with all the ranks of the user for the main page and subpages.

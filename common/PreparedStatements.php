@@ -7,9 +7,9 @@
 class Statements
 {
      // Basic load/save user data queries
-    const SELECT_USERS_BY_ID              = "SELECT id, username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, active FROM users WHERE id = ?";
-    const SELECT_USERS_BY_USERNAME        = "SELECT id, username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, active FROM users WHERE username = ?";
-    const REPLACE_USERS                   = "REPLACE INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const SELECT_USERS_BY_ID              = "SELECT id, username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, register_date, active FROM users WHERE id = ?";
+    const SELECT_USERS_BY_USERNAME        = "SELECT id, username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, register_date, active FROM users WHERE username = ?";
+    const REPLACE_USERS                   = "REPLACE INTO users VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const SELECT_USERS_ID                 = "SELECT id FROM users WHERE username = ?";
     const SELECT_USERS_USERNAME           = "SELECT username FROM users WHERE id = ?";
     // For user's data updates and profile changers functions
@@ -22,6 +22,7 @@ class Statements
     const UPDATE_USERS_IPV6               = "UPDATE users SET ip_v6 = ? WHERE id = ?";
     const UPDATE_USERS_ONLINE             = "UPDATE users SET is_online = ? WHERE id = ?";
     const UPDATE_USERS_LAST_LOGIN         = "UPDATE users SET last_login = ? WHERE id = ?";
+    const UPDATE_USERS_REGISTER_DATE      = "UPDATE users SET register_date = ? WHERE id = ?";
     const SELECT_USERS_ACTIVE             = "SELECT active FROM users WHERE id = ?";
     const UPDATE_USERS_ACTIVE             = "UPDATE users SET active = ? WHERE id = ?";
     const INSERT_USERS_RANKS              = "INSERT INTO users_ranks (user_id, rank_mask) VALUES (?, ?)";
@@ -29,7 +30,7 @@ class Statements
     const UPDATE_USERS_RANKS              = "UPDATE users_ranks SET rank_mask = ? WHERE user_id = ?"; 
     // Registration management
     const SELECT_USERS_EMAIL              = "SELECT id FROM users WHERE email = ?";
-    const INSERT_USERS                    = "INSERT INTO users (username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const INSERT_USERS                    = "INSERT INTO users (username, password_sha1, email, ip_v4, ip_v6, is_online, last_login, register_date, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const INSERT_USERS_EMAIL_VERIFICATION = "INSERT INTO users_email_verification (user_id, verification_hash, sended) VALUES (?, ?, ?)";
     const SELECT_USERS_EMAIL_VERIFICATION = "SELECT * FROM users_email_verification WHERE user_id = ?";
     const DELETE_USERS_EMAIL_VERIFICATION = "DELETE FROM users_email_verification WHERE user_id = ?";
@@ -45,7 +46,9 @@ class Statements
     const SELECT_FAQ                      = "SELECT * FROM faq ORDER BY id";
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
     // Users management
-    const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username = ? AND b.user_id = a.id";
+    const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.register_date, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username = ? AND b.user_id = a.id";
+    // Members list
+    const SELECT_ALL_MEMBERS              = "SELECT a.username, a.email, a.is_online, a.last_login, a.register_date, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.id = b.user_id AND a.active = 1 LIMIT 100";
     // TS3 related queries
     const INSERT_USERS_TS3_TOKEN          = "INSERT INTO users_ts3_token VALUES (?, ?)";
     const SELECT_USERS_TS3_TOKEN          = "SELECT token FROM users_ts3_token WHERE user_id = ?";

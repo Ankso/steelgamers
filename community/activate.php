@@ -32,6 +32,7 @@ if (isset($_GET['username']) && isset($_GET['activation']))
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Verificar cuenta - Steel Gamers</title>
@@ -44,7 +45,7 @@ if (isset($_GET['username']) && isset($_GET['activation']))
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

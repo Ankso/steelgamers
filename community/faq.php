@@ -27,6 +27,7 @@ if (isset($_SESSION['userId']))
 }
 $db = new Database($DATABASES['USERS']);
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>FAQ - Steel Gamers</title>
@@ -40,7 +41,7 @@ $db = new Database($DATABASES['USERS']);
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

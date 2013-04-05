@@ -107,9 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
             $password = $_POST['password'];
             $email = $_POST['email'];
             if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6))
-                $data = $db->BuildStmtArray("sssssisi", $username, CreateSha1Pass($username, $password), $email, NULL, $ip, 0, "1000-01-01 00:00:00", 0);
+                $data = $db->BuildStmtArray("sssssissi", $username, CreateSha1Pass($username, $password), $email, NULL, $ip, 0, "1000-01-01 00:00:00", date("Y-m-d H:i:s"), 0);
             else
-                $data = $db->BuildStmtArray("sssssisi", $username, CreateSha1Pass($username, $password), $email, $ip, NULL, 0, "1000-01-01 00:00:00", 0);
+                $data = $db->BuildStmtArray("sssssissi", $username, CreateSha1Pass($username, $password), $email, $ip, NULL, 0, "1000-01-01 00:00:00", date("Y-m-d H:i:s"), 0);
             // Here we start the DB operations
             if ($db->ExecuteStmt(Statements::INSERT_USERS, $data))
             {
@@ -216,15 +216,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Registrarse - Steel Gamers</title>
+	<link type="text/css" rel="stylesheet" href="css/fancyBoxjQuery.css">
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 	<link type="text/css" rel="stylesheet" href="css/register.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
 	<script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.fancyLink").fancybox();
+	});
+	</script>
 	<script type="text/javascript">
     var RecaptchaOptions = {
     	theme : "blackglass",
@@ -235,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
@@ -261,7 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
         					    echo recaptcha_get_html($publickey);
         					?>
         					</div>
-        					<div class="formItem formItemInput"><input type="checkbox" name="terms_and_conditions" value="terms_and_conditions">Acepto los <a href="#">T&eacute;rminos y Condiciones de Uso</a>.</div>
+        					<div class="formItem formItemInput"><input type="checkbox" name="terms_and_conditions" value="terms_and_conditions">Acepto los <a class="fancyLink" href="docs/terminos_y_condiciones.html">T&eacute;rminos y Condiciones de Uso</a>.</div>
         					<div class="formItem formItemSubmit"><input class="button" type="submit" value="Registrarme"></div>
     					</form>
     				</div>

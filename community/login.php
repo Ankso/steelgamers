@@ -61,6 +61,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
                             case "arma2":
                                 header("Location:http://arma2.steelgamers.es");
                                 exit();
+                            case "membersList":
+                                header("Location:http://steelgamers.es/members.php");
+                                exit();
                             default:
                                 header("Location:index.php");
                                 break;
@@ -82,6 +85,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
         $error = ERROR_CRITICAL;
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Conectarse - Steel Gamers</title>
@@ -95,7 +99,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

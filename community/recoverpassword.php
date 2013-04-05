@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Recuperar contrase&ntilde;a - Steel Gamers</title>
@@ -85,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img src="images/banner.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">

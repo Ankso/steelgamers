@@ -141,13 +141,13 @@ function PrintTopBar(/* $user */)
             			</div>
             		</div>
             		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem communityItem">Miembros</div>
+            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/members.php">Miembros</a></div>
             			<div class="topBarSubMenuItem communityItem">Normas</div>
             			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/faq.php">FAQ</a></div>
             			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
             		</div>
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem gameItem">
+            			<div class="topBarSubMenuItem gameItem" style="margin-top:13px;">
             				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
             			</div>
             			<div class="topBarSubMenuItem gameItem">
