@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
 <body>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
+		<a href="index.php"><img src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
