@@ -69,14 +69,11 @@ if (isset($_SESSION['userId']))
     				?>
     				<h2>C&oacute;mo conectarse</h2>
     				<ul>
-    					<li>Descargar el map Isla Duala en <a href="http://www.armaholic.com/page.php?id=9150">http://www.armaholic.com/page.php?id=9150</a> (los enlaces est&aacute;n abajo de todo)</li>
-    					<li>Extrae la carpeta @duala en la carpeta de Operation Arrowhead (por defecto C:/Archivos de Programa/Steam/SteamApps/Common/arma 2 operation arrowhead)</li>
     					<li>Ejecutar la beta del juego:</li>
     					<ul>
     						<li>Si el juego la versi&oacute;n de Steam, se puede hacer desde la biblioteca de juegos.</li>
     						<li>Si no, tienes que descargar e instalar la &uacute;ltima versi&oacute;n de la beta desde <a href="http://www.arma2.com/beta-patch.php">http://www.arma2.com/beta-patch.php</a> y ejecutar el juego desde la carpeta del mismo, utilizando el acceso directo &quot;Launch Arma 2 OA beta patch&quot;</li>
     					</ul>
-    					<li>Una vez dentro del juego, haz click en la opci&oacute;n Expansiones, y activa el mapa @duala. Reinicia el juego.</li>
     					<li>&iexcl;Ya puedes conectarte!</li>
     					<li>Direcci&oacute;n IP: 94.23.240.154</li>
     					<li>Puerto: 2302</li>
@@ -96,11 +93,9 @@ if (isset($_SESSION['userId']))
     					<ul>
     						<li>Combate urbano: algunos objetivos aparecen en ciudades.</li>
     						<li>Mayor variedad de veh&iacute;culos y armas, tanto en objetivos como spawneados en el mundo.</li>
-    						<li>Veh&iacute;culos &uacute;nicos del mapa Isla Duala: Mig 21, Leopard 1A5, Viggen 1...</li>
     						<li>Spawn dentro de edificios. En vez de aparecer en medio del campo, el spawn es dentro edificios aleatorios, por lo tanto el campeo es m&aacute;s complicado.</li>
     						<li>Posibilidad de hacer grupos o pelotones en los equipos OPFOR y BLUFOR</li>
     						<li>Nuevo sistema de aparici&oacute;n de armas: En funci&oacute;n del tipo de veh&iacute;culo en el que vayan a spawnear (civil, militar o militar armado) ser&aacute;n de una calidad mayor o menor.</li>
-    						<li>Los veh&iacute;culos aparecen entre las casas de las poblaciones y son m&aacute;s dif&iacute;ciles de encontrar (lo cual no quiere decir que haya pocos)</li>
     						<li>Y muchas m&aacute;s cosas que descubrir&aacute;s jugando...
     					</ul>
     				</ul>
@@ -111,14 +106,11 @@ if (isset($_SESSION['userId']))
     				?>
     				<h2>Connection</h2>
     				<ul>
-    					<li>Download the Isla Duala map from <a href="http://www.armaholic.com/page.php?id=9150">http://www.armaholic.com/page.php?id=9150</a> (the download links are at the bottom of that page)</li>
-    					<li>Extract the folder @duala in the Operation Arrowhead main folder (C:/Program Files/Steam/SteamApps/Common/arma 2 operation arrowhead by default if you arte using Steam)</li>
     					<li>Execute the beta version of the game:
     					<ul>
     						<li>If the game is the Steam version, you can do it from your games library.</li>
     						<li>Else, you have to download and install the latest beta patch from <a href="http://www.arma2.com/beta-patch.php">http://www.arma2.com/beta-patch.php</a> and execute the game using the shortcut &quot;Launch Arma 2 OA Beta Patch&quot; created in the main game folder.
     					</ul>
-    					<li>Once inside the game, click the option Expansions, and enable @duala. Restart the game.</li>
     					<li>You should be able to connect now!</li>
     					<li>IP address: 94.23.240.154</li>
     					<li>Port: 2302</li>
@@ -137,11 +129,9 @@ if (isset($_SESSION['userId']))
     					<ul>
     						<li>Combate urbano: algunos objetivos aparecen en ciudades.</li>
     						<li>Mayor variedad de veh&iacute;culos y armas, tanto en objetivos como spawneados en el mundo.</li>
-    						<li>Veh&iacute;culos &uacute;nicos del mapa Isla Duala: Mig 21, Leopard 1A5, Viggen 1...</li>
     						<li>Spawn dentro de edificios. En vez de aparecer en medio del campo, el spawn es dentro edificios aleatorios, por lo tanto el campeo es m&aacute;s complicado.</li>
     						<li>Posibilidad de hacer grupos o pelotones en los equipos OPFOR y BLUFOR</li>
     						<li>Nuevo sistema de aparici&oacute;n de armas: En funci&oacute;n del tipo de veh&iacute;culo en el que vayan a spawnear (civil, militar o militar armado) ser&aacute;n de una calidad mayor o menor.</li>
-    						<li>Los veh&iacute;culos aparecen entre las casas de las poblaciones y son m&aacute;s dif&iacute;ciles de encontrar (lo cual no quiere decir que haya pocos)</li>
     						<li>Y muchas m&aacute;s cosas que descubrir&aacute;s jugando...
     					</ul>
     				</ul>
