@@ -4,7 +4,7 @@
 echo $this->Form->Open(), $this->Form->Errors();
 
 //echo '<div><div class="Info">',
-//   T('Verifying your credentials...'),
+//   T('Verificando tus credenciales...'),
 //   '<div class="Progress"></div>',
 //   '</div></div>';
 

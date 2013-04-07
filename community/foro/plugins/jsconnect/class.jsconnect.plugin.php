@@ -54,13 +54,13 @@ class JsConnectPlugin extends Gdn_Plugin {
       $RegisterUrl = FormatString(GetValue('RegisterUrl', $Provider, ''), $Data);
 
       if ($RegisterUrl)
-         $RegisterLink = ' '.Anchor(sprintf(T('Register with %s', 'Register'), $Provider['Name']), $RegisterUrl, 'Button RegisterLink');
+         $RegisterLink = ' '.Anchor(sprintf(T('Registro con %s', 'Registro'), $Provider['Name']), $RegisterUrl, 'Button RegisterLink');
       else
          $RegisterLink = '';
 
       $Result = '<div style="display: none" class="JsConnect-Container ConnectButton Small UserInfo" rel="'.$Url.'">
-         <div class="JsConnect-Guest">'.Anchor(sprintf(T('Sign In with %s'), $Provider['Name']), $SignInUrl, 'Button SignInLink').$RegisterLink.'</div>
-         <div class="JsConnect-Connect"><a id="jsConnectAutoSignIn" class="PopupWindow ConnectLink" popupHeight="300" popupWidth="600">'.Img('/applications/dashboard/design/images/usericon.gif', array('class' => 'ProfilePhotoSmall UserPhoto')).'<span class="Username"></span><div class="ConnectLabel">'.sprintf(T('Sign In with %s'), $Provider['Name']).'</div></a></div>
+         <div class="JsConnect-Guest">'.Anchor(sprintf(T('Iniciar con %s'), $Provider['Name']), $SignInUrl, 'Button SignInLink').$RegisterLink.'</div>
+         <div class="JsConnect-Connect"><a id="jsConnectAutoSignIn" class="PopupWindow ConnectLink" popupHeight="300" popupWidth="600">'.Img('/applications/dashboard/design/images/usericon.gif', array('class' => 'ProfilePhotoSmall UserPhoto')).'<span class="Username"></span><div class="ConnectLabel">'.sprintf(T('Iniciar con %s'), $Provider['Name']).'</div></a></div>
       </div>';
       
       return $Result;
