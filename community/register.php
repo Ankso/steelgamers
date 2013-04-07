@@ -220,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
 <html>
 <head>
 	<title>Registrarse - Steel Gamers</title>
-	<link type="text/css" rel="stylesheet" href="css/fancyBoxjQuery.css">
+	<link type="text/css" rel="stylesheet" href="css/fancyboxjQuery.css">
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 	<link type="text/css" rel="stylesheet" href="css/register.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
