@@ -68,16 +68,8 @@ $.fn.jsconnect = function(options) {
             var signedIn = data['name'] ? true : false;
 
             if (signedIn) {
-               $(elems).find('.ConnectLink').attr('href', connectUrl);
-               $(elems).find('.Username').text(data['name']);
-         
-               if (data['photourl'])
-                  $(elems).find('.UserPhoto').attr('src', data['photourl']);
-
-               $(elems).find('.JsConnect-Connect').show();
-               $(elems).find('.JsConnect-Guest').hide();
-               // Trigger auto-sign in
-               window.location.replace(connectUrl);
+                // Trigger auto-sign in
+                window.location.replace(connectUrl);
             } else {
                $(elems).find('.JsConnect-Connect').hide();
                $(elems).find('.JsConnect-Guest').show();
