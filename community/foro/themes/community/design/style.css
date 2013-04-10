@@ -1883,7 +1883,7 @@ div.Popup form ul li label.RadioLabel {
 	padding: 6px 0;
 	margin: 20px auto 0;
 	text-align: left;
-    position:absolute;
+    position:fixed;
     font-size:10px;
     bottom:5px;
 }

@@ -32,7 +32,8 @@
 							if (SignInPopup() && strpos(Gdn::Request()->Url(), 'entry') === FALSE)
 								$Attribs['class'] = 'SignInPopup';
 								
-							$this->Menu->AddLink('Entry', T('Sign In'), SignInUrl($this->SelfUrl), FALSE, array('class' => 'NonTab'), $Attribs);
+						    // Hide default sign in button
+							// $this->Menu->AddLink('Entry', T('Sign In'), SignInUrl($this->SelfUrl), FALSE, array('class' => 'NonTab'), $Attribs);
 						}
 						echo $this->Menu->ToString();
 					}
