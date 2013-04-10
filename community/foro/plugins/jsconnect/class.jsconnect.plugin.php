@@ -58,7 +58,7 @@ class JsConnectPlugin extends Gdn_Plugin {
       else
          $RegisterLink = '';
 
-      $Result = '<div style="display: none" class="JsConnect-Container ConnectButton Small UserInfo" rel="'.$Url.'">
+      $Result = '<div class="JsConnect-Container ConnectButton Small UserInfo" rel="'.$Url.'">
          <div class="JsConnect-Guest">'.Anchor(sprintf(T('Iniciar con %s'), $Provider['Name']), $SignInUrl, 'Button SignInLink').$RegisterLink.'</div>
          <div class="JsConnect-Connect"><a id="jsConnectAutoSignIn" class="PopupWindow ConnectLink" popupHeight="300" popupWidth="600">'.Img('/applications/dashboard/design/images/usericon.gif', array('class' => 'ProfilePhotoSmall UserPhoto')).'<span class="Username"></span><div class="ConnectLabel">'.sprintf(T('Iniciar con %s'), $Provider['Name']).'</div></a></div>
       </div>';
