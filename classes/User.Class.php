@@ -456,8 +456,8 @@ Class User
             if ($this->_db->ExecuteStmt(Statements::INSERT_USERS_BANNED, $this->_db->BuildStmtArray("isssii", $this->GetId(), date("Y-m-d H:i:s"), $banEnd, $banReason, $bannedBy, 1)))
             {
                 // Ban user in other databases
-                global $DATABASES;
-                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT']))
+                global $DATABASES, $MITRACRAFT_INFO;
+                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT'], $MITRACRAFT_INFO))
                     $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 0, $this->GetEmail()));
             }
         }
@@ -466,8 +466,8 @@ Class User
             if ($this->_db->ExecuteStmt(Statements::UPDATE_USERS_BANNED_STATUS, $this->_db->BuildStmtArray("ii", 0, $this->GetId())))
             {
                 // Unban user in other databases
-                global $DATABASES;
-                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT']))
+                global $DATABASES, $MITRACRAFT_INFO;
+                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT'], $MITRACRAFT_INFO))
                     $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 1, $this->GetEmail()));
             }
         }
