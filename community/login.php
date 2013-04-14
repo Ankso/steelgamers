@@ -39,6 +39,11 @@ if (isset($_POST['username']) && isset($_POST['password']))
             if ($row['password_sha1'] === CreateSha1Pass($username, $password))
             {
                 $user = new User($username);
+                if ($user->IsBanned())
+                {
+                    header("Location:http://steelgamers.es/banned.php?reason=" . $user->GetId());
+                    exit();
+                }
                 if ($user->IsActive())
                 {
                     $user->SetLastLogin(date("Y-m-d H:i:s"));

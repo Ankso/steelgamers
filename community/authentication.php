@@ -24,6 +24,11 @@ if (isset($_SESSION['userId']))
     // Vanilla SSO login
     // 1. Grab the current user from your session management system or database here.
     $user = new User($_SESSION['userId']);
+    if ($user->IsBanned())
+    {
+        header("Location:http://steelgamers.es/logout.php?redirect=banned");
+        exit();
+    }
     // 2. Fill in the user information in a way that Vanilla can understand.
     $vanillaUser = array(
         'uniqueid' => $user->GetId(),

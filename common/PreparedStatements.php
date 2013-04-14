@@ -47,6 +47,11 @@ class Statements
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
     // Users management
     const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.register_date, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username = ? AND b.user_id = a.id";
+    const SELECT_USERS_BANNED             = "SELECT ban_start, ban_end, ban_reason, banned_by, active FROM users_banned WHERE user_id = ? AND active = 1";
+    const SELECT_USERS_BANNED_HISTORY     = "SELECT ban_start, ban_end, ban_reason, banned_by, active FROM users_banned WHERE user_id = ?";
+    const INSERT_USERS_BANNED             = "INSERT INTO users_banned (user_id, ban_start, ban_end, ban_reason, banned_by, active) VALUES (?, ?, ?, ?, ?, ?)";
+    const UPDATE_USERS_BANNED_STATUS      = "UPDATE users_banned SET active = ? WHERE user_id = ?";
+    const DELETE_USERS_BANNED             = "DELETE FROM users_banned WHERE user_id = ?";
     // Members list
     const SELECT_ALL_MEMBERS              = "SELECT a.username, a.email, a.is_online, a.last_login, a.register_date, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.id = b.user_id AND a.active = 1 LIMIT 100";
     // TS3 related queries
@@ -59,6 +64,7 @@ class Statements
     const UPDATE_USER_CHARACTER_EMAIL     = "UPDATE xauth_account SET email = ? WHERE playername = ?";
     const INSERT_USER_CHARACTER           = "INSERT INTO xauth_account (playername, password, pwtype, email, registerdate, registerip, lastlogindate, lastloginip, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const DELETE_USER_CHARACTER           = "DELETE FROM xauth_account WHERE playername = ?";
+    const UPDATE_USER_BANNED              = "UPDATE xauth_account SET active = ? WHERE email = ?";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS

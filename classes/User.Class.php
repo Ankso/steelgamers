@@ -412,6 +412,69 @@ Class User
     }
     
     /**
+     * Determines if the user is banned. Note that this function executes queries in the DB each time it is called.
+     * @return boolean Returns true if the user is banned, else false.
+     */
+    public function IsBanned()
+    {
+        if ($result = $this->_db->ExecuteStmt(Statements::SELECT_USERS_BANNED, $this->_db->BuildStmtArray("i", $this->GetId())))
+        {
+            if ($row = $result->fetch_assoc())
+            {
+                $banEnd = strtotime($row['ban_end']);
+                if ($banEnd >= time() && $row['active'] == 1)
+                    return true;
+                // Automatically unban the user if the time has expired
+                elseif ($banEnd < time() && $row['active'] == 1)
+                    $this->SetBanned(false);
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Bans/unbans the current user. Note that this function bans the user from all the servers of the system, so it executes queries in multiple DBs.
+     * @param boolean $ban True if the user must be banned, false if the user should be unbanned.
+     * @param datetime $banEnd [Optional] When the ban expires.
+     * @param integer $bannedBy [Optional] The UID of the mod that banned the user.
+     * @param string $banReason [Optional] Why the user was banned.
+     * @return boolean True on success, else false.
+     */
+    public function SetBanned($ban, $banEnd = NULL, $bannedBy = NULL, $banReason = NULL)
+    {
+        if (!isset($ban))
+            return false;
+        
+        if ($ban)
+        {
+            if ($bannedBy == NULL || $banEnd == NULL)
+                return false;
+            
+            if ($banReason == NULL)
+                $banReason = "Sin especificar";
+            
+            if ($this->_db->ExecuteStmt(Statements::INSERT_USERS_BANNED, $this->_db->BuildStmtArray("isssii", $this->GetId(), date("Y-m-d H:i:s"), $banEnd, $banReason, $bannedBy, 1)))
+            {
+                // Ban user in other databases
+                global $DATABASES;
+                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT']))
+                    $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 0, $this->GetEmail()));
+            }
+        }
+        else
+        {
+            if ($this->_db->ExecuteStmt(Statements::UPDATE_USERS_BANNED_STATUS, $this->_db->BuildStmtArray("ii", 0, $this->GetId())))
+            {
+                // Unban user in other databases
+                global $DATABASES;
+                if ($mitracraftDb = new Database($DATABASES['MITRACRAFT']))
+                    $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 1, $this->GetEmail()));
+            }
+        }
+        return true;
+    }
+    
+    /**
      * Obtains the token of this user in the TS3
      * @return string The user's ts3 token, or false if something fails.
      */

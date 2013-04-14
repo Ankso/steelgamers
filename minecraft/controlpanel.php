@@ -61,6 +61,11 @@ $errors = array(
     'retrieveCharacter' => ERROR_NONE,
 );
 $user = new User($_SESSION['userId']);
+if ($user->IsBanned())
+{
+    header("Location:http://steelgamers.es/logout.php?redirect=banned");
+    exit();
+}
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
     $noChange = true;

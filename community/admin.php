@@ -74,7 +74,6 @@ if ($isAdmin)
                 if ($db->ExecuteStmt(Statements::INSERT_FAQ, $db->BuildStmtArray("issss", $user->GetId(), $user->GetUsername(), $question, $answer, date("Y-m-d H:i:s"))))
                     $error = false;
             }
-            
         }
         // Admin wants to delete a FAQ question/answer
         if (isset($_POST['faq_delete']) && $_POST['faq_delete'] != "")
@@ -84,7 +83,7 @@ if ($isAdmin)
                 $error = false;
         }
         // Admin wants to edit a user
-        if (isset($_POST['editUserId']) && isset($_POST['0']) && isset($_POST['1']) && isset($_POST['2']) && isset($_POST['3']) && isset($_POST['4']) && isset($_POST['5']) && isset($_POST['6']) && isset($_POST['7']))
+        if (isset($_POST['editUserId']) && isset($_POST['0']) && isset($_POST['1']) && isset($_POST['2']) && isset($_POST['3']) && isset($_POST['4']) && isset($_POST['5']) && isset($_POST['6']) && isset($_POST['7']) && isset($_POST['action']) && $_POST['action'] == "permissions")
         {
             $db = new Database($DATABASES['USERS']);
             $rankMask = $_POST['0'] . $_POST['1'] . $_POST['2'] . $_POST['3'] . $_POST['4'] . $_POST['5'] . $_POST['6'] . $_POST['7'];
@@ -94,10 +93,57 @@ if ($isAdmin)
                     $error = false;
             }
         }
-        if ($error)
-            header("Location:" . $_POST['from'] . ".php?adminError=true");
-        else
-            header("Location:" . $_POST['from'] . ".php?adminError=false");
+        // Admin wants to ban an user
+        if (isset($_POST['editUserId']) && isset($_POST['action']) && $_POST['action'] == "banUser")
+        {
+            // Find how much time the user must be banned
+            $totalBanTime = 0;
+            if (isset($_POST['banExpiresMinutes']))
+                if (is_numeric($_POST['banExpiresMinutes']))
+                    $totalBanTime += $_POST['banExpiresMinutes'];
+            if (isset($_POST['banExpiresHours']))
+                if (is_numeric($_POST['banExpiresHours']))
+                    $totalBanTime += $_POST['banExpiresHours'] * 60;
+            if (isset($_POST['banExpiresDays']))
+                if (is_numeric($_POST['banExpiresDays']))
+                    $totalBanTime += $_POST['banExpiresDays'] * 60 * 24;
+            if (isset($_POST['banExpiresMonths']))
+                if (is_numeric($_POST['banExpiresMonths']))
+                    $totalBanTime += $_POST['banExpiresMonths'] * 60 * 24 * 30;
+            if (isset($_POST['banExpiresYears']))
+                if (is_numeric($_POST['banExpiresYears']))
+                    $totalBanTime += $_POST['banExpiresYears'] * 60 * 24 * 30 * 12;
+            // Time must be in seconds
+            $totalBanTime *= 60;
+            // Add current timestamp
+            $totalBanTime += time();
+            // Convert to valid MySQL date
+            $totalBanTime = date("Y-m-d H:i:s", $totalBanTime);
+            // Ban reason
+            $reason = NULL;
+            if (isset($_POST['banReason']))
+                $reason = $_POST['banReason'];
+            // Create the user object, it handles all the bans in all the servers
+            $targetUser = new User(intval($_POST['editUserId']));
+            if ($targetUser->SetBanned(true, $totalBanTime, $user->GetId(), $reason))
+                $error = false;
+        }
+        // Admin wants to unban an user
+        if (isset($_POST['editUserId']) && isset($_POST['action']) && $_POST['action'] == "unbanUser")
+        {
+            // Create the user object and unban him
+            $targetUser = new User(intval($_POST['editUserId']));
+            if ($targetUser->SetBanned(false))
+                $error = false;
+        }
+        if (isset($_POST['from']))
+        {
+            if ($error)
+                header("Location:" . $_POST['from'] . ".php?adminError=true");
+            else
+                header("Location:" . $_POST['from'] . ".php?adminError=false");
+            exit();
+        }
     }
 }
 header("Location:controlpanel.php");

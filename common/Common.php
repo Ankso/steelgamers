@@ -19,7 +19,7 @@ function GetUsernameFromId($id)
 {
     global $DATABASES, $SERVER_INFO;
     $DB = new Database($DATABASES['USERS']);
-    $result = $DB->ExecuteStmt(Statements::SELECT_USER_DATA_USERNAME, $DB->BuildStmtArray("i", $id));
+    $result = $DB->ExecuteStmt(Statements::SELECT_USERS_USERNAME, $DB->BuildStmtArray("i", $id));
     if ($result)
     {
         if($row = $result->fetch_assoc())

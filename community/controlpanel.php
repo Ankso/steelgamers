@@ -32,6 +32,11 @@ $errors = array(
     'server'         => ERROR_NONE,
 );
 $user = new User($_SESSION['userId']);
+if ($user->IsBanned())
+{
+    header("Location:http://steelgamers.es/logout.php?redirect=banned");
+    exit();
+}
 $userRank = $user->GetRanks(GAME_OVERALL);
 $isAdmin = ($userRank > USER_RANK_MODERATOR);
 $ts3Token = $user->GetTs3Token();
@@ -61,10 +66,10 @@ if (!$ts3Token)
 
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    $noChange = true;
     // User wants to change the password
     if (isset($_POST['password']) && isset($_POST['password_check']) && $_POST['password'] != "" && $_POST['password_check'] != "")
     {
+        $noChange = true;
         if ($_POST['password'] == $_POST['password_check'])
         {
             if (htmlentities($_POST['password']) == $_POST['password'] && strlen($_POST['password']) >= PASSWORD_MIN_LENGHT)
@@ -83,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     // User wants to change his email
     if (isset($_POST['email']) && $user->GetEmail() != $_POST['email'] && $_POST['email'] != "")
     {
+        $noChange = true;
         if (IsValidEmail($_POST['email']))
         {
             if (!UserExists($_POST['email']))
@@ -108,17 +114,32 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
                 if ($row = $result->fetch_assoc())
                 {
                     $userData = array(
-                        'id' => $row['id'],
-                        'username' => $row['username'],
-                        'email' => $row['email'],
-                        'lastIp' => $row['ip_v4'],
+                        'id'        => $row['id'],
+                        'username'  => $row['username'],
+                        'email'     => $row['email'],
+                        'lastIp'    => $row['ip_v4'],
                         'lastLogin' => $row['last_login'],
-                        'active' => $row['active'],
-                        'rank' => str_split($row['rank_mask']),
+                        'active'    => $row['active'],
+                        'rank'      => str_split($row['rank_mask']),
+                        'banStart'  => NULL,
+                        'banEnd'    => NULL,
+                        'banReason' => NULL,
+                        'bannedBy'  => NULL,
                     );
                     
                     if ($userData['rank'][GAME_OVERALL] <= $userRank && $userRank < USER_RANK_SUPERADMIN)
                         $userData = ERROR_NOT_ALLOWED;
+                    
+                    if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_BANNED, $db->BuildStmtArray("i", $userData['id'])))
+                    {
+                        if ($row = $result->fetch_assoc())
+                        {
+                            $userData['banStart'] = $row['ban_start'];
+                            $userData['banEnd'] = $row['ban_end'];
+                            $userData['banReason'] = $row['ban_reason'];
+                            $userData['bannedBy'] = $row['banned_by'];
+                        }
+                    }
                 }
             }
         }
@@ -228,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
             		if ($ts3Token)
             		{
             		?>
-        			<div class="formItem">Desde aqu&iacute; puedes conectarte por primera vez a nuestro servidor de TeamSpeak 3, o si tu rango ha cambiado, puedes obtener los nuevos permisos haciendo click en el bot&oacute;n. &iexcl;Recuerda a&ntilde;adir el servidor a tus bookmarks!</div>
+        			<div class="formItem">Desde aqu&iacute; puedes conectarte por primera vez a nuestro servidor de TeamSpeak 3, o si tu rango ha cambiado, puedes obtener los nuevos permisos haciendo click en el bot&oacute;n. <b>&iexcl;Recuerda a&ntilde;adir el servidor a tus bookmarks!</b></div>
             		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Sincronizar</a></div>
             		<?php
             		}
@@ -300,11 +321,57 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         				<div class="formItem formItemLabel">&Uacute;ltima conexi&oacute;n:</div>
         				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['lastLogin']; ?>"></div>
         				<div class="formItem formItemLabel">Estado de la cuenta:</div>
-        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $userData['active'] == 0 ? "No activada" : "Activada"; ?>"></div>
+        				<?php 
+        				$accountStatus = "Activada";
+        				if ($userData['banStart'] && $userData['banEnd'] && strtotime($userData['banEnd']) >= time())
+        				    $accountStatus = "Baneada";
+        				elseif ($userData['active'] == 0)
+        				    $accountStatus = "No activada";
+        				?>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo $accountStatus; ?>"></div>
+        				<?php 
+        				if ($accountStatus == "Baneada")
+        				{
+        				?>
+        				<input type="hidden" name="action" value="unbanUser">
+        				<div class="formItem formItemLabel">Desde:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo date("d-m-Y H:i:s", strtotime($userData['banStart'])); ?>"></div>
+        				<div class="formItem formItemLabel">Hasta:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo date("d-m-Y H:i:s", strtotime($userData['banEnd'])); ?>"></div>
+        				<div class="formItem formItemLabel">Baneada por:</div>
+        				<div class="formItem"><input class="formItemDisabled" type="text" disabled value="<?php echo GetUsernameFromId($userData['bannedBy']); ?>"></div>
+        				<div class="formItem"><input class="button unbanButton" type="submit" value="Desbanear"></div>
+        				<?php
+        				}
+        				else
+        				{
+        			    ?>
+        			    <input type="hidden" name="action" value="banUser">
+        			    <div class="formItem formItemLabel">Banear...</div>
+        			    <div class="formItem"><input class="formItemBanInput" type="text" name="banExpiresMinutes" value="0"> minutos</div>
+        			    <div class="formItem formItemLabel">&nbsp;</div>
+        			    <div class="formItem"><input class="formItemBanInput" type="text" name="banExpiresHours" value="0"> horas</div>
+        			    <div class="formItem formItemLabel">&nbsp;</div>
+        			    <div class="formItem"><input class="formItemBanInput" type="text" name="banExpiresDays" value="0"> d&iacute;as</div>
+        			    <div class="formItem formItemLabel">&nbsp;</div>
+        			    <div class="formItem"><input class="formItemBanInput" type="text" name="banExpiresMonths" value="0"> meses</div>
+        			    <div class="formItem formItemLabel">&nbsp;</div>
+        			    <div class="formItem"><input class="formItemBanInput" type="text" name="banExpiresYears" value="0"> a&ntilde;os</div>
+        			    <div class="formItem formItemLabel">Raz&oacute;n:</div>
+        			    <div class="formItem"><input type="text" name="banReason" value=""></div>
+        			    <div class="formItem"><input class="button banButton" type="submit" value="Banear"></div>
+        			    <?php
+        				}
+        				?>
         				<?php 
         				foreach ($GAME_NAMES as $i => $gameName)
         				{
         				?>
+        			</form>
+        			<form action="admin.php" method="post">
+            			<input type="hidden" name="from" value="controlpanel">
+            			<input type="hidden" name="editUserId" value="<?php echo $userData['id']; ?>">
+            			<input type="hidden" name="action" value="permissions">
         				<div class="formItem formItemLabel">Permisos <?php echo $gameName; ?>:</div>
         				<div class="formItem">
         					<select name="<?php echo $i; ?>">
@@ -321,7 +388,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         				<?php
         				}
         				?>
-        				<div class="formItem"><input class="button" type="submit" value="Actualizar"></div>
+        				<div class="formItem"><input class="button" type="submit" value="Actualizar permisos"></div>
             		</form>
             		<?php
             		    }

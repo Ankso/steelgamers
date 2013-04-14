@@ -27,6 +27,23 @@
     color:#343434;
 }
 
+.formItemBanInput {
+    width:50px;
+}
+
+.banButton {
+    margin-bottom:20px;
+    background:#FF2222;
+    text-shadow:none;
+    color:#FFFFFF;
+}
+
+.unbanButton {
+    margin-bottom:20px;
+    background:#22FF22;
+    text-shadow:none;
+}
+
 .formErrorsWrapper {
     float:left;
     width:280px;

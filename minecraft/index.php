@@ -25,6 +25,11 @@ if (isset($_SESSION['userId']))
 {
     $loggedIn = true;
     $user = new User($_SESSION['userId']);
+    if ($user->IsBanned())
+    {
+        header("Location:http://steelgamers.es/logout.php?redirect=banned");
+        exit();
+    }
 }
 $db = new Database($DATABASES['USERS']);
 $news = array();

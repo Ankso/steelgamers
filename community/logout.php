@@ -16,8 +16,10 @@ session_set_save_handler(
     );
 register_shutdown_function("session_write_close");
 session_start();
+$userId = NULL;
 if (isset($_SESSION['userId']))
 {
+    $userId = $_SESSION['userId'];
     $user = new User($_SESSION['userId']);
     $user->SetOnline(false);
     // Destroy forum session
@@ -40,6 +42,9 @@ if (isset($_GET['redirect']))
             exit();
         case "arma2":
             header("Location:http://arma2.steelgamers.es");
+            exit();
+        case "banned":
+            header("Location:http://steelgamers.es/banned.php?reason=" . $userId);
             exit();
         default:
             break;
