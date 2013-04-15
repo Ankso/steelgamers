@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
                         'bannedBy'  => NULL,
                     );
                     
-                    if ($userData['rank'][GAME_OVERALL] <= $userRank && $userRank < USER_RANK_SUPERADMIN)
+                    if ($userData['rank'][GAME_OVERALL] > $userRank && $userRank < USER_RANK_SUPERADMIN)
                         $userData = ERROR_NOT_ALLOWED;
                     
                     if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_BANNED, $db->BuildStmtArray("i", $userData['id'])))

@@ -125,8 +125,9 @@ if ($isAdmin)
                 $reason = $_POST['banReason'];
             // Create the user object, it handles all the bans in all the servers
             $targetUser = new User(intval($_POST['editUserId']));
-            if ($targetUser->SetBanned(true, $totalBanTime, $user->GetId(), $reason))
-                $error = false;
+            if ($targetUser->GetRanks(GAME_OVERALL) < $user->GetRanks(GAME_OVERALL))
+                if ($targetUser->SetBanned(true, $totalBanTime, $user->GetId(), $reason))
+                    $error = false;
         }
         // Admin wants to unban an user
         if (isset($_POST['editUserId']) && isset($_POST['action']) && $_POST['action'] == "unbanUser")
