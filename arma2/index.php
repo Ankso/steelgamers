@@ -121,8 +121,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
         	</div>
         </div>
 	</div>
-	<div class="bottomBarContainer">
-	</div>
+	<?php PrintBottomBar(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

@@ -504,8 +504,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     		<?php PrintTs3Status(); ?>
     	</div>
 	</div>
-	<div class="bottomBarContainer">
-	</div>
+	<?php PrintBottomBar(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

@@ -179,8 +179,7 @@ if (isset($_SESSION['userId']))
         	</div>
         </div>
 	</div>
-	<div class="bottomBarContainer">
-	</div>
+	<?php PrintBottomBar(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

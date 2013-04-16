@@ -113,8 +113,7 @@ $db = new Database($DATABASES['USERS']);
     		<?php PrintTs3Status(); ?>
     	</div>
 	</div>
-	<div class="bottomBarContainer">
-	</div>
+	<?php PrintBottomBar(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>
