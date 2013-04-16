@@ -248,7 +248,7 @@ a.plainLink {
 
 .new {
 	float:left;
-    width:740px;
+    width:754px;
     background:#222222;
     margin-top:10px;
     padding:5px 5px 15px 5px;
@@ -260,7 +260,7 @@ a.plainLink {
 	float:left;
     margin-left:10px;
     padding-right:15px;
-    width:720px;
+    width:734px;
 }
 
 .newDetails {
@@ -355,11 +355,47 @@ a.plainLink {
 
 .bottomBarContainer {
 	float:left;
-    width:100%;
+    width:1024px;
     height:40px;
     margin-top:10px;
     background:#151515/*url('../images/bottom_bar_background.png') no-repeat center*/;
     border-radius:0px 0px 5px 5px;
+    font-size:13px;
+    color:#D9D9D9;
 }
+
+.bottomBarLeft {
+    float:left;
+    width:440px;
+    text-align:left;
+    margin-top:4px;
+    margin-left:10px;
+}
+
+.bottomBarCenter {
+    float:left;
+    width:124px;
+    text-align:center;
+}
+
+.bottomBarRight {
+    float:left;
+    width:450px;
+    text-align:right;
+}
+
+.bottomBarRightText {
+    float:left;
+    width:350px;
+    margin-top:11px;
+}
+
+.bottomBarRightIcons {
+    float:left;
+    width:90px;
+    margin-top:4px;
+    margin-right:10px;
+}
+
 
 /* END BOTTOM BAR */
