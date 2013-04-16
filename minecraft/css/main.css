@@ -264,7 +264,7 @@ a.plainLink {
 
 .new {
 	float:left;
-    width:754px;
+    width:740px;
     background:#C0C0C0;
     margin-top:10px;
     padding:5px 5px 15px 5px;
@@ -276,7 +276,7 @@ a.plainLink {
 	float:left;
     margin-left:10px;
     padding-right:15px;
-    width:734px;
+    width:720px;
 }
 
 .newDetails {
@@ -374,10 +374,9 @@ a.plainLink {
     width:1024px;
     height:40px;
     margin-top:10px;
-    background:#151515/*url('../images/bottom_bar_background.png') no-repeat center*/;
+    background:#E0E0E0/*url('../images/bottom_bar_background.png') no-repeat center*/;
     border-radius:0px 0px 5px 5px;
     font-size:13px;
-    color:#D9D9D9;
 }
 
 .bottomBarLeft {
