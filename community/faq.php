@@ -109,6 +109,7 @@ $db = new Database($DATABASES['USERS']);
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>
+	<?php PrintWoWTbcServerStatus(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

@@ -1,13 +1,24 @@
 <?php
 /**
- * Encripts the password using the username as modifier.
+ * Encripts the password using the username as modifier and a magic string.
  * @param string $username The user's username
  * @param string $password The user's password decripted
- * @return string Returns a user's password encripted using the username as modifier with the format username:password
+ * @return string Returns a user's password encripted using the username as modifier with the format username:MAGIC_STRING:password
  */
 function CreateSha1Pass ($username, $password)
 {
     return sha1(strtolower($username) . ":" . MAGIC_STRING . ":" . $password);
+}
+
+/**
+ * Encripts the password using the username as modifier for a MaNGOS based World of Warcraft server emulator.
+ * @param string $username The user's username
+ * @param string $password The user's password decripted
+ * @return string Returns a user's password encripted using the username as modifier with the format username:password
+ */
+function CreateWoWServerSha1Pass($username, $pass)
+{
+    return sha1(strtoupper($username) . ":" . strtoupper($pass));
 }
 
 /**
@@ -123,12 +134,16 @@ function PrintTopBar(/* $user */)
             			</div>
             			<div class="topBarSubMenuItem gameItem">
             				<div><a href="http://worldoftanks.steelgamers.es"><img src="/images/games/topbar_covers/worldoftanks_cover.jpg"></a></div>
-            				<div>World of Tanks</div>
+            				<div style="font-size:15px;">World of Tanks</div>
+            			</div>
+            			<div class="topBarSubMenuItem gameItem">
+            				<div><a href="http://wow.steelgamers.es"><img src="/images/games/topbar_covers/wowtbc_cover.png"></a></div>
+            				<div style="font-size:12px;">World of Warcraft<br>(TBC)</div>
             			</div>
             		</div>
             		<div id="topBarSubMenuForos" class="topBarSubMenu">
             			<div>
-            				<a class="plainLink" href="http://steelgamers.es/foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center;">General</div></a>
+            				<a class="plainLink" href="http://steelgamers.es/foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center; font-size:16px;">General</div></a>
             			</div>
             			<div style="margin-top:10px;">
             				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/arma">ArmA 2</a></div>
@@ -138,7 +153,8 @@ function PrintTopBar(/* $user */)
                 			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
                 			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/war-thunder">War Thunder</a></div>
                 			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/world-of-tanks">World of Tanks</a></div>
-            			</div>
+            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>
+                		</div>
             		</div>
             		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
             			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/members.php">Miembros</a></div>
@@ -147,11 +163,14 @@ function PrintTopBar(/* $user */)
             			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
             		</div>
             		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem gameItem" style="margin-top:13px;">
+            			<div class="topBarSubMenuItem gameItem" style="margin-top:20px;">
             				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
             			</div>
-            			<div class="topBarSubMenuItem gameItem">
+            			<div class="topBarSubMenuItem gameItem" style="margin-top:7px;">
             				<div><a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php"><img src="/images/servers/topbar/sgc1_arma2.png"></a></div>
+            			</div>
+            			<div class="topBarSubMenuItem gameItem">
+            				<div><a href="http://wow.steelgamers.es/servidores/sgc_wowtbc.php"><img src="/images/servers/topbar/sgc_wowtbc.png"></a></div>
             			</div>
             		</div>
         		</div>
@@ -165,7 +184,7 @@ function PrintBottomBar()
 {
     echo '<div class="bottomBarContainer">
 		<div class="bottomBarLeft">&copy; 2013 Steel Gamers Community.<br>Todos los derechos reservados.</div>
-		<div class="bottomBarCenter"><a target="_blank" href="http://www.w3.org/html/wg/drafts/html/master/"><img src="/images/html5_logo_32.png"></a></div>
+		<div class="bottomBarCenter"><a target="_blank" href="http://www.w3.org/html/wg/drafts/html/master/"><img style="margin-top:4px;" src="/images/html5_logo_32.png"></a></div>
 		<div class="bottomBarRight">
 			<div class="bottomBarRightText">Steel Gamers recomienda: </div>
 			<div class="bottomBarRightIcons">
@@ -216,6 +235,27 @@ function PrintTs3Status()
     echo '				<div class="teamSpeakStatusLabel">steelgamers.es:9987</div>
 					</div>
 				</div>';
+}
+
+function PrintWowTbcServerStatus()
+{
+    $err = array('no' => NULL, 'str' => NULL);
+    $isOnline = @fsockopen("wowserver.steelgamers.es", 8085, $err['no'], $err['str'], (float)1.0);
+    echo '		<div class="rightItem">
+        			<div class="teamSpeak3StatusContainer">
+            			<div><h3>Servidor World of Warcraft: The Burning Crusade</h3></div>';
+    if(!$isOnline)
+    {
+		echo '			<div class="teamSpeak3Status offline">Offine</div>';
+	}
+	else
+	{
+		echo '			<div class="teamSpeak3Status online">Online</div>';
+	}
+	echo '				<div class="teamSpeakStatusLabel">wowserver.steelgamers.es</div>
+					</div>
+				</div>';
+	fclose($isOnline);
 }
 
 /**

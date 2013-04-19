@@ -286,6 +286,7 @@ $userRank = $user->GetRanks(GAME_ARMA2);
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
+    		<?php PrintWoWTbcServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

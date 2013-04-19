@@ -176,6 +176,7 @@ if (isset($_SESSION['userId']))
         		?>
         		</div>
         		<?php PrintTs3Status(); ?>
+        		<?php PrintWoWTbcServerStatus(); ?>
         	</div>
         </div>
 	</div>

@@ -502,6 +502,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
+    		<?php PrintWoWTbcServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

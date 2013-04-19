@@ -443,6 +443,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
+    		<?php PrintWoWTbcServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

@@ -65,6 +65,10 @@ class Statements
     const INSERT_USER_CHARACTER           = "INSERT INTO xauth_account (playername, password, pwtype, email, registerdate, registerip, lastlogindate, lastloginip, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const DELETE_USER_CHARACTER           = "DELETE FROM xauth_account WHERE playername = ?";
     const UPDATE_USER_BANNED              = "UPDATE xauth_account SET active = ? WHERE email = ?";
+    // WoW servers network specific queries
+    const SELECT_USER_WOW_ACCOUNT         = "SELECT id, username, gmlevel, email, joindate, last_ip, last_login, expansion, locale FROM account WHERE username = ?";
+    const SELECT_USER_WOW_CHARACTERS      = "SELECT name, race, class, gender, level, money, online, totaltime, arenaPoints, totalHonorPoints, todayHonorPoints, yesterdayHonorPoints, totalKills, todayKills, yesterdayKills FROM characters WHERE account = ?";
+    const INSERT_USER_WOW_ACCOUNT         = "INSERT INTO account (username, sha_pass_hash, gmlevel, sessionkey, v, s, email, joindate, last_ip, failed_logins, locked, last_login, active_realm_id, expansion, mutetime, locale) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
@@ -73,5 +77,9 @@ class Statements
     const INSERT_ARMA2_NEWS               = "INSERT INTO arma2_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_ARMA2_NEWS               = "SELECT * FROM arma2_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
     const DELETE_ARMA2_NEWS               = "DELETE FROM arma2_news WHERE id = ?";
+    // WoW news system
+    const INSERT_WOW_NEWS                 = "INSERT INTO wow_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_WOW_NEWS                 = "SELECT * FROM wow_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_WOW_NEWS                 = "DELETE FROM wow_news WHERE id = ?";
 }
 ?>

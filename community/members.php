@@ -111,6 +111,7 @@ $db = new Database($DATABASES['USERS']);
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
+    		<?php PrintWoWTbcServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

@@ -50,7 +50,8 @@ define("GAME_DOTA_2", 4);
 define("GAME_MINECRAFT", 5);
 define("GAME_WAR_THUNDER", 6);
 define("GAME_WORLD_OF_TANKS", 7);
-define("GAMES_COUNT", 7); // GAME_OVERALL is not really a game
+define("GAME_WORLD_OF_WARCRAFT_TBC", 8);
+define("GAMES_COUNT", 8); // GAME_OVERALL is not really a game
 /**
  * Array with the game names used in the webpage
  */
@@ -63,5 +64,6 @@ $GAME_NAMES = array(
     5 => "Minecraft",
     6 => "War Thunder",
     7 => "World of Tanks",
+    8 => "World of Warcraft: The Burning Crusade",
 );
 ?>

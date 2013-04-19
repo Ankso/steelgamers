@@ -36,7 +36,7 @@ $(document).ready(function() {
                 $("div.topBarSubMenu").fadeOut(200);
                 setTimeout(function() {
                     $("div#topBarSubMenu" + category).fadeIn(200);
-                }, 200);
+                }, 205);
                 $("div#topBarItem" + category).attr("class", "topBarItemSelected");
             }
             else

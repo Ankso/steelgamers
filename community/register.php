@@ -195,7 +195,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                 $errors['critical'] = ERROR_INVALID;
             }
             else
+            {
                 $db->CommitTransaction();
+                // Create account in the WoW server
+                $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
+                // User object is created here already, else we can't be here.
+                // Also if this fails, it's not neccesary to cancel account creation, as wow account creation can be triggered later from the control panel.
+                // TODO: If this fails, inform the user!
+                $wowAccountsDb->ExecuteStmt(Statements::INSERT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("ssissssssiisiiii", strtoupper($user->GetUsername()), CreateWoWServerSha1Pass($user->GetUsername(), $password), 0, "", "0", "0", $user->GetEmail(), time(), "0.0.0.0", 0, 0, "0000-00-00 00:00:00", 0, 1, 0, 0));
+            }
         }
     }
     else

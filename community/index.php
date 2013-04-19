@@ -148,6 +148,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
         </div>
 	</div>
 	<?php PrintBottomBar(); ?>
+	<?php PrintWoWTbcServerStatus(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

@@ -106,6 +106,7 @@ if (isset($_SESSION['userId']))
         </div>
 	</div>
 	<?php PrintBottomBar(); ?>
+    <?php PrintWoWTbcServerStatus(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>

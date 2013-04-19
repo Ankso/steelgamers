@@ -1,0 +1,419 @@
+@CHARSET "ISO-8859-1";
+
+/* IE hack */
+img {
+    border:0px;
+}
+/***********/
+
+/* GLOBAL STYLES */
+
+body {
+	font-family:'Helvetica','lucida grande','Lucida Sans Unicode', tahoma, sans-serif;
+	font-size:14px;
+    background-color:#333333;
+    color:#F0F0F0;
+    margin:10px;
+    display:block;
+}
+
+h1 {
+	margin-left:10px;
+	font-size:26px;
+}
+
+input {
+    border:0;
+    padding:4px;
+    background:#fff;
+    -moz-border-radius:2px;
+    -webkit-border:2px;
+    border-bottom:2px;
+    color:#000000;
+    font-size:13px;
+    vertical-align:bottom;
+}
+
+input:focus {
+    background-color:rgb(253, 255, 169);
+    color:707070;
+}
+
+a {
+    color:#23D7EB;
+}
+
+a.plainLink {
+    text-decoration:none;
+    color:inherit;
+}
+
+.formItem {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.button {
+    cursor:pointer;
+    margin:0;
+    font-size:12px;
+    padding:4px 15px 4px 15px;
+    background:#f8f8f8;
+    background:-webkit-gradient(linear, center bottom, center top, from(#cccccc), to(#ffffff));
+    background:-moz-linear-gradient(top, #ffffff, #cccccc);
+    -pie-background:linear-gradient(top, #ffffff, #cccccc);
+    background:linear-gradient(top, #ffffff, #cccccc);
+    color:#02475A;
+    text-shadow:0 1px 0 #fff;
+    border:1px solid #999;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    box-shadow:0px 0px 2px #999;
+    -moz-box-shadow:0px 0px 2px #999;
+    -webkit-box-shadow:0px 0px 2px #999;
+    white-space:nowrap;
+    margin-top:5px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.button:hover {
+   color:#111;
+   border:1px solid #666;
+}
+
+.button:focus {
+   background:#eee;
+}
+
+.backToMainPageContainer {
+    position: fixed;
+    top:10px;
+    /* background-color:#D0D0D0; */
+    opacity:0.3;
+    border-radius:40px;
+    width:60px;
+    text-align:center;
+}
+
+.backToMainPageContainer:hover {
+    opacity:1;
+}
+
+/* Main web wrapper, nothing to touch here */ 
+.wrapper {
+    width:1024px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* END GLOBAL STYLES */
+
+/* BANNER */
+
+.bannerContainer {
+    width:100%;
+    height:250px;
+    background-image:url('../images/banner.png');
+    border-radius:5px 5px 0px 5px;
+}
+
+.bannerLabelImg {
+    margin-top:110px;
+    margin-left:-34px;
+}
+
+/* END BANNER */
+
+/* MAIN WEB CONTENT */
+
+.mainContainer {
+    float:left;
+    width:774px;
+    /* Hack to force both main web columns to have the same height */
+    padding-bottom:500em;
+    margin-bottom:-500em;
+}
+
+/* TOP BAR */
+
+.topBarWrapper {
+	float:left;
+    width:774px;
+}
+
+.topBarContainer {
+	float:left;
+    width:100%;
+    height:40px;
+    font-size:20px;
+    text-align:center;
+    /*background-image:url('../images/top_bar.png');*/
+    color:#F0F0F0;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.topBarItem {
+    float:left;
+    height:32px;
+    width:160px;
+    padding-top:8px;
+    cursor:pointer;
+}
+
+.topBarItemSelected {
+    float:left;
+    height:33px;
+    width:160px;
+    font-weight:bold;
+    height:33px;
+    padding-top:7px;
+    cursor:pointer;
+}
+
+.subMenuWrapper {
+    display:none; /* Javascript handles this */
+    float:left;
+    margin-bottom:10px;
+}
+
+.topBarSubMenu {
+	display:none; /* Javascript handles this */
+	float:left;
+	font-size:16px;
+    padding:0px 10px 10px 10px;
+}
+
+.topBarSubMenuItem {
+    float:left;
+    padding:5px;
+    margin-left:20px;
+    border-radius:5px;
+    text-align:center;
+}
+
+.topBarSubMenuItem img {
+    border-radius:3px;
+}
+
+.topBarSubMenuItem:hover {
+    cursor:pointer;
+}
+
+.gameItem {
+    opacity:0.9;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.gameItem:hover {
+    background-color:rgba(90, 90, 90, 0.5);
+    opacity:1;
+}
+
+.forumItem {
+    background-color:rgba(204, 51, 0, 0.85);
+    margin-left:10px;
+    font-size:14px;
+    opacity:0.9;
+}
+
+.forumItem:hover {
+    background-color:rgba(204, 51, 0, 1);
+    opacity:1;
+}
+
+.communityItem {
+    background-color:rgba(204, 102, 0, 0.85);
+    opacity:0.9;
+}
+
+.communityItem:hover {
+    background-color:rgba(204, 102, 0, 1);
+    opacity:1;
+}
+
+.serverItem {
+    opacity:0.9;
+}
+
+.serverItem:hover {
+    background-color:rgba(90, 90, 90, 0.5);
+    opacity:1;
+}
+
+/* END TOP BAR */
+
+.contentWrapper {
+	float:left;
+    width:100%;
+    overflow:hidden;
+}
+
+/* LATEST NEWS */
+
+.latestNewsLabel {
+	float:left;
+    width:764px;
+    height:32px;
+    font-size:20px;
+    background:#111111 /*url('../images/latest_news_bar.png')*/ no-repeat center;
+    padding-top:8px;
+    padding-left:10px;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+}
+
+.new {
+	float:left;
+    width:745px;
+    background:#222222;
+    margin-top:10px;
+    padding:5px 5px 15px 5px;
+    border:5px solid #111111;
+    text-align:justify;
+}
+
+.newContainer {
+	float:left;
+    margin-left:10px;
+    padding-right:15px;
+    width:725px;
+}
+
+.newDetails {
+    text-align:right;
+    margin-right:15px;
+    margin-top:10px;
+    font-size:12px;
+}
+
+/* END LATEST NEWS */
+
+/* RIGHT COLUMN CONTENT */
+
+.rightWrapper {
+	float:left;
+	/* Hack to force both main web columns to have the same height */
+    padding-bottom:500em;
+    margin-bottom:-500em;
+}
+
+.rightContainer {
+	float:left;
+}
+
+.rightItem {
+    width:220px;
+    background:#222222;
+    margin-top:10px;
+    padding:10px 10px 10px 10px;
+    border:5px solid #111111;
+}
+
+.loginForm {
+    text-align:center;
+    margin-top:10px;
+}
+
+.profileWrapper {
+    text-align:center;
+}
+
+.avatarWrapper {
+    border:3px solid rgba(100, 100, 100, 0.1);
+    border-radius:2px;
+    width:150px;
+    margin-left:32px;
+    margin-bottom:10px;
+}
+
+/* TEAMSPEAK 3 STATUS */
+
+.teamSpeak3StatusContainer {
+    text-align:center;
+}
+
+.teamSpeak3StatusContainer h3 {
+    margin-top:2px;
+    margin-bottom:15px;
+}
+
+.teamSpeak3Status {
+    padding:7px;
+    border-radius:5px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.online {
+    background-color:#23AF36;
+}
+
+.offline {
+    background-color:#D72424;
+}
+
+.unknown {
+    background-color:#CC6600;
+}
+
+.teamSpeakStatusLabel {
+    padding:5px;
+    font-size:15px;
+}
+
+/* TEAMSPEAK 3 STATUS END */
+
+/* END RIGHT COLUMN CONTENT */
+
+/* END MAIN WEB CONTENT */
+
+/* BOTTOM BAR */
+
+.bottomBarContainer {
+    float:left;
+    width:1024px;
+    height:40px;
+    margin-top:10px;
+    background:#222222/*url('../images/bottom_bar_background.png') no-repeat center*/;
+    border-radius:0px 0px 5px 5px;
+    font-size:13px;
+}
+
+.bottomBarLeft {
+    float:left;
+    width:440px;
+    text-align:left;
+    margin-top:4px;
+    margin-left:10px;
+}
+
+.bottomBarCenter {
+    float:left;
+    width:124px;
+    text-align:center;
+}
+
+.bottomBarRight {
+    float:left;
+    width:450px;
+    text-align:right;
+}
+
+.bottomBarRightText {
+    float:left;
+    width:350px;
+    margin-top:11px;
+}
+
+.bottomBarRightIcons {
+    float:left;
+    width:90px;
+    margin-top:4px;
+    margin-right:10px;
+}
+
+/* END BOTTOM BAR */
