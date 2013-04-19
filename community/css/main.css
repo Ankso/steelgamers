@@ -189,6 +189,8 @@ a.plainLink {
 
 .gameItem {
     opacity:0.8;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 .gameItem:hover {
@@ -198,6 +200,8 @@ a.plainLink {
 
 .forumItem {
     background-color:rgba(204, 51, 0, 0.7);
+    margin-left:10px;
+    font-size:14px;
     opacity:0.8;
 }
 

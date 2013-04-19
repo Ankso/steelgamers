@@ -102,11 +102,11 @@ if (isset($_SESSION['userId']))
         		?>
         		</div>
         		<?php PrintTs3Status(); ?>
+        		<?php PrintWoWTbcServerStatus(); ?>
         	</div>
         </div>
 	</div>
 	<?php PrintBottomBar(); ?>
-    <?php PrintWoWTbcServerStatus(); ?>
 	<div style="height:10px;">&nbsp;</div>
 </div>
 </body>
