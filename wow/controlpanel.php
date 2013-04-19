@@ -115,9 +115,9 @@ $wowCharactersDb = new Database($DATABASES['TBCSERVER_CHARS'], $TBCSERVER_INFO);
 $notSync = true;
 if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("s", $user->GetUsername())))
 {
-    $notSync = false;
     if ($row = $result->fetch_assoc())
     {
+        $notSync = false;
         $characters = array();
         if ($result = $wowCharactersDb->ExecuteStmt(Statements::SELECT_USER_WOW_CHARACTERS, $wowCharactersDb->BuildStmtArray("i", $row['id'])))
         {
