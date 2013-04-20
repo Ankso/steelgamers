@@ -252,11 +252,11 @@ a.plainLink {
 
 .new {
 	float:left;
-    width:754px;
+    width:744px;
     background:#222222;
     margin-top:10px;
     padding:5px 5px 15px 5px;
-    border:5px solid 2B2B2B;
+    border:5px solid #2B2B2B;
     text-align:justify;
 }
 
@@ -264,7 +264,7 @@ a.plainLink {
 	float:left;
     margin-left:10px;
     padding-right:15px;
-    width:734px;
+    width:724px;
 }
 
 .newDetails {

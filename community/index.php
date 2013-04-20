@@ -78,7 +78,9 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Steel Gamers</title>
+	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	<META NAME="DESCRIPTION" CONTENT="Steel Gamers es una comunidad de jugones que posee una gran infraestructura, desde servidores privados de juegos como World of Warcraft, Minecraft o ArmA hasta foros o TeamSpeak 3. Diseñada por Gamers, para Gamers.">
+	<title>Steel Gamers Community</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>

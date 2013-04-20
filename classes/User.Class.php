@@ -442,6 +442,8 @@ Class User
      */
     public function SetBanned($ban, $banEnd = NULL, $bannedBy = NULL, $banReason = NULL)
     {
+        global $DATABASES, $MITRACRAFT_INFO, $TBCSERVER_INFO;
+        
         if (!isset($ban))
             return false;
         
@@ -456,9 +458,20 @@ Class User
             if ($this->_db->ExecuteStmt(Statements::INSERT_USERS_BANNED, $this->_db->BuildStmtArray("isssii", $this->GetId(), date("Y-m-d H:i:s"), $banEnd, $banReason, $bannedBy, 1)))
             {
                 // Ban user in other databases
-                global $DATABASES, $MITRACRAFT_INFO;
                 if ($mitracraftDb = new Database($DATABASES['MITRACRAFT'], $MITRACRAFT_INFO))
+                {
                     $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 0, $this->GetEmail()));
+                }
+                if ($wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO))
+                {
+                    if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("s", $this->GetUsername())))
+                    {
+                        if ($row = $result->fetch_assoc())
+                        {
+                            $wowAccountsDb->ExecuteStmt(Statements::INSERT_USER_WOW_ACCOUNT_BANNED, $wowAccountsDb->BuildStmtArray("iiissi", $row['id'], time(), strtotime($banEnd), GetUsernameFromId($bannedBy), $banReason, 1));
+                        }
+                    }
+                }
             }
         }
         else
@@ -466,9 +479,20 @@ Class User
             if ($this->_db->ExecuteStmt(Statements::UPDATE_USERS_BANNED_STATUS, $this->_db->BuildStmtArray("ii", 0, $this->GetId())))
             {
                 // Unban user in other databases
-                global $DATABASES, $MITRACRAFT_INFO;
                 if ($mitracraftDb = new Database($DATABASES['MITRACRAFT'], $MITRACRAFT_INFO))
+                {
                     $mitracraftDb->ExecuteStmt(Statements::UPDATE_USER_BANNED, $mitracraftDb->BuildStmtArray("is", 1, $this->GetEmail()));
+                }
+                if ($wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO))
+                {
+                    if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("s", $this->GetUsername())))
+                    {
+                        if ($row = $result->fetch_assoc())
+                        {
+                            $wowAccountsDb->ExecuteStmt(Statements::UPDATE_USER_WOW_ACCOUNT_BANNED, $wowAccountsDb->BuildStmtArray("ii", 0, $row['id']));
+                        }
+                    }
+                }
             }
         }
         return true;

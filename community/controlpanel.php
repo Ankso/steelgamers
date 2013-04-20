@@ -104,40 +104,53 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         else
             $errors['email'] = ERROR_INVALID;
     }
-    if ($isAdmin)
+}
+// Admins only code
+if ($isAdmin)
+{
+    // Search for an user to edit in the database
+    if (isset($_POST['search_username']) || isset($_GET['lastEditedUser']))
     {
-        if (isset($_POST['search_username']))
+        if (isset($_POST['search_username']) || isset($_GET['lastEditedUser']))
         {
-            $db = new Database($DATABASES['USERS']);
-            if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_DATA_ADMIN, $db->BuildStmtArray("s", $_POST['search_username'])))
+            $searchUsername = USER_DOESNT_EXISTS;
+            if (isset($_POST['search_username']))
+                $searchUsername = $_POST['search_username'];
+            elseif (isset($_GET['lastEditedUser']))
+                $searchUsername = GetUsernameFromId($_GET['lastEditedUser']);
+            if ($searchUsername != USER_DOESNT_EXISTS)
             {
-                if ($row = $result->fetch_assoc())
+                $db = new Database($DATABASES['USERS']);
+                if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_DATA_ADMIN, $db->BuildStmtArray("s", $searchUsername)))
                 {
-                    $userData = array(
-                        'id'        => $row['id'],
-                        'username'  => $row['username'],
-                        'email'     => $row['email'],
-                        'lastIp'    => $row['ip_v4'],
-                        'lastLogin' => $row['last_login'],
-                        'active'    => $row['active'],
-                        'rank'      => str_split($row['rank_mask']),
-                        'banStart'  => NULL,
-                        'banEnd'    => NULL,
-                        'banReason' => NULL,
-                        'bannedBy'  => NULL,
-                    );
-                    
-                    if ($userData['rank'][GAME_OVERALL] > $userRank && $userRank < USER_RANK_SUPERADMIN)
-                        $userData = ERROR_NOT_ALLOWED;
-                    
-                    if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_BANNED, $db->BuildStmtArray("i", $userData['id'])))
+                    if ($row = $result->fetch_assoc())
                     {
-                        if ($row = $result->fetch_assoc())
+                        $userData = array(
+                            'id'        => $row['id'],
+                            'username'  => $row['username'],
+                            'email'     => $row['email'],
+                            'lastIp'    => $row['ip_v4'],
+                            'lastLogin' => $row['last_login'],
+                            'active'    => $row['active'],
+                            'rank'      => str_split($row['rank_mask']),
+                            'banStart'  => NULL,
+                            'banEnd'    => NULL,
+                            'banReason' => NULL,
+                            'bannedBy'  => NULL,
+                        );
+                        
+                        if ($userData['rank'][GAME_OVERALL] > $userRank && $userRank < USER_RANK_SUPERADMIN)
+                            $userData = ERROR_NOT_ALLOWED;
+                        
+                        if ($result = $db->ExecuteStmt(Statements::SELECT_USERS_BANNED, $db->BuildStmtArray("i", $userData['id'])))
                         {
-                            $userData['banStart'] = $row['ban_start'];
-                            $userData['banEnd'] = $row['ban_end'];
-                            $userData['banReason'] = $row['ban_reason'];
-                            $userData['bannedBy'] = $row['banned_by'];
+                            if ($row = $result->fetch_assoc())
+                            {
+                                $userData['banStart'] = $row['ban_start'];
+                                $userData['banEnd'] = $row['ban_end'];
+                                $userData['banReason'] = $row['ban_reason'];
+                                $userData['bannedBy'] = $row['banned_by'];
+                            }
                         }
                     }
                 }
@@ -363,15 +376,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         			    <?php
         				}
         				?>
-        				<?php 
-        				foreach ($GAME_NAMES as $i => $gameName)
-        				{
-        				?>
         			</form>
         			<form action="admin.php" method="post">
             			<input type="hidden" name="from" value="controlpanel">
             			<input type="hidden" name="editUserId" value="<?php echo $userData['id']; ?>">
             			<input type="hidden" name="action" value="permissions">
+            			<?php 
+        				foreach ($GAME_NAMES as $i => $gameName)
+        				{
+        				?>
         				<div class="formItem formItemLabel">Permisos <?php echo $gameName; ?>:</div>
         				<div class="formItem">
         					<select name="<?php echo $i; ?>">
@@ -393,10 +406,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
             		<?php
             		    }
             		}
-            		elseif (isset($_POST['search_username']))
+            		elseif (isset($_POST['search_username']) || isset($_GET['lastEditedUser']))
             		{
             		?>
-            		<div>No se ha encontrado ning&uacute;n usuario en la base de datos llamado &quot;<?php echo $_POST['search_username']; ?>&quot;</div>
+            		<div>No se ha encontrado ning&uacute;n usuario en la base de datos llamado &quot;<?php echo isset($_POST['search_username']) ? $_POST['search_username'] : GetUsernameFromId($_GET['lastEditedUser']); ?>&quot;</div>
             		<?php
             		}
             		?>

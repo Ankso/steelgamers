@@ -46,7 +46,7 @@ class Statements
     const SELECT_FAQ                      = "SELECT * FROM faq ORDER BY id";
     const DELETE_FAQ                      = "DELETE FROM faq WHERE id = ?";
     // Users management
-    const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.register_date, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username = ? AND b.user_id = a.id";
+    const SELECT_USERS_DATA_ADMIN         = "SELECT a.id, a.username, a.email, a.ip_v4, a.last_login, a.register_date, a.active, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.username LIKE ? AND b.user_id = a.id";
     const SELECT_USERS_BANNED             = "SELECT ban_start, ban_end, ban_reason, banned_by, active FROM users_banned WHERE user_id = ? AND active = 1";
     const SELECT_USERS_BANNED_HISTORY     = "SELECT ban_start, ban_end, ban_reason, banned_by, active FROM users_banned WHERE user_id = ?";
     const INSERT_USERS_BANNED             = "INSERT INTO users_banned (user_id, ban_start, ban_end, ban_reason, banned_by, active) VALUES (?, ?, ?, ?, ?, ?)";
@@ -69,6 +69,8 @@ class Statements
     const SELECT_USER_WOW_ACCOUNT         = "SELECT id, username, gmlevel, email, joindate, last_ip, last_login, expansion, locale FROM account WHERE username = ?";
     const SELECT_USER_WOW_CHARACTERS      = "SELECT name, race, class, gender, level, money, online, totaltime, arenaPoints, totalHonorPoints, todayHonorPoints, yesterdayHonorPoints, totalKills, todayKills, yesterdayKills FROM characters WHERE account = ?";
     const INSERT_USER_WOW_ACCOUNT         = "INSERT INTO account (username, sha_pass_hash, gmlevel, sessionkey, v, s, email, joindate, last_ip, failed_logins, locked, last_login, active_realm_id, expansion, mutetime, locale) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const INSERT_USER_WOW_ACCOUNT_BANNED  = "INSERT INTO account_banned (id, bandate, unbandate, bannedby, banreason, active) VALUES(?, ?, ?, ?, ?, ?)";
+    const UPDATE_USER_WOW_ACCOUNT_BANNED  = "UPDATE account_banned SET active = ? WHERE id = ?";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS

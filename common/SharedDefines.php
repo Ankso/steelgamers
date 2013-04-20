@@ -25,6 +25,7 @@ define("ERROR_LOGIN_PASSWORD", -4);
 define("ERROR_LOGIN_USERNAME", -5);
 define("ERROR_LOGIN_VERIFICATION", -6);
 define("ERROR_NOT_ALLOWED", -7);
+define("ERROR_NOT_FOUND", -8);
 
 /**
  * User ranks

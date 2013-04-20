@@ -31,6 +31,7 @@ if ($isAdmin)
 {
     if ($_SERVER['REQUEST_METHOD'] == "POST")
     {
+        $extraParams = "";
         $error = true;
         // Admin wants to insert a new
         if (isset($_POST['new_title']) && isset($_POST['new_body']))
@@ -82,16 +83,30 @@ if ($isAdmin)
             if ($db->ExecuteStmt(Statements::DELETE_FAQ, $db->BuildStmtArray("i", $_POST["faq_delete"])))
                 $error = false;
         }
-        // Admin wants to edit a user
-        if (isset($_POST['editUserId']) && isset($_POST['0']) && isset($_POST['1']) && isset($_POST['2']) && isset($_POST['3']) && isset($_POST['4']) && isset($_POST['5']) && isset($_POST['6']) && isset($_POST['7']) && isset($_POST['action']) && $_POST['action'] == "permissions")
+        // Admin wants to edit an user
+        if (isset($_POST['editUserId']) && $_POST['action'] == "permissions")
         {
             $db = new Database($DATABASES['USERS']);
-            $rankMask = $_POST['0'] . $_POST['1'] . $_POST['2'] . $_POST['3'] . $_POST['4'] . $_POST['5'] . $_POST['6'] . $_POST['7'];
+            $rankMask = "";
+            for ($i = GAME_NONE + 1; $i <= GAMES_COUNT; ++$i)
+            {
+                if (isset($_POST[$i]))
+                    $rankMask .= $_POST[$i];
+                else
+                {
+                    // If, for whatever, one rank is not set, use the master rank as default, if this is not set either, we have a serious problem :(
+                    if (isset($_POST['0']))
+                        $rankMask .= $_POST['0'];
+                    else
+                        $rankMask .= "2";
+                }
+            }
             if ($db->ExecuteStmt(Statements::UPDATE_USERS_RANKS, $db->BuildStmtArray("si", $rankMask, $_POST['editUserId'])))
             {
                 if ($db->ExecuteStmt(Statements::DELETE_USERS_TS3_TOKEN, $db->BuildStmtArray("i", $_POST['editUserId'])))
                     $error = false;
             }
+            $extraParams .= "&lastEditedUser=" . $_POST['editUserId'];
         }
         // Admin wants to ban an user
         if (isset($_POST['editUserId']) && isset($_POST['action']) && $_POST['action'] == "banUser")
@@ -128,6 +143,7 @@ if ($isAdmin)
             if ($targetUser->GetRanks(GAME_OVERALL) < $user->GetRanks(GAME_OVERALL))
                 if ($targetUser->SetBanned(true, $totalBanTime, $user->GetId(), $reason))
                     $error = false;
+            $extraParams .= "&lastEditedUser=" . $_POST['editUserId'];
         }
         // Admin wants to unban an user
         if (isset($_POST['editUserId']) && isset($_POST['action']) && $_POST['action'] == "unbanUser")
@@ -136,13 +152,14 @@ if ($isAdmin)
             $targetUser = new User(intval($_POST['editUserId']));
             if ($targetUser->SetBanned(false))
                 $error = false;
+            $extraParams .= "&lastEditedUser=" . $_POST['editUserId'];
         }
         if (isset($_POST['from']))
         {
             if ($error)
-                header("Location:" . $_POST['from'] . ".php?adminError=true");
+                header("Location:" . $_POST['from'] . ".php?adminError=true" . $extraParams);
             else
-                header("Location:" . $_POST['from'] . ".php?adminError=false");
+                header("Location:" . $_POST['from'] . ".php?adminError=false" . $extraParams);
             exit();
         }
     }

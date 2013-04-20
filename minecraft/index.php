@@ -49,6 +49,8 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
 ?>
 <html>
 <head>
+	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	<META NAME="DESCRIPTION" CONTENT="Zona dedicada a Minecraft dentro de la infraestructura de la comunidad Steel Gamers.">
 	<title>Minecraft - Steel Gamers</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
