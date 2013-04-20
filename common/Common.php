@@ -251,11 +251,11 @@ function PrintWowTbcServerStatus()
 	else
 	{
 		echo '			<div class="teamSpeak3Status online">Online</div>';
+		fclose($isOnline);
 	}
 	echo '				<div class="teamSpeakStatusLabel">wowserver.steelgamers.es</div>
 					</div>
 				</div>';
-	fclose($isOnline);
 }
 
 /**
