@@ -63,7 +63,7 @@ if (isset($_SESSION['userId']))
     				</ul>
     				<h2>Descripci&oacute;n</h2>
     				<ul>
-    			    	<li>Reporta todos los bugs que encuentres en el <a href="http://steelgamers.es/foro/index.php?p=/categories/world-of-warcraft-the-burning-crusade">foro</a>.</li>
+    			    	<li>Reporta todos los bugs que encuentres en el <a href="http://foro.steelgamers.es/index.php?p=/categories/world-of-warcraft-the-burning-crusade">foro</a>.</li>
     			    	<li>Este servidor est&aacute; conectado a la red Steel Gamers. Para m&aacute;s informaci&oacute;n, puedes revisar el <a href="http://steelgamers.es/faq.php">FAQ</a>.</li>
     					<li>El servidor tiene un reino PvP completamente Blizzlike.</li>
     					<li>Sistema de rates personalizables: &iexcl;Elige tus propias rates! El servidor posee un sistema &uacute;nico de rates personalizables. Con un simple comando in-game, puedes cambiar las rates de tu personaje (entre unos l&iacute;mites). &iquest;Eres un jugador hardcore que le gusta el contenido de Warcraft? Escoge rates x1. &iquest;Prefieres llegar lo m&aacute;s r&aacute;pido posible al contenido de mayor nivel? Sube tus rates a x5. &iquest;Algo intermedio? Sin problema, &iexcl;cualquier n&uacute;mero es v&aacute;lido!</li>

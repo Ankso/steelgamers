@@ -55,7 +55,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                         switch($_POST['redirect'])
                         {
                             case "forum":
-                                header("Location:foro/index.php");
+                                header("Location:http://foro.steelgamers.es");
                                 break;
                             case "mitracraft":
                                 header("Location:http://mitracraft.es");

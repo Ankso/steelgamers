@@ -32,7 +32,7 @@ if (isset($_GET['redirect']))
     switch($_GET['redirect'])
     {
         case "forum":
-            header("location:foro/index.php");
+            header("location:http://foro.steelgamers.es");
             exit();
         case "mitracraft":
             header("Location:http://mitracraft.es");

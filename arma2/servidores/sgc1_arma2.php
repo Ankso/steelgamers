@@ -87,7 +87,7 @@ if (isset($_SESSION['userId']))
     				</ul>
     				<h2>Descripci&oacute;n</h2>
     				<ul>
-    			    	<li>Reporta todos los bugs que encuentres en el <a href="http://steelgamers.es/foro/index.php?p=/categories/arma">foro</a></li>
+    			    	<li>Reporta todos los bugs que encuentres en el <a href="http://foro.steelgamers.es/index.php?p=/categories/arma">foro</a></li>
     					<li>Este servidor est&aacute; conectado a la red Steel Gamers. Para m&aacute;s informaci&oacute;n, puedes revisar el <a href="http://steelgamers.es/faq.php">FAQ</a></li>
     					<li>El servidor utiliza una versi&oacute;n de Wasteland custom, basada en 404Wasteland Takistan pero muy modificada:</li>
     					<ul>

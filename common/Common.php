@@ -143,17 +143,17 @@ function PrintTopBar(/* $user */)
             		</div>
             		<div id="topBarSubMenuForos" class="topBarSubMenu">
             			<div>
-            				<a class="plainLink" href="http://steelgamers.es/foro"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center; font-size:16px;">General</div></a>
+            				<a class="plainLink" href="http://foro.steelgamers.es/"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center; font-size:16px;">General</div></a>
             			</div>
             			<div style="margin-top:10px;">
-            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/arma">ArmA 2</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/battlefield-3">Battlefield 3</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/dayz">DayZ</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/dota-2">Dota 2</a></div>
+            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/arma">ArmA 2</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/battlefield-3">Battlefield 3</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dayz">DayZ</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dota-2">Dota 2</a></div>
                 			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/war-thunder">War Thunder</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/world-of-tanks">World of Tanks</a></div>
-            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://steelgamers.es/foro/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/war-thunder">War Thunder</a></div>
+                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-tanks">World of Tanks</a></div>
+            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>
                 		</div>
             		</div>
             		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
