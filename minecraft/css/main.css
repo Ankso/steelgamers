@@ -332,11 +332,11 @@ a.plainLink {
 
 /* TEAMSPEAK 3 STATUS */
 
-.serverContainer {
+.serverStatusContainer {
     text-align:center;
 }
 
-.serverContainer h3 {
+.serverStatusContainer h3 {
     margin-top:2px;
     margin-bottom:15px;
 }
