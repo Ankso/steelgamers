@@ -66,6 +66,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
                             case "arma2":
                                 header("Location:http://arma2.steelgamers.es");
                                 exit();
+                            case "wow":
+                                header("Location:http://wow.steelgamers.es");
+                                exit();
                             case "membersList":
                                 header("Location:http://steelgamers.es/members.php");
                                 exit();

@@ -332,16 +332,16 @@ a.plainLink {
 
 /* TEAMSPEAK 3 STATUS */
 
-.teamSpeak3StatusContainer {
+.serverStatusContainer {
     text-align:center;
 }
 
-.teamSpeak3StatusContainer h3 {
+.serverStatusContainer h3 {
     margin-top:2px;
     margin-bottom:15px;
 }
 
-.teamSpeak3Status {
+.serverStatus {
     padding:7px;
     border-radius:5px;
     margin-bottom:10px;
@@ -360,7 +360,7 @@ a.plainLink {
     background-color:#CC6600;
 }
 
-.teamSpeakStatusLabel {
+.serverStatusLabel {
     padding:5px;
     font-size:15px;
 }

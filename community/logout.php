@@ -43,6 +43,9 @@ if (isset($_GET['redirect']))
         case "arma2":
             header("Location:http://arma2.steelgamers.es");
             exit();
+        case "wow":
+            header("Location:http://wow.steelgamers.es");
+            exit();
         case "banned":
             header("Location:http://steelgamers.es/banned.php?reason=" . $userId);
             exit();

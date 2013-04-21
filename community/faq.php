@@ -106,7 +106,9 @@ $db = new Database($DATABASES['USERS']);
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
-    		<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintMitracraftServerStatus(); ?>
+			<?php PrintArma2ServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

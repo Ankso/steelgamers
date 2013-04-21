@@ -120,7 +120,9 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
         		?>
         		</div>
         		<?php PrintTs3Status(); ?>
-        		<?php PrintWoWTbcServerStatus(); ?>
+				<?php PrintWoWTbcServerStatus(); ?>
+				<?php PrintMitracraftServerStatus(); ?>
+				<?php PrintArma2ServerStatus(); ?>
         	</div>
         </div>
 	</div>

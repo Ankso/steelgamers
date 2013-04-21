@@ -443,7 +443,9 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
-    		<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintMitracraftServerStatus(); ?>
+			<?php PrintArma2ServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

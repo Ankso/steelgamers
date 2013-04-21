@@ -49,6 +49,11 @@ $(document).ready(function() {
     });
     // Auto-update all timestamps in the page.
     UpdateTimestamps();
+    // Get status of the different servers in the network
+    GetWowTbcServerStatus();
+    GetTs3ServerStatus();
+    GetMitracraftServerStatus();
+    GetArma2ServerStatus();
 });
 
 function UpdateTimestamps() 
@@ -102,4 +107,136 @@ function UpdateTimestamps()
     setTimeout(function() {
         UpdateTimestamps();
     }, 30000);
+}
+
+function GetWowTbcServerStatus()
+{
+    $.ajax({
+        dataType: "jsonp",
+        data: "",
+        url: "http://steelgamers.es/ajax/wow_tbc_server_status.php?callback=?",
+        success: function(status) {
+            if (status.error)
+            {
+                $("div#wowServerStatusLabel").text("Desconocido");
+            }
+            else
+            {
+                if (status.isOnline)
+                {
+                    $("div#wowServerStatusLabel").text("Online");
+                    $("div#wowServerStatusLabel").attr("class", "serverStatus online");
+                }
+                else
+                {
+                    $("div#wowServerStatusLabel").text("Offline");
+                    $("div#wowServerStatusLabel").attr("class", "serverStatus offline");
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $("div#wowServerStatusLabel").text("Sin respuesta");
+        },
+        timeout: 5000
+    });
+}
+
+function GetTs3ServerStatus()
+{
+    $.ajax({
+        dataType: "jsonp",
+        data: "",
+        url: "http://steelgamers.es/ajax/ts3_server_status.php?callback=?",
+        success: function(status) {
+            if (status.error)
+            {
+                $("div#ts3ServerStatusLabel").text("Desconocido");
+            }
+            else
+            {
+                if (status.isOnline)
+                {
+                    $("div#ts3ServerStatusLabel").text("Online");
+                    $("div#ts3ServerStatusLabel").attr("class", "serverStatus online");
+                    $("div#ts3ServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
+                }
+                else
+                {
+                    $("div#ts3ServerStatusLabel").text("Offline");
+                    $("div#ts3ServerStatusLabel").attr("class", "serverStatus offline");
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $("div#ts3ServerStatusLabel").text("Sin respuesta");
+        },
+        timeout: 5000
+    });
+}
+
+function GetMitracraftServerStatus()
+{
+    $.ajax({
+        dataType: "jsonp",
+        data: "",
+        url: "http://steelgamers.es/ajax/mitracraft_server_status.php?callback=?",
+        success: function(status) {
+            if (status.error)
+            {
+                $("div#mitracraftServerStatusLabel").text("Desconocido");
+            }
+            else
+            {
+                if (status.isOnline)
+                {
+                    $("div#mitracraftServerStatusLabel").text("Online");
+                    $("div#mitracraftServerStatusLabel").attr("class", "serverStatus online");
+                    $("div#mitracraftServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
+                }
+                else
+                {
+                    $("div#mitracraftServerStatusLabel").text("Offline");
+                    $("div#mitracraftServerStatusLabel").attr("class", "serverStatus offline");
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $("div#mitracraftServerStatusLabel").text("Sin respuesta");
+        },
+        timeout: 5000
+    });
+}
+
+function GetArma2ServerStatus()
+{
+    $.ajax({
+        dataType: "jsonp",
+        data: "",
+        url: "http://steelgamers.es/ajax/arma2_server_status.php?callback=?",
+        success: function(status) {
+            if (status.error)
+            {
+                $("div#arma2ServerStatusLabel").text("Desconocido");
+            }
+            else
+            {
+                if (status.isOnline)
+                {
+                    $("div#arma2ServerStatusLabel").text("Online");
+                    $("div#arma2ServerStatusLabel").attr("class", "serverStatus online");
+                    $("div#arma2ServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
+                    $("div#arma2ServerMapLabel").text("Mapa: " + status.map.substring(0, 1).toUpperCase() + status.map.substring(1));
+                }
+                else
+                {
+                    $("div#arma2ServerStatusLabel").text("Offline");
+                    $("div#arma2ServerStatusLabel").attr("class", "serverStatus offline");
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            $("div#arma2ServerStatusLabel").text("Sin respuesta");
+        },
+        timeout: 5000
+    });
 }

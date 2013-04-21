@@ -385,7 +385,9 @@ if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $
     		?>
     		</div>
     		<?php PrintTs3Status(); ?>
-        	<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintWoWTbcServerStatus(); ?>
+			<?php PrintMitracraftServerStatus(); ?>
+			<?php PrintArma2ServerStatus(); ?>
     	</div>
 	</div>
 	<?php PrintBottomBar(); ?>

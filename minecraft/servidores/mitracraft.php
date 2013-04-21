@@ -102,7 +102,9 @@ if (isset($_SESSION['userId']))
         		?>
         		</div>
         		<?php PrintTs3Status(); ?>
-        		<?php PrintWoWTbcServerStatus(); ?>
+				<?php PrintWoWTbcServerStatus(); ?>
+				<?php PrintMitracraftServerStatus(); ?>
+				<?php PrintArma2ServerStatus(); ?>
         	</div>
         </div>
 	</div>

@@ -196,10 +196,33 @@ function PrintBottomBar()
 }
 
 /**
- * Prints the TeamSpeak 3 status (server online, number of online players, etc)
+ * Prints the TeamSpeak 3 status basic template.
  */
 function PrintTs3Status()
 {
+    echo '		<div class="rightItem">
+        			<div class="serverStatusContainer">
+            			<div><h3>Servidor TeamSpeak 3</h3></div>
+                        <div id="ts3ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+        				<div id="ts3ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
+        				<div class="serverStatusLabel">steelgamers.es:9987</div>
+					</div>
+				</div>';
+}
+
+/**
+ * Obtains basic information about the Team Speak Server.
+ * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
+ * @return array Return an array with basic data about the server status.
+ */
+function GetTs3Status()
+{
+    $ts3Status = array(
+        'isOnline'      => false,
+        'maxOnline'     => 0,
+        'currentOnline' => 0,
+        'error'         => false, 
+    );
     global $TEAMSPEAK3;
     TeamSpeak3::init();
     $error = false;
@@ -214,52 +237,244 @@ function PrintTs3Status()
     {
         $error = true;
     }
-    echo '		<div class="rightItem">
-        			<div class="teamSpeak3StatusContainer">
-            			<div><h3>Servidor TeamSpeak 3</h3></div>';
     if ($error)
-    {
-        echo '			<div class="teamSpeak3Status unknown">Desconocido</div>
-        				<div class="teamSpeakStatusLabel">Gamers conectados: -/-</div>';
-    }
+        $ts3Status['error'] = true;
     elseif ($ts3_isOnline == "online")
     {
-        echo '			<div class="teamSpeak3Status online">Online</div>
-        				<div class="teamSpeakStatusLabel">Gamers conectados: ' . $ts3_usersOnline . '/' . $ts3_maxUsers . '</div>';
+        $ts3Status['isOnline'] = true;
+        $ts3Status['maxOnline'] = $ts3_maxUsers;
+        $ts3Status['currentOnline'] = $ts3_usersOnline;
     }
     else
-    {
-        echo '			<div class="teamSpeak3Status offline">Offline</div>
-        				<div class="teamSpeakStatusLabel">Gamers conectados: -/-</div>';
-    }
-    echo '				<div class="teamSpeakStatusLabel">steelgamers.es:9987</div>
-					</div>
-				</div>';
+        $ts3Status['isOnline'] = false;
+    return $ts3Status;
 }
 
+/**
+ * Prints the WoW TBC server status basic template.
+ */
 function PrintWowTbcServerStatus()
 {
-    $err = array('no' => NULL, 'str' => NULL);
-    $isOnline = @fsockopen("wowserver.steelgamers.es", 8085, $err['no'], $err['str'], (float)1.0);
     echo '		<div class="rightItem">
-        			<div class="teamSpeak3StatusContainer">
-            			<div><h3>Servidor World of Warcraft: The Burning Crusade</h3></div>';
-    if(!$isOnline)
-    {
-		echo '			<div class="teamSpeak3Status offline">Offine</div>';
-	}
-	else
-	{
-		echo '			<div class="teamSpeak3Status online">Online</div>';
-		fclose($isOnline);
-	}
-	echo '				<div class="teamSpeakStatusLabel">wowserver.steelgamers.es</div>
+        			<div class="serverStatusContainer">
+            			<div><h3>Servidor World of Warcraft:<br>The Burning Crusade</h3></div>
+                        <div id="wowServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+        				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
 					</div>
 				</div>';
 }
 
 /**
- * Gets the total number of online users based in the number of active PHP sessions.
+ * Obtains basic information about the WoW TBC server.
+ * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
+ * @return array Returns an array with basic data about the server status.
+ */
+function GetWowTbcServerStatus()
+{
+    $wowStatus = array(
+        'isOnline'      => false,
+    	'maxOnline'     => 0,     // Not used for the moment
+        'currentOnline' => 0,     // Not used for the moment
+        'error'         => false, // Not used for the moment
+    );
+    $err = array('no' => NULL, 'str' => NULL);
+    $isOnline = @fsockopen("wowserver.steelgamers.es", 8085, $err['no'], $err['str'], (float)1.0);
+    if(!$isOnline)
+        $wowStatus['isOnline'] = false;
+	else
+	{
+		$wowStatus['isOnline'] = true;
+		fclose($isOnline);
+	}
+	return $wowStatus;
+}
+
+/**
+ * Prints the Mitracraft server status basic template.
+ */
+function PrintMitracraftServerStatus()
+{
+    echo '		<div class="rightItem">
+        			<div class="serverStatusContainer">
+            			<div><h3>Servidor Mitracraft</h3></div>
+                        <div id="mitracraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+                        <div id="mitracraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
+        				<div class="serverStatusLabel">mitracraft.es</div>
+					</div>
+				</div>';
+}
+
+/**
+ * Obtains basic information about the Mitracraft server.
+ * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
+ * @return array Returns an array with basic data about the server status.
+ */
+function GetMitracraftServerStatus()
+{
+    $mitracraftStatus = array(
+        'isOnline'      => false,
+    	'maxOnline'     => 0,
+        'currentOnline' => 0,
+        'error'         => false,
+    );
+    if ( $sock = @stream_socket_client("tcp://mitracraft.es:25565", $errno, $errstr, 1) )
+    {
+        $mitracraftStatus['isOnline'] = true;
+
+        fwrite($sock, "\xfe");
+        $h = fread($sock, 2048);
+        $h = str_replace("\x00", '', $h);
+        $h = substr($h, 2);
+        $data = explode("\xa7", $h);
+        unset($h);
+        fclose($sock);
+
+        if (sizeof($data) == 3)
+        {
+            $mitracraftStatus['currentOnline'] = (int) $data[1];
+            $mitracraftStatus['maxOnline'] = (int) $data[2];
+        }
+        else
+            $mitracraftStatus['error'] = true;
+    }
+    else
+        $mitracraftStatus['isOnline'] = false;
+    return $mitracraftStatus;
+}
+
+/**
+ * Prints the ArmA 2 server status basic template.
+ */
+function PrintArma2ServerStatus()
+{
+    echo '		<div class="rightItem">
+        			<div class="serverStatusContainer">
+            			<div><h3>Servidor ArmA 2 Wasteland</h3></div>
+                        <div id="arma2ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+                        <div id="arma2ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
+                        <div id="arma2ServerMapLabel" class="serverStatusLabel">Mapa: -</div>
+        				<div class="serverStatusLabel">arma2server.steelgamers.es:2302</div>
+					</div>
+				</div>';
+}
+
+/**
+ * Obtains basic information about the Mitracraft server.
+ * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
+ * @return array Returns an array with basic data about the server status.
+ */
+function GetArma2ServerStatus()
+{
+    $arma2ServerStatus = array(
+        'isOnline'      => false,
+    	'maxOnline'     => 0,
+        'currentOnline' => 0,
+        'error'         => false,
+    );
+    $sock = fsockopen("udp://arma2server.steelgamers.es", 2302, $errno, $errdesc);
+    fwrite($sock, "\xFE\xFD\x09\xFF\xFF\xFF\x01");
+    $challenge_packet = fread($sock, 4096);
+    
+    if (!$challenge_packet)
+    {
+        $arma2ServerStatus['error'] = false;
+        return $arma2ServerStatus;
+    }
+    
+    $arma2ServerStatus['isOnline'] = true;
+    $challenge_code = substr($challenge_packet, 5, -1);
+    $challenge_code = $challenge_code ? chr($challenge_code >> 24) . chr($challenge_code >> 16) . chr($challenge_code >> 8) . chr($challenge_code >> 0) : "";
+    fwrite($sock, "\xFE\xFD\x00\x10\x20\x30\x40{$challenge_code}\xFF\xFF\xFF\x01");
+    $buffer = array();
+    $packet_count = 0;
+    $packet_total = 4;
+    do
+    {
+        $packet_count++;
+        $packet = fread($sock, 4096);
+        if (!$packet)
+        {
+            return false;
+        }
+        $packet = substr($packet, 14);
+        $packet_order = ord(cut_byte($packet, 1));
+        if ($packet_order >= 128)
+        {
+            $packet_order -= 128;
+            $packet_total = $packet_order + 1;
+        }
+        $buffer[$packet_order] = $packet;
+    } while ($packet_count < $packet_total);
+    
+    foreach ($buffer as $key => $packet)
+    {
+        $packet = substr($packet, 0, -1);
+        if (substr($packet, -1) != "\x00")
+        {
+            $part = explode("\x00", $packet);
+            array_pop($part);
+            $packet = implode("\x00", $part) . "\x00";
+        }
+        if ($packet[0] != "\x00")
+        {
+            $pos = strpos($packet, "\x00") + 1;
+            if (isset($packet[$pos]) && $packet[$pos] != "\x00")
+            {
+                $packet = substr($packet, $pos + 1);
+            }
+            else
+            {
+                $packet = "\x00" . $packet;
+            }
+        }
+        $buffer[$key] = $packet;
+    }
+    ksort($buffer);
+    $buffer = implode("", $buffer);
+    //  SERVER SETTINGS
+    $buffer = substr($buffer, 1);
+    while ($key = strtolower(cut_string($buffer)))
+    {
+        $server['e'][$key] = cut_string($buffer);
+    }
+    $lgsl_conversion = array("name" => "hostname", "game" => "gamename", "map" => "mapname", "players" => "numplayers", "playersmax" => "maxplayers", "password" => "password");
+    foreach ($lgsl_conversion as $s => $e)
+    {
+        if (isset($server['e'][$e]))
+        {
+            $server['s'][$s] = $server['e'][$e];
+            unset($server['e'][$e]);
+        }
+    }
+    $arma2ServerStatus['currentOnline'] = $server['s']['players'];
+    $arma2ServerStatus['maxOnline'] = $server['s']['playersmax'];
+    $arma2ServerStatus['map'] = $server['s']['map'];
+    
+    // Not used for the moment
+    /*
+    if ($server['s']['players'] == "0")
+    {
+        return true;
+    }
+    //  PLAYER DETAILS
+    $buffer = substr($buffer, 1);
+    $playercount = $server['s']['players'];
+    $playerdata = explode("\x00",$buffer);
+    $playersout = 1;
+    for ($i = 2; $i <= ($server['s']['players'] + 1) ; $i++)
+    {
+       $playersout++;
+       $server['p'][$playersout]['name'] = $playerdata[$i];
+       $server['p'][$playersout]['team'] = $playerdata[($playercount + $i) + 3];
+       $server['p'][$playersout]['score'] = $playerdata[($playercount + $playercount + $i) + 6];
+       $server['p'][$playersout]['deaths'] = $playerdata[($playercount + $playercount + $playercount + $i) + 9];
+    }
+    */
+    
+    return $arma2ServerStatus;
+}
+/**
+ * Gets the total number of online users based in the number of active PHP sessions. NOTE: Not reliable outside the GamersHub infrastructure.
  * @return mixed Returns an integer representing the number of online users, or false if something fails.
  */
 function GetOnlineUsersCount()
@@ -438,5 +653,44 @@ function IsValidEmail($email)
       }
    }
    return $isValid;
+}
+
+/*
+ * Couple of functions to decode the GameSpy 3 protocol response.
+ * Used to query the ArmA 2 OA servers.
+ */
+
+/**
+ * cut_string()
+ * 
+ * @param mixed $buffer
+ * @param integer $start_byte
+ * @param string $end_marker
+ * @return
+ */
+function cut_string(&$buffer, $start_byte = 0, $end_marker = "\x00")
+{
+    $buffer = substr($buffer, $start_byte);
+    $length = strpos($buffer, $end_marker);
+    if ($length === false)
+    {
+        $length = strlen($buffer);
+    }
+    $string = substr($buffer, 0, $length);
+    $buffer = substr($buffer, $length + strlen($end_marker));
+    return $string;
+}
+/**
+ * cut_byte()
+ * 
+ * @param mixed $buffer
+ * @param mixed $length
+ * @return
+ */
+function cut_byte(&$buffer, $length)
+{
+    $string = substr($buffer, 0, $length);
+    $buffer = substr($buffer, $length);
+    return $string;
 }
 ?>
