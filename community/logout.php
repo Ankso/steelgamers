@@ -22,32 +22,30 @@ if (isset($_SESSION['userId']))
     $userId = $_SESSION['userId'];
     $user = new User($_SESSION['userId']);
     $user->SetOnline(false);
-    // Destroy forum session
-    setcookie("Vanilla", "", time() - 3600);
-    setcookie("Vanilla-Volatile", "", time() - 3600);
 }
 session_destroy();
 if (isset($_GET['redirect']))
 {
+    // Destroy vanilla forum session if needed
     switch($_GET['redirect'])
     {
         case "forum":
             header("location:http://foro.steelgamers.es");
             exit();
         case "mitracraft":
-            header("Location:http://mitracraft.es");
+            header("Location:http://foro.steelgamers.es/logout.php?redirect=mitracraft");
             exit();
         case "minecraft":
-            header("Location:http://minecraft.steelgamers.es");
+            header("Location:http://foro.steelgamers.es/logout.php?redirect=minecraft");
             exit();
         case "arma2":
-            header("Location:http://arma2.steelgamers.es");
+            header("Location:http://foro.steelgamers.es/logout.php?redirect=arma2");
             exit();
         case "wow":
-            header("Location:http://wow.steelgamers.es");
+            header("Location:http://foro.steelgamers.es/logout.php?redirect=wow");
             exit();
         case "banned":
-            header("Location:http://steelgamers.es/banned.php?reason=" . $userId);
+            header("Location:http://foro.steelgamers.es/logout.php?redirect=banned&reason=" . $userId);
             exit();
         default:
             break;
