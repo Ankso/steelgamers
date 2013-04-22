@@ -1,4 +1,4 @@
-<?php if (!defined('APPLICATION')) exit();
+<?php
 /**
  * This file contains the client code for Vanilla jsConnect single sign on.
  * @author Todd Burry <todd@vanillaforums.com>
