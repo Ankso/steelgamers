@@ -126,6 +126,7 @@ function GetWowTbcServerStatus()
                 {
                     $("div#wowServerStatusLabel").text("Online");
                     $("div#wowServerStatusLabel").attr("class", "serverStatus online");
+                    $("div#wowServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
                 }
                 else
                 {

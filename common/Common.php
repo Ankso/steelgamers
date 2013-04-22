@@ -259,6 +259,7 @@ function PrintWowTbcServerStatus()
         			<div class="serverStatusContainer">
             			<div><h3>Servidor World of Warcraft:<br>The Burning Crusade</h3></div>
                         <div id="wowServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+                        <div id="wowServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
         				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
 					</div>
 				</div>';
@@ -271,6 +272,7 @@ function PrintWowTbcServerStatus()
  */
 function GetWowTbcServerStatus()
 {
+    global $DATABASES, $TBCSERVER_INFO;
     $wowStatus = array(
         'isOnline'      => false,
     	'maxOnline'     => 0,     // Not used for the moment
@@ -284,6 +286,12 @@ function GetWowTbcServerStatus()
 	else
 	{
 		$wowStatus['isOnline'] = true;
+		$wowStatus['maxOnline'] = 200; // TODO: This should be asked to the server _or_ a constant in config.php
+		$wowCharactersDb = new Database($DATABASES['TBCSERVER_CHARS'], $TBCSERVER_INFO);
+		if ($result = $wowCharactersDb->Execute(Statements::SELECT_TOTAL_ONLINE_USERS))
+		    if ($row = $result->fetch_assoc())
+		        $wowStatus['currentOnline'] = $row['totalOnline'];
+		
 		fclose($isOnline);
 	}
 	return $wowStatus;

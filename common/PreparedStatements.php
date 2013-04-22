@@ -71,6 +71,7 @@ class Statements
     const INSERT_USER_WOW_ACCOUNT         = "INSERT INTO account (username, sha_pass_hash, gmlevel, sessionkey, v, s, email, joindate, last_ip, failed_logins, locked, last_login, active_realm_id, expansion, mutetime, locale) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const INSERT_USER_WOW_ACCOUNT_BANNED  = "INSERT INTO account_banned (id, bandate, unbandate, bannedby, banreason, active) VALUES(?, ?, ?, ?, ?, ?)";
     const UPDATE_USER_WOW_ACCOUNT_BANNED  = "UPDATE account_banned SET active = ? WHERE id = ?";
+    const SELECT_TOTAL_ONLINE_USERS       = "SELECT COUNT(guid) AS totalOnline FROM characters WHERE online = 1";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
