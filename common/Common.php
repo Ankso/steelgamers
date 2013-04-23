@@ -114,7 +114,7 @@ function PrintTopBar(/* $user */)
             		<div id="topBarItemComunidad" class="topBarItem">Comunidad</div>
             		<div id="topBarItemServidores" class="topBarItem">Servidores</div>
             		<div id="facebookLikeButton" class="topBarItem facebook">
-						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FSteel-Gamers%2F578089155555355&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px; margin-bottom:-5px;" allowTransparency="true"></iframe>
+						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FSteel-Gamers%2F578089155555355&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
 					</div>
             	</div>
             	<div class="subMenuWrapper">

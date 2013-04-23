@@ -149,6 +149,7 @@ a.plainLink {
 }
 
 .topBarItem.facebook {
+	padding-top:10px;
     width:110px;
 }
 
