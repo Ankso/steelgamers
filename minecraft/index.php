@@ -123,6 +123,7 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
 				<?php PrintWoWTbcServerStatus(); ?>
 				<?php PrintMitracraftServerStatus(); ?>
 				<?php PrintArma2ServerStatus(); ?>
+				<?php PrintTwitterWidget(false); ?>
         	</div>
         </div>
 	</div>

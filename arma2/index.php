@@ -123,6 +123,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
 				<?php PrintWoWTbcServerStatus(); ?>
 				<?php PrintMitracraftServerStatus(); ?>
 				<?php PrintArma2ServerStatus(); ?>
+				<?php PrintTwitterWidget(false); ?>
         	</div>
         </div>
 	</div>

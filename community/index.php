@@ -149,6 +149,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 				<?php PrintWoWTbcServerStatus(); ?>
 				<?php PrintMitracraftServerStatus(); ?>
 				<?php PrintArma2ServerStatus(); ?>
+				<?php PrintTwitterWidget(true); ?>
         	</div>
         </div>
 	</div>
