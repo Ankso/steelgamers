@@ -163,6 +163,10 @@ a.plainLink {
     cursor:pointer;
 }
 
+.topBarItem.facebook {
+    width:100px;
+}
+
 .topBarItemSelected {
     float:left;
     height:33px;

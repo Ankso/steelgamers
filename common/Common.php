@@ -100,11 +100,22 @@ function GenerateGravatarUrl($email, $size = 0)
 function PrintTopBar(/* $user */)
 {
     echo '        <div class="topBarWrapper">
+    			<div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, \'script\', \'facebook-jssdk\'));</script>
         		<div class="topBarContainer">
             		<div id="topBarItemJuegos" class="topBarItem">Juegos</div>
             		<div id="topBarItemForos" class="topBarItem">Foros</div>
             		<div id="topBarItemComunidad" class="topBarItem">Comunidad</div>
             		<div id="topBarItemServidores" class="topBarItem">Servidores</div>
+            		<div id="facebookLikeButton" class="topBarItem facebook">
+						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FSteel-Gamers%2F578089155555355&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px; margin-bottom:-5px;" allowTransparency="true"></iframe>
+					</div>
             	</div>
             	<div class="subMenuWrapper">
                 	<div id="topBarSubMenuJuegos" class="topBarSubMenu">
