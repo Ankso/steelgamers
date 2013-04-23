@@ -48,6 +48,11 @@ a.plainLink {
     color:inherit;
 }
 
+li {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
 .formItem {
     margin-top:5px;
     margin-bottom:5px;
@@ -319,7 +324,7 @@ a.plainLink {
     margin-bottom:10px;
 }
 
-/* TEAMSPEAK 3 STATUS */
+/* SERVERS STATUS */
 
 .serverStatusContainer {
     text-align:center;
@@ -354,7 +359,7 @@ a.plainLink {
     font-size:15px;
 }
 
-/* TEAMSPEAK 3 STATUS END */
+/* SERVERS STATUS END */
 
 /* END RIGHT COLUMN CONTENT */
 
