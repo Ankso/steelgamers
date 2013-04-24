@@ -55,7 +55,7 @@
 				</div>
 				<div>
     				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-    				<?php if (!$isControlPanel) { ?>
+    				<?php if (!isset($isControlPanel) || !$isControlPanel) { ?>
     				<a class="plainLink" href="/controlpanel.php"><div class="button">Panel de control</div></a>
     				<?php } elseif ($siteName != "main") { ?>
     				<a class="plainLink" href="http://steelgamers.es/controlpanel.php"><div class="button">Panel de control principal</div></a>

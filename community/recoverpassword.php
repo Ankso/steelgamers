@@ -9,7 +9,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 // PEAR mail.php is compatible with php 4, and in php 5 it has a E_STRICT error, so turn off E_STRICT error reporting for this script
 error_reporting(E_NOTICE);
-require "mail.php";
+require "Mail.php";
 error_reporting(E_ALL);
 
 $sessionsHandler = new CustomSessionsHandler();
