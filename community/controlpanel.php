@@ -2,6 +2,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/SharedDefines.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/PreparedStatements.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Layout.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
@@ -37,6 +38,7 @@ if ($user->IsBanned())
     header("Location:http://steelgamers.es/logout.php?redirect=banned");
     exit();
 }
+$_Layout = new Layout();
 $userRank = $user->GetRanks(GAME_OVERALL);
 $isAdmin = ($userRank > USER_RANK_MODERATOR);
 $ts3Token = $user->GetTs3Token();
@@ -179,13 +181,14 @@ if ($isAdmin)
 	</script>
 </head>
 <body>
+<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
 <div class="wrapper">
 	<div class="bannerContainer">
 		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
-    		<?php PrintTopBar(); ?>
+    		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
     		<div class="latestNewsLabel"><a class="plainLink" href="controlpanel.php">Panel de control</a></div>
     		<?php if (isset($_GET['adminError']))
     		{
@@ -482,46 +485,9 @@ if ($isAdmin)
     		}
     		?>
     	</div>
-    	<div class="rightContainer">
-    		<div class="rightItem">
-    		<?php 
-    		if ($loggedIn)
-    		{
-    		?>
-    			<div class="profileWrapper">
-    				<div class="avatarWrapper">
-    					<img src="<?php echo GenerateGravatarUrl($user->GetEmail(), 150); ?>">
-    				</div>
-    				<div>
-        				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-        				<a class="plainLink" href="logout.php"><div class="button">Desconectarse</div></a>
-    				</div>
-    			</div>
-    		<?php
-    		}
-    		else
-    		{
-    		?>
-    			<form class="loginForm" action="login.php" method="post">
-    				<div class="formItem">Usuario</div>
-    				<div class="formItem"><input type="text" name="username"></div>
-    				<div class="formItem">Contrase&ntilde;a</div>
-    				<div class="formItem"><input type="password" name="password"></div>
-    				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
-    				<div class="formItem">o <a href="register.php">crear una cuenta</a></div>
-    			</form>
-    		<?php
-    		}
-    		?>
-    		</div>
-    		<?php PrintTs3Status(); ?>
-			<?php PrintWoWTbcServerStatus(); ?>
-			<?php PrintMitracraftServerStatus(); ?>
-			<?php PrintArma2ServerStatus(); ?>
-    	</div>
+    	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/right.php"); ?>
 	</div>
-	<?php PrintBottomBar(); ?>
-	<div style="height:10px;">&nbsp;</div>
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/footer.php"); ?>
 </div>
 </body>
 </html>

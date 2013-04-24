@@ -26,3 +26,14 @@
 .formItemSubmit {
     text-align:center;
 }
+
+.recoverForm {
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.recoverFormResalted {
+    border:1px solid #FF0000;
+    padding:19px;
+}

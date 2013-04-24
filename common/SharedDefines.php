@@ -67,4 +67,15 @@ $GAME_NAMES = array(
     7 => "World of Tanks",
     8 => "World of Warcraft: The Burning Crusade",
 );
+/**
+ * Different design options when printing the page
+ */
+define("LAYOUT_SHOW_LOGIN", 0);
+define("LAYOUT_SHOW_TS3", 1);
+define("LAYOUT_SHOW_WOW_TBC", 2);
+define("LAYOUT_SHOW_MITRACRAFT", 3);
+define("LAYOUT_SHOW_ARMA", 4);
+define("LAYOUT_SHOW_TWITTER", 5);
+define("LAYOUT_SHOW_RECOVER_PASSWORD", 6);
+define("LAYOUT_OPTIONS_COUNT", 7);
 ?>

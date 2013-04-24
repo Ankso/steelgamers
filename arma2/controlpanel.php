@@ -2,6 +2,7 @@
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/SharedDefines.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/PreparedStatements.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Layout.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
@@ -112,6 +113,7 @@ if (!$isAdmin)
 }
 // Overwrite displayed user rank with the specific game rank, but save admin privileges if the user is admin globaly.
 $userRank = $user->GetRanks(GAME_ARMA2);
+$_Layout = new Layout();
 ?>
 <html>
 <head>
@@ -132,6 +134,7 @@ $userRank = $user->GetRanks(GAME_ARMA2);
 	</script>
 </head>
 <body>
+<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
 <div class="backToMainPageContainer">
 	<a href="http://steelgamers.es"><img src="/images/back_logo.png"></a>
 </div>
@@ -141,7 +144,7 @@ $userRank = $user->GetRanks(GAME_ARMA2);
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
-    		<?php PrintTopBar(); ?>
+    		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
     		<div class="latestNewsLabel"><a class="plainLink" href="controlpanel.php">Panel de ArmA 2</a></div>
     		<?php if (isset($_GET['adminError']))
     		{
@@ -252,47 +255,9 @@ $userRank = $user->GetRanks(GAME_ARMA2);
     		}
     		?>
     	</div>
-    	<div class="rightContainer">
-    		<div class="rightItem">
-    		<?php 
-    		if ($loggedIn)
-    		{
-    		?>
-    			<div class="profileWrapper">
-    				<div class="avatarWrapper">
-    					<img src="<?php echo GenerateGravatarUrl($user->GetEmail(), 150); ?>">
-    				</div>
-    				<div>
-        				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-        				<a class="plainLink" href="http://steelgamers.es/controlpanel.php"><div class="button">Ir al panel principal</div></a>
-        				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=arma2"><div class="button">Desconectarse</div></a>
-    				</div>
-    			</div>
-    		<?php
-    		}
-    		else
-    		{
-    		?>
-    			<form class="loginForm" action="http://steelgamers.es/login.php?redirect=arma2" method="post">
-    				<div class="formItem">Usuario</div>
-    				<div class="formItem"><input type="text" name="username"></div>
-    				<div class="formItem">Contrase&ntilde;a</div>
-    				<div class="formItem"><input type="password" name="password"></div>
-    				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
-    				<div class="formItem">o <a href="register.php">crear una cuenta</a></div>
-    			</form>
-    		<?php
-    		}
-    		?>
-    		</div>
-    		<?php PrintTs3Status(); ?>
-			<?php PrintWoWTbcServerStatus(); ?>
-			<?php PrintMitracraftServerStatus(); ?>
-			<?php PrintArma2ServerStatus(); ?>
-    	</div>
+    	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/right.php"); ?>
 	</div>
-	<?php PrintBottomBar(); ?>
-	<div style="height:10px;">&nbsp;</div>
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/footer.php"); ?>
 </div>
 </body>
 </html>

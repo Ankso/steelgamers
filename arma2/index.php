@@ -3,6 +3,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/SharedDefines.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/PreparedStatements.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/Functions.jsConnect.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Layout.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
@@ -31,6 +32,7 @@ if (isset($_SESSION['userId']))
         exit();
     }
 }
+$_Layout = new Layout();
 $db = new Database($DATABASES['USERS']);
 $news = array();
 if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
@@ -59,6 +61,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
 	<script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
+<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
 <div class="backToMainPageContainer">
 	<a href="http://steelgamers.es"><img src="/images/back_logo.png"></a>
 </div>
@@ -68,7 +71,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
-    		<?php PrintTopBar(); ?>
+    		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
     		<div class="latestNewsLabel">&Uacute;ltimas noticias</div>
     		<?php 
     		foreach ($news as $i => $new)
@@ -85,50 +88,9 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
             }
             ?>
     	</div>
-    	<div class="rightWrapper">
-        	<div class="rightContainer">
-        		<div class="rightItem">
-        		<?php 
-        		if ($loggedIn)
-        		{
-        		?>
-        			<div class="profileWrapper">
-        				<div class="avatarWrapper">
-        					<img src="<?php echo GenerateGravatarUrl($user->GetEmail(), 150); ?>">
-        				</div>
-        				<div>
-            				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-            				<a class="plainLink" href="controlpanel.php"><div class="button">Panel de control</div></a>
-            				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=arma2"><div class="button">Desconectarse</div></a>
-        				</div>
-        			</div>
-        		<?php
-        		}
-        		else
-        		{
-        		?>
-        			<form class="loginForm" action="http://steelgamers.es/login.php?redirect=arma2" method="post">
-        				<div class="formItem">Usuario</div>
-        				<div class="formItem"><input type="text" name="username"></div>
-        				<div class="formItem">Contrase&ntilde;a</div>
-        				<div class="formItem"><input type="password" name="password"></div>
-        				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
-        				<div class="formItem">o <a href="register.php">crear una cuenta</a></div>
-        			</form>
-        		<?php
-        		}
-        		?>
-        		</div>
-        		<?php PrintTs3Status(); ?>
-				<?php PrintWoWTbcServerStatus(); ?>
-				<?php PrintMitracraftServerStatus(); ?>
-				<?php PrintArma2ServerStatus(); ?>
-				<?php PrintTwitterWidget(false); ?>
-        	</div>
-        </div>
+    	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/right.php"); ?>
 	</div>
-	<?php PrintBottomBar(); ?>
-	<div style="height:10px;">&nbsp;</div>
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/footer.php"); ?>
 </div>
 </body>
 </html>
