@@ -30,6 +30,7 @@ $error = false;
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEmail($_POST['email']))
 {
     $userId = UserExists($_POST['email']);
+    echo $userId;
     if ($userId === false)
         $error = true;
     else
@@ -37,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
         $user = new User($userId);
         $newPassword = md5(MAGIC_STRING . microtime());
         // Send verification mail
-        $from    = "noreply@steelgamers.com";
+        $from    = "administracion@steelgamers.es";
         $to      = $_POST['email'];
-        $subject = "Recordatorio de contraseña - Steel Gamers Community";
+        $subject = "Nueva contraseña - Steel Gamers Community";
         $body    = "
         
         Has recibido este correo electrónico porque has solicitado una nueva contraseña, la cual es:
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
         
         http://steelgamers.es/controlpanel.php
         
-        Si usted no se ha solicitado cambiar la contraseña de su cuenta, es posible que la seguridad de ésta esté comprometida. Cambie la contraseña cuanto antes e informe a la administración del sitio.
+        Si usted no ha solicitado cambiar la contraseña de su cuenta, es posible que la seguridad de ésta esté comprometida. Cambie la contraseña cuanto antes e informe a la administración del sitio.
         
         ";
         
@@ -71,6 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['email']) && IsValidEma
             $user->SetPasswordSha1(CreateSha1Pass($user->GetUsername(), $newPassword));
     }
 }
+else
+    $error = true;
 ?>
 <!DOCTYPE html>
 <html>
