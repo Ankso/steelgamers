@@ -190,6 +190,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     }
 }
 $_Layout = new Layout();
+$isControlPanel = true;
 ?>
 <html>
 <head>

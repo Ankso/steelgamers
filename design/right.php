@@ -1,4 +1,41 @@
 <?php if (!isset($_Layout)) exit(); ?>
+<?php 
+    // Set domain specific vars
+    $isDark = true;
+    $siteName = "main";
+    switch ($_SERVER['SERVER_NAME'])
+    {
+        case "steelgamers.es":
+            break;
+        case "arma2.steelgamers.es":
+            $isDark = false;
+            $siteName = "arma2";
+            break;
+        case "battlefield.steelgamers.es":
+            $siteName = "battlefield";
+            break;
+        case "dayz.steelgamers.es":
+            $siteName = "dayz";
+            break;
+        case "dota2.steelgamers.es":
+            $siteName = "dota2";
+            break;
+        case "minecraft.steelgamers.es":
+            $isDark = false;
+            $siteName = "minecraft";
+            break;
+        case "warthunder.steelgamers.es":
+            $siteName = "warthunder";
+            break;
+        case "worldoftanks.steelgamers.es":
+            $siteName = "worldoftanks";
+            break;
+        case "wow.steelgamers.es":
+            $siteName = "wow";
+            $isDark = true;
+            break;
+    }
+?>
 <div class="rightWrapper">
 	<div class="rightContainer">
 		<?php if ($_Layout->GetLayoutOption(LAYOUT_SHOW_RECOVER_PASSWORD)) { ?>
@@ -18,18 +55,22 @@
 				</div>
 				<div>
     				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-    				<a class="plainLink" href="controlpanel.php"><div class="button">Panel de control</div></a>
-    				<a class="plainLink" href="logout.php"><div class="button">Desconectarse</div></a>
+    				<?php if (!$isControlPanel) { ?>
+    				<a class="plainLink" href="/controlpanel.php"><div class="button">Panel de control</div></a>
+    				<?php } elseif ($siteName != "main") { ?>
+    				<a class="plainLink" href="http://steelgamers.es/controlpanel.php"><div class="button">Panel de control principal</div></a>
+    				<?php } ?>
+    				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=<?php echo $siteName; ?>"><div class="button">Desconectarse</div></a>
 				</div>
 			</div>
 		    <?php } else { ?>
-			<form class="loginForm" action="login.php" method="post">
+			<form class="loginForm" action="http://steelgamers.es/login.php?redirect=<?php echo $siteName; ?>" method="post">
 				<div class="formItem">Usuario</div>
 				<div class="formItem"><input type="text" name="username"></div>
 				<div class="formItem">Contrase&ntilde;a</div>
 				<div class="formItem"><input type="password" name="password"></div>
 				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
-				<div class="formItem">o <a href="register.php">crear una cuenta</a></div>
+				<div class="formItem">o <a href="http://steelgamers.es/register.php">crear una cuenta</a></div>
 			</form>
 		    <?php } ?>
 		</div>
@@ -72,36 +113,7 @@
 			</div>
 		</div>
 		<?php
-		}
-		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER))
-		{
-	        $isDark = true;
-    	    switch ($_SERVER['SERVER_NAME'])
-    	    {
-    	        case "steelgamers.es":
-    	            $isDark = true;
-    	            break;
-    	        case "arma2.steelgamers.es":
-    	            $isDark = false;
-    	            break;
-    	        case "battlefield.steelgamers.es":
-    	            break;
-    	        case "dayz.steelgamers.es":
-    	            break;
-    	        case "dota2.steelgamers.es":
-    	            break;
-    	        case "minecraft.steelgamers.es":
-    	            $isDark = false;
-    	            break;
-    	        case "warthunder.steelgamers.es":
-    	            break;
-    	        case "worldoftanks.steelgamers.es":
-    	            break;
-    	        case "wow.steelgamers.es":
-    	            $isDark = true;
-    	            break;
-    	    }
-		?>
+		} if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER)) { ?>
 		<div style="margin-top:10px;"><a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
 		<?php } ?>
 	</div>

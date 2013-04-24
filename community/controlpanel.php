@@ -39,6 +39,7 @@ if ($user->IsBanned())
     exit();
 }
 $_Layout = new Layout();
+$isControlPanel = true;
 $userRank = $user->GetRanks(GAME_OVERALL);
 $isAdmin = ($userRank > USER_RANK_MODERATOR);
 $ts3Token = $user->GetTs3Token();

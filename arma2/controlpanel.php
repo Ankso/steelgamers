@@ -114,6 +114,7 @@ if (!$isAdmin)
 // Overwrite displayed user rank with the specific game rank, but save admin privileges if the user is admin globaly.
 $userRank = $user->GetRanks(GAME_ARMA2);
 $_Layout = new Layout();
+$isControlPanel = true;
 ?>
 <html>
 <head>
