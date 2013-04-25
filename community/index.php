@@ -50,6 +50,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     }
 }
 ?>
+<!DOCTYPE html>
 <!--                                                 
           SSSSSSS                                                         
         SSSSSSSSSS                                                        
@@ -78,7 +79,6 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
                      GGG    GG  AA    AA  M       M EE      R   RRRS   SS 
                       GGGGGGG   AA    AA  M       M EEEEEEE R     RSSSSS  
 -->
-<!DOCTYPE html>
 <html>
 <head>
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">

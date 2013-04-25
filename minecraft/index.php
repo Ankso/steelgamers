@@ -49,6 +49,7 @@ if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEW
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">

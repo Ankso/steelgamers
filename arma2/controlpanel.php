@@ -116,6 +116,7 @@ $userRank = $user->GetRanks(GAME_ARMA2);
 $_Layout = new Layout();
 $isControlPanel = true;
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Panel de ArmA 2 - Steel Gamers</title>

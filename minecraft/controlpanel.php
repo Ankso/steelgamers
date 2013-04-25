@@ -192,6 +192,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
 $_Layout = new Layout();
 $isControlPanel = true;
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Panel de Minecraft - Steel Gamers</title>

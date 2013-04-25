@@ -29,6 +29,7 @@ if (isset($_SESSION['userId']))
 }
 $_Layout = new Layout();
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>WoW: TBC - Steel Gamers</title>

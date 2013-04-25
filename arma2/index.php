@@ -49,6 +49,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
     }
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
