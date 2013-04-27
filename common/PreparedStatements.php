@@ -52,6 +52,11 @@ class Statements
     const INSERT_USERS_BANNED             = "INSERT INTO users_banned (user_id, ban_start, ban_end, ban_reason, banned_by, active) VALUES (?, ?, ?, ?, ?, ?)";
     const UPDATE_USERS_BANNED_STATUS      = "UPDATE users_banned SET active = ? WHERE user_id = ?";
     const DELETE_USERS_BANNED             = "DELETE FROM users_banned WHERE user_id = ?";
+    // Premium system
+    const SELECT_USERS_PREMIUM            = "SELECT premium_start, premium_end, active FROM users_premium WHERE user_id = ?";
+    const SELECT_USERS_PREMIUM_ACTIVE     = "SELECT premium_start, premium_end FROM users_premium WHERE user_id = ? AND active = 1";
+    const INSERT_USERS_PREMIUM            = "INSERT INTO users_premium (user_id, premium_start, premium_end, active) VALUES (?, ?, ?, ?)";
+    const UPDATE_USERS_PREMIUM_ACTIVE     = "UPDATE users_premium SET active = ? WHERE user_id = ? AND active = ?";
     // Members list
     const SELECT_ALL_MEMBERS              = "SELECT a.username, a.email, a.is_online, a.last_login, a.register_date, b.rank_mask FROM users AS a, users_ranks AS b WHERE a.id = b.user_id AND a.active = 1 LIMIT 100";
     // TS3 related queries
@@ -72,6 +77,8 @@ class Statements
     const INSERT_USER_WOW_ACCOUNT_BANNED  = "INSERT INTO account_banned (id, bandate, unbandate, bannedby, banreason, active) VALUES(?, ?, ?, ?, ?, ?)";
     const UPDATE_USER_WOW_ACCOUNT_BANNED  = "UPDATE account_banned SET active = ? WHERE id = ?";
     const SELECT_TOTAL_ONLINE_USERS       = "SELECT COUNT(guid) AS totalOnline FROM characters WHERE online = 1";
+    const INSERT_USER_WOW_PREMIUM         = "INSERT INTO account_premium (account, premium_start, premium_end, gold_bonus, reputation_bonus, honor_bonus, arenapoints_bonus, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const UPDATE_USER_WOW_PREMIUM_ACTIVE  = "UPDATE account_premium SET active = ? WHERE account = ? AND active = ?";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS

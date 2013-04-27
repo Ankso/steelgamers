@@ -54,7 +54,7 @@ $db = new Database($DATABASES['USERS']);
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
-    		<div class="latestNewsLabel">Normas</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Normas</div>
         		<div class="new">
         			<div class="newContainer">
 						<h1>No est&aacute; permitido...</h1>

@@ -190,7 +190,7 @@ if ($isAdmin)
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel"><a class="plainLink" href="controlpanel.php">Panel de control</a></div>
+    		<div class="latestNewsLabel <?php echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; ?>"><a class="plainLink" href="controlpanel.php">Panel de control</a></div>
     		<?php if (isset($_GET['adminError']))
     		{
     		?>

@@ -46,16 +46,28 @@
 				<div class="formItem"><input class="button" type="submit" value="Enviar"></div>
 			</form>
 		</div>
-		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_LOGIN)) { ?>
-		<div class="rightItem">
-		    <?php if (isset($loggedIn) && $loggedIn) { ?>
+		<?php
+		}
+		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_LOGIN))
+		{
+	        if (isset($loggedIn) && $loggedIn)
+	        {
+	    ?>
+		<div class="rightItem<?php echo $user->IsPremium() ? " premiumRightItem" : ""; ?>">
 			<div class="profileWrapper">
 				<div class="avatarWrapper">
 					<img src="<?php echo GenerateGravatarUrl($user->GetEmail(), 150); ?>">
 				</div>
 				<div>
     				<div>Conectado como: <b><?php echo $user->GetUsername(); ?></b></div>
-    				<?php if (!isset($isControlPanel) || !$isControlPanel) { ?>
+    				<?php
+    				if ($user->IsPremium())
+    				{
+    				    $timeLeft = $user->GetPremiumTimeLeft();
+    				?>
+    				<div style="color:#CFB53B;">Miembro Premium</div>
+    				<div style="color:#CFB53B;">(<?php echo ($timeLeft !== PREMIUM_TIME_INFINITE ? intval($timeLeft / 60 / 60 / 24) : "&infin;")?> d&iacute;as restantes)</div>
+    				<?php } if (!isset($isControlPanel) || !$isControlPanel) { ?>
     				<a class="plainLink" href="/controlpanel.php"><div class="button">Panel de control</div></a>
     				<?php } elseif ($siteName != "main") { ?>
     				<a class="plainLink" href="http://steelgamers.es/controlpanel.php"><div class="button">Panel de control principal</div></a>
@@ -63,8 +75,10 @@
     				<a class="plainLink" href="http://steelgamers.es/logout.php?redirect=<?php echo $siteName; ?>"><div class="button">Desconectarse</div></a>
 				</div>
 			</div>
-		    <?php } else { ?>
-			<form class="loginForm" action="http://steelgamers.es/login.php?redirect=<?php echo $siteName; ?>" method="post">
+		</div>
+	    <?php } else { ?>
+	    <div class="rightItem">
+			<form class="loginForm" action="http://localhost/login.php?redirect=<?php echo $siteName; ?>" method="post">
 				<div class="formItem">Usuario</div>
 				<div class="formItem"><input type="text" name="username"></div>
 				<div class="formItem">Contrase&ntilde;a</div>
@@ -72,9 +86,13 @@
 				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
 				<div class="formItem">o <a href="http://steelgamers.es/register.php">crear una cuenta</a></div>
 			</form>
-		    <?php } ?>
 		</div>
-		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TS3)) { ?>
+		<?php
+	        } 
+		}
+		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TS3))
+		{
+		?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
     			<div><h3>Servidor TeamSpeak 3</h3></div>

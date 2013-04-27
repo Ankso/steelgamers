@@ -78,4 +78,8 @@ define("LAYOUT_SHOW_ARMA", 4);
 define("LAYOUT_SHOW_TWITTER", 5);
 define("LAYOUT_SHOW_RECOVER_PASSWORD", 6);
 define("LAYOUT_OPTIONS_COUNT", 7);
+/**
+ * Premium system
+ */
+define("PREMIUM_TIME_INFINITE", -1);
 ?>

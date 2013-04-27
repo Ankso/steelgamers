@@ -56,7 +56,9 @@ Class User
             $this->_lastLogin = $userData['last_login'];
             $this->_registerDate = $userData['register_date'];
             $this->_active = $userData['active'];
-            $this->_ranks = NULL; // This is initialized on demand
+            // Internal variables initialized on demand to keep resources
+            $this->_ranks = NULL;
+            $this->_isPremium = NULL;
             return true;
         }
         return false;
@@ -524,6 +526,114 @@ Class User
         return false;
     }
     
+    /**
+     * Determines if this is a premium user.
+     * @return boolean True if the user is premium, else false.
+     */
+    public function IsPremium()
+    {
+        if ($this->_isPremium !== NULL)
+            return $this->_isPremium;
+        
+        // Premium users are global, you can't be premium only in wow, for example.
+        // Moderators, Community Managers and Admins are also considered premium members.
+        if ($this->GetRanks(GAME_OVERALL) >= USER_RANK_PREMIUM_MEMBER)
+        {
+            // If user is moderator, community manager or admin, we don't need to check the users_premium table
+            if ($this->GetRanks(GAME_OVERALL) > USER_RANK_PREMIUM_MEMBER)
+            {
+                $this->_isPremium = true;
+                return true;
+            }
+            
+            // Check that the user stills have premium time
+            if ($result = $this->_db->ExecuteStmt(Statements::SELECT_USERS_PREMIUM_ACTIVE, $this->_db->BuildStmtArray("i", $this->GetId())))
+            {
+                if ($row = $result->fetch_assoc())
+                {
+                    if (strtotime($row['premium_end']) > time())
+                    {
+                        $this->_isPremium = true;
+                        return true;
+                    }
+                }
+            }
+            // If we are here, it means that the user has the premium rank but he has no more premium time, so we must disable premium membership
+            $this->_db->ExecuteStmt(Statements::UPDATE_USERS_PREMIUM_ACTIVE, $this->_db->BuildStmtArray("iii", 0, $this->GetId(), 1));
+            $this->SetRanks(USER_RANK_MEMBER, GAME_OVERALL);
+            // We don't need to modify anything in the WoW server database, as the core has his own manager for this system.
+            // TODO: This is needed may be for the Mitracraft server?
+        }
+        $this->_isPremium = false;
+        return false;
+    }
+    
+    /**
+     * Sets an user as a premium member.
+     * @param integer $premiumEnds Unix timestamp, when the premium membership will end.
+     * @return boolean Returns true on success, else false.
+     */
+    public function SetPremium($premiumEnds)
+    {
+        if ($this->IsPremium())
+            return false;
+        
+        if ($premiumEnds <= time())
+            return false;
+        
+        if ($this->SetRanks(USER_RANK_PREMIUM_MEMBER, GAME_OVERALL))
+        {
+            if ($this->_db->ExecuteStmt(Statements::INSERT_USERS_PREMIUM, $this->_db->BuildStmtArray("issi", $this->GetId(), date("Y-m-d H:i:s", time()), date("Y-m-d H:i:s", $premiumEnds), 1)))
+            {
+                // Insert premium data in other DBs
+                // WoW TBC server database
+                global $DATABASES, $TBCSERVER_INFO;
+                if ($wowAccount = $this->GetWowAccountId())
+                {
+                    $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
+                    $wowAccountsDb->ExecuteStmt(Statements::INSERT_USER_WOW_PREMIUM, $wowAccountsDb->BuildStmtArray("iiiiiiii", $wowAccount, time(), $premiumEnds, 1, 1, 1, 1, 1));
+                }
+                // TODO: Mitracraft server
+                /* Not implemented */
+            }
+        }
+    }
+    
+    /**
+     * Obtains premium membership time left for this user, in seconds
+     * @return integer Number of seconds to premium membership expiration.
+     */
+    public function GetPremiumTimeLeft()
+    {
+        if (!$this->IsPremium())
+            return 0;
+        
+        if ($this->GetRanks(GAME_OVERALL) >= USER_RANK_MODERATOR)
+            return PREMIUM_TIME_INFINITE;
+        
+        if ($result = $this->_db->ExecuteStmt(Statements::SELECT_USERS_PREMIUM_ACTIVE, $this->_db->BuildStmtArray("i", $this->GetId())))
+            if ($row = $result->fetch_assoc())
+                return (strtotime($row['premium_end']) - strtotime($row['premium_start']));
+        
+        return 0;
+    }
+    
+    /**
+     * Obtains the user's WoW account ID (WoW account ID doesn't neccessary matches web DB user ID)
+     * @return mixed Returns the WoW account ID for this user, or false if the user hasn't a WoW account yet.
+     */
+    public function GetWowAccountId()
+    {
+        global $DATABASES, $TBCSERVER_INFO;
+        $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
+        if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("s", $this->GetUsername())))
+        {
+            if ($row = $result->fetch_assoc())
+                return intval($row['id']);
+        }
+        return false;
+    }
+    
     private $_id;                // The user's unique ID
     private $_username;          // The user's username (nickname)
     private $_passwordSha1;      // The encripted user's password
@@ -535,6 +645,7 @@ Class User
     private $_active;            // 0 if the user's account has not been activated yet, else 1.
     private $_db;                // The database object
     private $_ranks;             // Array with all the ranks of the user for the main page and subpages.
+    private $_isPremium;         // Boolean. True if the user has a premium account. Initialized with the first call to IsPremium().
 }
 
 ?>

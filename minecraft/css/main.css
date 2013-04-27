@@ -271,6 +271,17 @@ a.plainLink {
     border-bottom-left-radius:10px;
 }
 
+.premiumLatestNewsLabel {
+    background: #c0c0c0; /* Old browsers */
+    background: -moz-linear-gradient(left,  #c0c0c0 49%, #996515 100%, #7db9e8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(49%,#c0c0c0), color-stop(100%,#996515), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #c0c0c0 49%,#996515 100%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #c0c0c0 49%,#996515 100%,#7db9e8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #c0c0c0 49%,#996515 100%,#7db9e8 100%); /* IE10+ */
+    background: linear-gradient(to right,  #c0c0c0 49%,#996515 100%,#7db9e8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0c0c0', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+}
+
 .new {
 	float:left;
     width:740px;

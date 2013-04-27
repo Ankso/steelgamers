@@ -73,7 +73,7 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel">&Uacute;ltimas noticias</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">&Uacute;ltimas noticias</div>
     		<?php 
     		foreach ($news as $i => $new)
     		{

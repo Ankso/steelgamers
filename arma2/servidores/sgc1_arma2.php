@@ -55,13 +55,13 @@ $_Layout = new Layout();
     		if (!isset($_GET['lang']))
     		{
     		?>
-    		<div class="latestNewsLabel">Servidor: Steel Gamers ArmA 2 #1 - <a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php?lang=enGB">view in english</a></div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Servidor: Steel Gamers ArmA 2 #1 - <a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php?lang=enGB">view in english</a></div>
     		<?php
     		}
     		else
     		{
     		?>
-    		<div class="latestNewsLabel">Server: Steel Gamers ArmA 2 #1 - <a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php">ver en castellano</a></div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Server: Steel Gamers ArmA 2 #1 - <a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php">ver en castellano</a></div>
     		<?php 
     		}
     		?>

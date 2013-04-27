@@ -54,7 +54,7 @@ $db = new Database($DATABASES['USERS']);
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel">Lista de miembros</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Lista de miembros</div>
     		<?php
     		if ($result = $db->Execute(Statements::SELECT_ALL_MEMBERS))
     		{

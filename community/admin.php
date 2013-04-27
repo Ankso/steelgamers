@@ -88,7 +88,7 @@ if ($isAdmin)
         {
             $db = new Database($DATABASES['USERS']);
             $rankMask = "";
-            for ($i = GAME_NONE + 1; $i <= GAMES_COUNT; ++$i)
+            for ($i = GAME_OVERALL; $i <= GAMES_COUNT; ++$i)
             {
                 if (isset($_POST[$i]))
                     $rankMask .= $_POST[$i];
@@ -105,6 +105,33 @@ if ($isAdmin)
             {
                 if ($db->ExecuteStmt(Statements::DELETE_USERS_TS3_TOKEN, $db->BuildStmtArray("i", $_POST['editUserId'])))
                     $error = false;
+            }
+            // Give the user premium time if needed...
+            if ($_POST[GAME_OVERALL] >= USER_RANK_PREMIUM_MEMBER)
+            {
+                $editedUser = new User(intval($_POST['editUserId']));
+                // Give premium status for one month
+                // The premium status should be given by the system
+                // If an admin gives premium status, it will be by a maximum of one month
+                if (!$editedUser->IsPremium())
+                    $editedUser->SetPremium(time() + (30 * 24 * 60 * 60));
+            }
+            // ... or remove his premium membership.
+            else if ($_POST[GAME_OVERALL] < USER_RANK_PREMIUM_MEMBER)
+            {
+                global $DATABASES, $TBCSERVER_INFO;
+                if ($db->ExecuteStmt(Statements::UPDATE_USERS_PREMIUM_ACTIVE, $db->BuildStmtArray("iii", 0, $_POST['editUserId'], 1)))
+                {
+                    // Update status in other databases
+                    $editedUser = new User(intval($_POST['editUserId']));
+                    // WoW TBC server
+                    if ($wowAccount = $editedUser->GetWowAccountId())
+                    {
+                        $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
+                        $wowAccountsDb->ExecuteStmt(Statements::UPDATE_USER_WOW_PREMIUM_ACTIVE, $wowAccountsDb->BuildStmtArray("iii", 0, $wowAccount, 1));
+                    }
+                    // TODO: Mitracraft server?
+                }
             }
             $extraParams .= "&lastEditedUser=" . $_POST['editUserId'];
         }

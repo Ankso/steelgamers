@@ -51,7 +51,7 @@ $_Layout = new Layout();
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel">Servidor: World of Warcraft: The Burning Crusade (2.4.3)</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Servidor: World of Warcraft: The Burning Crusade (2.4.3)</div>
     		<div class="new">
     			<div class="newContainer">
     				<h2>Conexi&oacute;n</h2>

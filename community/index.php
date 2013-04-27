@@ -34,6 +34,7 @@ if (isset($_SESSION['userId']))
 }
 // Initialize Layout class, that stores design options.
 $_Layout = new Layout();
+// Other initializations
 $db = new Database($DATABASES['USERS']);
 $news = array();
 if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
@@ -101,7 +102,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     	<div class="mainContainer">
     		<!-- Top bar -->
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel">&Uacute;ltimas noticias</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">&Uacute;ltimas noticias</div>
     		<?php 
     		foreach ($news as $i => $new)
     		{
