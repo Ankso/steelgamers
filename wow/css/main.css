@@ -329,6 +329,10 @@ a.plainLink {
     border:5px solid #111111;
 }
 
+.premiumRightItem {
+    border-color: #996515;
+}
+
 .loginForm {
     text-align:center;
     margin-top:10px;
