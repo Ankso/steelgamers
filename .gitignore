@@ -1,6 +1,5 @@
 config/config.php
 foro/*
-community/foro
 .buildpath
 .project
 .settings/*
