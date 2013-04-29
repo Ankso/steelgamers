@@ -41,10 +41,10 @@ if ($user->IsBanned())
 }
 if ($_SERVER['REQUEST_METHOD'] == "POST")
 {
-    $noChange = true;
     // User wants to change the password
     if (isset($_POST['password']) && isset($_POST['password_check']) && $_POST['password'] != "" && $_POST['password_check'] != "")
     {
+        $noChange = true;
         if ($_POST['password'] == $_POST['password_check'])
         {
             if (htmlentities($_POST['password']) == $_POST['password'] && strlen($_POST['password']) >= PASSWORD_MIN_LENGHT)
@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
     // User wants to change his email
     if (isset($_POST['email']) && $user->GetEmail() != $_POST['email'] && $_POST['email'] != "")
     {
+        $noChange = true;
         if (IsValidEmail($_POST['email']))
         {
             if (!UserExists($_POST['email']))
@@ -77,6 +78,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         }
         else
             $errors['email'] = ERROR_INVALID;
+    }
+    // User wants to update his or her premium bonifications
+    if (isset($_POST['premiumGoldBonus']) && isset($_POST['premiumReputationBonus']) && isset($_POST['premiumHonorBonus']) && isset($_POST['premiumArenaBonus']) && $user->IsPremium())
+    {
+        $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
+        $wowAccountsDb->ExecuteStmt(Statements::UPDATE_USER_WOW_PREMIUM_BONUS,
+                                    $wowAccountsDb->BuildStmtArray("iiiii",
+                                                                   $_POST['premiumGoldBonus'] == "enabled" ? 1 : 0,
+                                                                   $_POST['premiumReputationBonus'] == "enabled" ? 1 : 0,
+                                                                   $_POST['premiumHonorBonus'] == "enabled" ? 1 : 0,
+                                                                   $_POST['premiumArenaBonus'] == "enabled" ? 1 : 0,
+                                                                   $user->GetWowAccountId()));
     }
     // Create an account in the specified WoW server
     if (isset($_POST['syncAccountPassword']) && isset($_POST['syncAccountConfirm']))
@@ -119,8 +132,10 @@ if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $
     if ($row = $result->fetch_assoc())
     {
         $notSync = false;
+        $accountId = $row['id'];
         $characters = array();
-        if ($result = $wowCharactersDb->ExecuteStmt(Statements::SELECT_USER_WOW_CHARACTERS, $wowCharactersDb->BuildStmtArray("i", $row['id'])))
+        // Fetch characters
+        if ($result = $wowCharactersDb->ExecuteStmt(Statements::SELECT_USER_WOW_CHARACTERS, $wowCharactersDb->BuildStmtArray("i", $accountId)))
         {
             while ($row = $result->fetch_assoc())
             {
@@ -141,6 +156,22 @@ if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $
                     "todayKills"           => $row['todayKills'],
                     "yesterdayKills"       => $row['yesterdayKills'],
                 );
+            }
+        }
+        // Fetch premium data
+        if ($user->IsPremium())
+        {
+            if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_PREMIUM_ACTIVE, $wowAccountsDb->BuildStmtArray("i", $accountId)))
+            {
+                if ($row = $result->fetch_assoc())
+                {
+                    $premiumData = array(
+                        'goldBonus'       => $row['gold_bonus'],
+                        'reputationBonus' => $row['reputation_bonus'],
+                        'honorBonus'      => $row['honor_bonus'],
+                        'arenaBonus'      => $row['arena_bonus'],
+                    );
+                }
             }
         }
     }
@@ -245,6 +276,12 @@ $isControlPanel = true;
 					</div>
     				<?php
     				}
+    				else
+    				{
+    				?>
+    				<div>Estos cambios se aplican a toda la web de Steel Gamers, pero no al servidor de World of Warcraft.</div>
+    				<?php
+    				}
     				?>
     			</div>
     		</div>
@@ -284,7 +321,7 @@ $isControlPanel = true;
     					<div class="formItem formItemLabel">Nivel:</div>
     					<div class="formItem formItemCharacterData"><?php echo $character['level']; ?></div>
     					<div class="formItem formItemLabel">Cobres:</div>
-    					<div class="formItem formItemCharacterData"><?php echo $character['money']; ?></div>
+    					<div class="formItem formItemCharacterData"><?php echo intval(($character['money'] - ((($character['money'] % 10000) - ($character['money'] % 100)) / 100)) / 10000), " oros ", intval((($character['money'] % 10000) - ($character['money'] % 100)) / 100), " platas ", intval($character['money'] % 100), " cobres."; ?></div>
     					<div class="formItem formItemLabel">Online:</div>
     					<div class="formItem formItemCharacterData"><?php echo ($character['online'] == 1 ? "Si" : "No"); ?></div>
     				</div>
@@ -319,7 +356,48 @@ $isControlPanel = true;
 					<?php 
     				    }
     				}
+    				elseif ($user->IsPremium())
+    				{
 					?>
+					<h3>Bonificaciones Premium</h3>
+    				<div class="formSubLabel">Aqu&iacute; puedes activar o desactivar las bonificaciones premium, por si eres un aut&eacute;ntico jugador hardcore y no necesitas ventajas :)</div>
+    				<div class="formWrapper">
+        				<form action="controlpanel.php" method="post">
+        					<div class="formItem formItemLabel">Bonus de oro:</div>
+        					<div class="formItem">
+        						<select name="premiumGoldBonus">
+        							<option value="enabled" <?php echo $premiumData['goldBonus'] ? "selected" : ""; ?>>Activado</option>
+        							<option value="disabled" <?php echo !$premiumData['goldBonus'] ? "selected" : ""; ?>>Desactivado</option>
+        						</select>
+        					</div>
+        					<div class="formItem formItemLabel">Bonus de reputaci&oacute;n:</div>
+        					<div class="formItem">
+        						<select name="premiumReputationBonus">
+        							<option value="enabled" <?php echo $premiumData['reputationBonus'] ? "selected" : ""; ?>>Activado</option>
+        							<option value="disabled" <?php echo !$premiumData['reputationBonus'] ? "selected" : ""; ?>>Desactivado</option>
+        						</select>
+        					</div>
+        					<div class="formItem formItemLabel">Bonus de honor:</div>
+        					<div class="formItem">
+        						<select name="premiumHonorBonus">
+        							<option value="enabled" <?php echo $premiumData['honorBonus'] ? "selected" : ""; ?>>Activado</option>
+        							<option value="disabled" <?php echo !$premiumData['honorBonus'] ? "selected" : ""; ?>>Desactivado</option>
+        						</select>
+        					</div>
+        					<div class="formItem formItemLabel">Bonus de puntos de arena:</div>
+        					<div class="formItem">
+        						<select name="premiumArenaBonus">
+        							<option value="enabled" <?php echo $premiumData['arenaBonus'] ? "selected" : ""; ?>>Activado</option>
+        							<option value="disabled" <?php echo !$premiumData['arenaBonus'] ? "selected" : ""; ?>>Desactivado</option>
+        						</select>
+        					</div>
+        					<div class="formItem"><input class="button" type="submit" value="Modificar"></div>
+        				</form>
+    				</div>
+    				<div class="formErrorsWrapper">NOTA: Si est&aacute;s online, debes reconectarte al servidor para que estos cambios surtan efecto.</div>
+					<?php
+    				}
+    				?>
     			</div>
     		</div>
     		<?php 

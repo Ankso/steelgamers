@@ -77,8 +77,11 @@ class Statements
     const INSERT_USER_WOW_ACCOUNT_BANNED  = "INSERT INTO account_banned (id, bandate, unbandate, bannedby, banreason, active) VALUES(?, ?, ?, ?, ?, ?)";
     const UPDATE_USER_WOW_ACCOUNT_BANNED  = "UPDATE account_banned SET active = ? WHERE id = ?";
     const SELECT_TOTAL_ONLINE_USERS       = "SELECT COUNT(guid) AS totalOnline FROM characters WHERE online = 1";
-    const INSERT_USER_WOW_PREMIUM         = "INSERT INTO account_premium (account, premium_start, premium_end, gold_bonus, reputation_bonus, honor_bonus, arenapoints_bonus, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const SELECT_USER_WOW_PREMIUM         = "SELECT * FROM account_premium WHERE account = ?";
+    const SELECT_USER_WOW_PREMIUM_ACTIVE  = "SELECT * FROM account_premium WHERE account = ? AND active = 1";
+    const INSERT_USER_WOW_PREMIUM         = "INSERT INTO account_premium (account, premium_start, premium_end, gold_bonus, reputation_bonus, honor_bonus, arena_bonus, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     const UPDATE_USER_WOW_PREMIUM_ACTIVE  = "UPDATE account_premium SET active = ? WHERE account = ? AND active = ?";
+    const UPDATE_USER_WOW_PREMIUM_BONUS   = "UPDATE account_premium SET gold_bonus = ?, reputation_bonus = ?, honor_bonus = ?, arena_bonus = ? WHERE account = ?";
     // Minecraft news system
     const INSERT_MINECRAFT_NEWS           = "INSERT INTO minecraft_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_MINECRAFT_NEWS           = "SELECT * FROM minecraft_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
