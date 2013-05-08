@@ -122,7 +122,7 @@
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_ARMA)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
-    			<div><h3>Servidor ArmA 2 Wasteland</h3></div>
+    			<div><h3>Servidor ArmA 2</h3></div>
                 <div id="arma2ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
                 <div id="arma2ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
                 <div id="arma2ServerMapLabel" class="serverStatusLabel">Mapa: -</div>
