@@ -197,14 +197,18 @@ li {
     cursor:pointer;
 }
 
+#topBarSubMenuForos {
+    padding-left:35px;
+}
+
 .gameItem {
-    opacity:0.8;
+    opacity:0.6;
+    height:200px;
     padding-left:10px;
     padding-right:10px;
 }
 
 .gameItem:hover {
-    background-color:rgba(90, 90, 90, 0.5);
     opacity:1;
 }
 
@@ -232,6 +236,8 @@ li {
 
 .serverItem {
     opacity:0.8;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 .serverItem:hover {

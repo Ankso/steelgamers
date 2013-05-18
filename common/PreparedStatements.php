@@ -94,5 +94,13 @@ class Statements
     const INSERT_WOW_NEWS                 = "INSERT INTO wow_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_WOW_NEWS                 = "SELECT * FROM wow_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
     const DELETE_WOW_NEWS                 = "DELETE FROM wow_news WHERE id = ?";
+    // League of Legends news system
+    const INSERT_LOL_NEWS                 = "INSERT INTO lol_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_LOL_NEWS                 = "SELECT * FROM lol_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_LOL_NEWS                 = "DELETE FROM lol_news WHERE id = ?";
+    // DOTA 2 news system
+    const INSERT_DOTA_2_NEWS              = "INSERT INTO dota2_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_DOTA_2_NEWS              = "SELECT * FROM dota2_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
+    const DELETE_DOTA_2_NEWS              = "DELETE FROM dota2_news WHERE id = ?";
 }
 ?>

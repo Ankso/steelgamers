@@ -320,7 +320,7 @@ $isControlPanel = true;
     					<div class="formItem formItemCharacterData"><?php echo $character['name']; ?></div>
     					<div class="formItem formItemLabel">Nivel:</div>
     					<div class="formItem formItemCharacterData"><?php echo $character['level']; ?></div>
-    					<div class="formItem formItemLabel">Cobres:</div>
+    					<div class="formItem formItemLabel">Dinero:</div>
     					<div class="formItem formItemCharacterData"><?php echo intval(($character['money'] - ((($character['money'] % 10000) - ($character['money'] % 100)) / 100)) / 10000), " oros ", intval((($character['money'] % 10000) - ($character['money'] % 100)) / 100), " platas ", intval($character['money'] % 100), " cobres."; ?></div>
     					<div class="formItem formItemLabel">Online:</div>
     					<div class="formItem formItemCharacterData"><?php echo ($character['online'] == 1 ? "Si" : "No"); ?></div>

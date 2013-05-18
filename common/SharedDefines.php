@@ -45,27 +45,25 @@ define("USER_RANKS_COUNT", 8);
 define("GAME_NONE", -1);
 define("GAME_OVERALL", 0);
 define("GAME_ARMA2", 1);
-define("GAME_BATTLEFIELD_3", 2);
-define("GAME_DAYZ", 3);
-define("GAME_DOTA_2", 4);
+define("GAME_DAYZ", 2);
+define("GAME_DOTA_2", 3);
+define("GAME_LEAGUE_OF_LEGENDS", 4);
 define("GAME_MINECRAFT", 5);
 define("GAME_WAR_THUNDER", 6);
-define("GAME_WORLD_OF_TANKS", 7);
-define("GAME_WORLD_OF_WARCRAFT_TBC", 8);
-define("GAMES_COUNT", 8); // GAME_OVERALL is not really a game
+define("GAME_WORLD_OF_WARCRAFT_TBC", 7);
+define("GAMES_COUNT", 7); // GAME_OVERALL is not really a game
 /**
  * Array with the game names used in the webpage
  */
 $GAME_NAMES = array(
     0 => "Globales",
     1 => "Arma 2",
-    2 => "Battlefield 3",
-    3 => "DayZ",
-    4 => "DOTA 2",
-    5 => "Minecraft",
+    2 => "DayZ",
+    3 => "DOTA 2",
+    4 => "Minecraft",
+    5 => "League of Legends",
     6 => "War Thunder",
-    7 => "World of Tanks",
-    8 => "World of Warcraft: The Burning Crusade",
+    7 => "World of Warcraft: The Burning Crusade",
 );
 /**
  * Different design options when printing the page
