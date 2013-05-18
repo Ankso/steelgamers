@@ -37,8 +37,6 @@ if ($isAdmin)
         {
             $title = strip_tags($_POST['new_title'], HTML_ALLOWED_TAGS);
             $body = strip_tags($_POST['new_body'], HTML_ALLOWED_TAGS);
-            // Parse all links:
-            $body = preg_replace("#(http(s)?://)([a-z0-9_\-\?\/.=&~]*)#i", '<a href="http$2://$3" target="_blank">http$2://$3</a>', $body);
             // Parse youtube links and embed the video instead of the simple link:
             $body = preg_replace("#(<a href=\"http://(www.)?youtube.com)?/(v/|watch\?v=)([a-z0-9\-_~]+)([^<]+)(</a>)#i", '<div style="text-align:center;"><iframe width="640" height="480" src="http://www.youtube.com/embed/$4?wmode=transparent" frameborder="0" allowfullscreen></iframe></div><br />', $body);
         
