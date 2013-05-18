@@ -7,6 +7,9 @@
 // But it's more user friendly to have a separate config file with common changing variables.
 require($_SERVER['DOCUMENT_ROOT'] . "/../config/config.php");
 
+// Web version (implemented since 2013/05/18)
+define("STEEL_GAMERS_VERSION", "1.0.0");
+
 /**
  * General
  */

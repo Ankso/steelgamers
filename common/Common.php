@@ -94,126 +94,6 @@ function GenerateGravatarUrl($email, $size = 0)
 }
 
 /**
- * Prints the topbar for a specified user, or the default topbar if the user is not logged in.
- * @param User $user [DEPRECATED] The User class initilized, or NULL if the user is not logged in.
- */
-function PrintTopBar(/* $user */)
-{
-    echo '        <div class="topBarWrapper">
-        		<div class="topBarContainer">
-            		<div id="topBarItemJuegos" class="topBarItem">Juegos</div>
-            		<div id="topBarItemForos" class="topBarItem">Foros</div>
-            		<div id="topBarItemComunidad" class="topBarItem">Comunidad</div>
-            		<div id="topBarItemServidores" class="topBarItem">Servidores</div>
-            		<div id="facebookLikeButton" class="topBarItem facebook">
-						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FSteel-Gamers%2F578089155555355&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;font=verdana&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
-					</div>
-            	</div>
-            	<div class="subMenuWrapper">
-                	<div id="topBarSubMenuJuegos" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://arma2.steelgamers.es"><img src="/images/games/topbar_covers/arma2_cover.jpg"></a></div>
-            				<div>ArmA 2</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://battlefield.steelgamers.es"><img src="/images/games/topbar_covers/battlefield3_cover.jpg"></a></div>
-            				<div>Battlefield 3</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://dayz.steelgamers.es"><img src="/images/games/topbar_covers/dayz_cover.jpg"></a></div>
-            				<div>DayZ</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://dota2.steelgamers.es"><img src="/images/games/topbar_covers/dota2_cover.jpg"></a></div>
-            				<div>Dota 2</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://minecraft.steelgamers.es"><img src="/images/games/topbar_covers/minecraft_cover.jpg"></a></div>
-            				<div>Minecraft</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://warthunder.steelgamers.es"><img src="/images/games/topbar_covers/warthunder_cover.jpg"></a></div>
-            				<div>War Thunder</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://worldoftanks.steelgamers.es"><img src="/images/games/topbar_covers/worldoftanks_cover.jpg"></a></div>
-            				<div style="font-size:15px;">World of Tanks</div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://wow.steelgamers.es"><img src="/images/games/topbar_covers/wowtbc_cover.png"></a></div>
-            				<div style="font-size:12px;">World of Warcraft<br>(TBC)</div>
-            			</div>
-            		</div>
-            		<div id="topBarSubMenuForos" class="topBarSubMenu">
-            			<div>
-            				<a class="plainLink" href="http://foro.steelgamers.es/"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center; font-size:16px;">General</div></a>
-            			</div>
-            			<div style="margin-top:10px;">
-            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/arma">ArmA 2</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/battlefield-3">Battlefield 3</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dayz">DayZ</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dota-2">Dota 2</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/war-thunder">War Thunder</a></div>
-                			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-tanks">World of Tanks</a></div>
-            				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>
-                		</div>
-            		</div>
-            		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/members.php">Miembros</a></div>
-            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/rules.php">Normas</a></div>
-            			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/faq.php">FAQ</a></div>
-            			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
-            		</div>
-            		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-            			<div class="topBarSubMenuItem gameItem" style="margin-top:20px;">
-            				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem" style="margin-top:7px;">
-            				<div><a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php"><img src="/images/servers/topbar/sgc1_arma2.png"></a></div>
-            			</div>
-            			<div class="topBarSubMenuItem gameItem">
-            				<div><a href="http://wow.steelgamers.es/servidores/sgc_wowtbc.php"><img src="/images/servers/topbar/sgc_wowtbc.png"></a></div>
-            			</div>
-            		</div>
-        		</div>
-    		</div>';
-}
-
-/**
- * Prints the bottom bar
- */
-function PrintBottomBar()
-{
-    echo '<div class="bottomBarContainer">
-		<div class="bottomBarLeft">&copy; 2013 Steel Gamers Community.<br>Todos los derechos reservados.</div>
-		<div class="bottomBarCenter"><a target="_blank" href="http://www.w3.org/html/wg/drafts/html/master/"><img style="margin-top:4px;" src="/images/html5_logo_32.png"></a></div>
-		<div class="bottomBarRight">
-			<div class="bottomBarRightText">Steel Gamers recomienda: </div>
-			<div class="bottomBarRightIcons">
-				<a target="_blank" href="http://www.mozilla.org"><img style="margin-right:7px; width:31px;" src="/images/firefox_32.png"></a>
-				<a target="_blank" href="http://google.com/chrome"><img src="/images/chrome_32.png"></a>
-			</div>
-		</div>
-    </div>';
-}
-
-/**
- * Prints the TeamSpeak 3 status basic template.
- */
-function PrintTs3Status()
-{
-    echo '		<div class="rightItem">
-        			<div class="serverStatusContainer">
-            			<div><h3>Servidor TeamSpeak 3</h3></div>
-                        <div id="ts3ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
-        				<div id="ts3ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-        				<div class="serverStatusLabel">steelgamers.es:9987</div>
-					</div>
-				</div>';
-}
-
-/**
  * Obtains basic information about the Team Speak Server.
  * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
  * @return array Return an array with basic data about the server status.
@@ -301,21 +181,6 @@ function GetWowTbcServerStatus()
 }
 
 /**
- * Prints the Mitracraft server status basic template.
- */
-function PrintMitracraftServerStatus()
-{
-    echo '		<div class="rightItem">
-        			<div class="serverStatusContainer">
-            			<div><h3>Servidor Mitracraft</h3></div>
-                        <div id="mitracraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
-                        <div id="mitracraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-        				<div class="serverStatusLabel">mitracraft.es</div>
-					</div>
-				</div>';
-}
-
-/**
  * Obtains basic information about the Mitracraft server.
  * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
  * @return array Returns an array with basic data about the server status.
@@ -354,27 +219,12 @@ function GetMitracraftServerStatus()
 }
 
 /**
- * Prints the ArmA 2 server status basic template.
- */
-function PrintArma2ServerStatus()
-{
-    echo '		<div class="rightItem">
-        			<div class="serverStatusContainer">
-            			<div><h3>Servidor ArmA 2 Wasteland</h3></div>
-                        <div id="arma2ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
-                        <div id="arma2ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-                        <div id="arma2ServerMapLabel" class="serverStatusLabel">Mapa: -</div>
-        				<div class="serverStatusLabel">arma2server.steelgamers.es:2302</div>
-					</div>
-				</div>';
-}
-
-/**
- * Obtains basic information about the Mitracraft server.
+ * Obtains basic information about the ArmA 2 server.
  * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
+ * @param integer $port Port number of the server instance that must be checked.
  * @return array Returns an array with basic data about the server status.
  */
-function GetArma2ServerStatus()
+function GetArma2ServerStatus($port)
 {
     $arma2ServerStatus = array(
         'isOnline'      => false,
@@ -382,7 +232,7 @@ function GetArma2ServerStatus()
         'currentOnline' => 0,
         'error'         => false,
     );
-    $sock = fsockopen("udp://arma2server.steelgamers.es", 2302, $errno, $errdesc);
+    $sock = fsockopen("udp://arma2server.steelgamers.es", $port, $errno, $errdesc);
     fwrite($sock, "\xFE\xFD\x09\xFF\xFF\xFF\x01");
     $challenge_packet = fread($sock, 4096);
     
@@ -483,16 +333,6 @@ function GetArma2ServerStatus()
     */
     
     return $arma2ServerStatus;
-}
-
-/**
- * Prints the Twitter Widget
- * @param boolean $isDark [OPTIONAL] If the widget must have dark background or not.
- */
-function PrintTwitterWidget($isDark = true)
-{
-    echo '<div style="margin-top:10px;"><a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" ', $isDark ? 'data-theme="dark"' : '', 'data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>';
 }
 
 /**

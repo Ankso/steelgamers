@@ -123,10 +123,14 @@
 		<div class="rightItem">
 			<div class="serverStatusContainer">
     			<div><h3>Servidor ArmA 2</h3></div>
-                <div id="arma2ServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
-                <div id="arma2ServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-                <div id="arma2ServerMapLabel" class="serverStatusLabel">Mapa: -</div>
+                <div id="arma2ServerStatusLabelWasteland" class="serverStatus unknown">Wasteland...</div>
+                <div id="arma2ServerGamersOnlineLabelWasteland" class="serverStatusLabel">Gamers conectados: -/-</div>
+                <div id="arma2ServerMapLabelWasteland" class="serverStatusLabel">Mapa: -</div>
 				<div class="serverStatusLabel">arma2server.steelgamers.es:2302</div>
+				<div id="arma2ServerStatusLabelWarfare" class="serverStatus unknown" style="margin-top:10px;">Warfare BE...</div>
+                <div id="arma2ServerGamersOnlineLabelWarfare" class="serverStatusLabel">Gamers conectados: -/-</div>
+                <div id="arma2ServerMapLabelWarfare" class="serverStatusLabel">Mapa: -</div>
+				<div class="serverStatusLabel">arma2server.steelgamers.es:2332</div>
 				<?php echo $_SERVER['SERVER_NAME']; ?>
 			</div>
 		</div>

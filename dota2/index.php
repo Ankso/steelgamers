@@ -55,11 +55,11 @@ if ($result = $db->Execute(Statements::SELECT_DOTA_2_NEWS . MAX_DISPLAYED_NEWS))
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 	<META NAME="DESCRIPTION" CONTENT="Zona dedicada a World of Warcraft dentro de la infraestructura de la comunidad Steel Gamers.">
 	<title>DOTA 2 - Steel Gamers</title>
-	<link type="text/css" rel="stylesheet" href="css/main.css">
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="js/jquery.fancybox-1.3.4.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 </head>
 <body>
 <?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>

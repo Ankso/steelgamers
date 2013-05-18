@@ -36,7 +36,7 @@ $(document).ready(function() {
                 $("div.topBarSubMenu").fadeOut(200);
                 setTimeout(function() {
                     $("div#topBarSubMenu" + category).fadeIn(200);
-                }, 200);
+                }, 205);
                 $("div#topBarItem" + category).attr("class", "topBarItemSelected");
             }
             else
@@ -114,7 +114,7 @@ function GetWowTbcServerStatus()
     $.ajax({
         dataType: "jsonp",
         data: "",
-        url: "http://steelgamers.es/ajax/wow_tbc_server_status.php?callback=?",
+        url: "http://cdn.steelgamers.es/ajax/wow_tbc_server_status.php?callback=?",
         success: function(status) {
             if (status.error)
             {
@@ -147,7 +147,7 @@ function GetTs3ServerStatus()
     $.ajax({
         dataType: "jsonp",
         data: "",
-        url: "http://steelgamers.es/ajax/ts3_server_status.php?callback=?",
+        url: "http://cdn.steelgamers.es/ajax/ts3_server_status.php?callback=?",
         success: function(status) {
             if (status.error)
             {
@@ -180,7 +180,7 @@ function GetMitracraftServerStatus()
     $.ajax({
         dataType: "jsonp",
         data: "",
-        url: "http://steelgamers.es/ajax/mitracraft_server_status.php?callback=?",
+        url: "http://cdn.steelgamers.es/ajax/mitracraft_server_status.php?callback=?",
         success: function(status) {
             if (status.error)
             {
@@ -213,30 +213,52 @@ function GetArma2ServerStatus()
     $.ajax({
         dataType: "jsonp",
         data: "",
-        url: "http://steelgamers.es/ajax/arma2_server_status.php?callback=?",
+        url: "http://cdn.steelgamers.es/ajax/arma2_server_status.php?callback=?",
         success: function(status) {
-            if (status.error)
+            if (status.wasteland.error)
             {
-                $("div#arma2ServerStatusLabel").text("Desconocido");
+                $("div#arma2ServerStatusLabelWasteland").text("Wasteland");
             }
             else
             {
-                if (status.isOnline)
+                if (status.wasteland.isOnline)
                 {
-                    $("div#arma2ServerStatusLabel").text("Online");
-                    $("div#arma2ServerStatusLabel").attr("class", "serverStatus online");
-                    $("div#arma2ServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
-                    $("div#arma2ServerMapLabel").text("Mapa: " + status.map.substring(0, 1).toUpperCase() + status.map.substring(1));
+                    $("div#arma2ServerStatusLabelWasteland").text("Wasteland");
+                    $("div#arma2ServerStatusLabelWasteland").attr("class", "serverStatus online");
+                    $("div#arma2ServerGamersOnlineLabelWasteland").text("Gamers conectados: " + status.wasteland.currentOnline + "/" + status.wasteland.maxOnline);
+                    $("div#arma2ServerMapLabelWasteland").text("Mapa: " + status.wasteland.map.substring(0, 1).toUpperCase() + status.wasteland.map.substring(1));
                 }
                 else
                 {
-                    $("div#arma2ServerStatusLabel").text("Offline");
-                    $("div#arma2ServerStatusLabel").attr("class", "serverStatus offline");
+                    $("div#arma2ServerStatusLabelWasteland").text("Wasteland");
+                    $("div#arma2ServerStatusLabelWasteland").attr("class", "serverStatus offline");
                 }
+                
+            }
+            if (status.warfare.error)
+            {
+                $("div#arma2ServerStatusLabelWarfare").text("Warfare");
+            }
+            else
+            {
+                if (status.warfare.isOnline)
+                {
+                    $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
+                    $("div#arma2ServerStatusLabelWarfare").attr("class", "serverStatus online");
+                    $("div#arma2ServerGamersOnlineLabelWarfare").text("Gamers conectados: " + status.warfare.currentOnline + "/" + status.warfare.maxOnline);
+                    $("div#arma2ServerMapLabelWarfare").text("Mapa: " + status.warfare.map.substring(0, 1).toUpperCase() + status.warfare.map.substring(1));
+                }
+                else
+                {
+                    $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
+                    $("div#arma2ServerStatusLabelWarfare").attr("class", "serverStatus offline");
+                }
+                
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            $("div#arma2ServerStatusLabel").text("Sin respuesta");
+            $("div#arma2ServerStatusLabelWasteland").text("Wasteland");
+            $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
         },
         timeout: 5000
     });
