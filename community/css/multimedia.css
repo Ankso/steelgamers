@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.newContainer {
+    margin-top:10px;
+}
+
+.multimediaItem {
+	float:left;
+    margin-right:10px;
+    margin-top:15px;
+    height:125px;
+}
+
+.multimediaThumbnail {
+    height:94px;
+    width:140px;
+    border:2px #2B2B2B solid;
+}
+
+.metaData {
+    width:140px;
+    font-size:11px;
+    text-align:center;
+}
+
+.multimediaYoutubePlay {
+    margin-left:-99px;
+    margin-bottom:22px;
+}

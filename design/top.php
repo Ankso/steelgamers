@@ -55,6 +55,7 @@
 		</div>
 		<div id="topBarSubMenuComunidad" class="topBarSubMenu">
 			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/members.php">Miembros</a></div>
+			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/multimedia.php">Multimedia</a></div>
 			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/rules.php">Normas</a></div>
 			<div class="topBarSubMenuItem communityItem"><a class="plainLink" href="http://steelgamers.es/faq.php">FAQ</a></div>
 			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>

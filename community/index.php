@@ -84,11 +84,12 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 <head>
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 	<META NAME="DESCRIPTION" CONTENT="Steel Gamers es una comunidad de jugones que posee una gran infraestructura, desde servidores privados de juegos como World of Warcraft, Minecraft o ArmA hasta foros o TeamSpeak 3. Diseñada por Gamers, para Gamers.">
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/metadata.php"); ?>
 	<title>Steel Gamers Community</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 </head>
 <body>

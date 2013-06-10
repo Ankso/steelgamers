@@ -63,6 +63,10 @@ class Statements
     const INSERT_USERS_TS3_TOKEN          = "INSERT INTO users_ts3_token VALUES (?, ?)";
     const SELECT_USERS_TS3_TOKEN          = "SELECT token FROM users_ts3_token WHERE user_id = ?";
     const DELETE_USERS_TS3_TOKEN          = "DELETE FROM users_ts3_token WHERE user_id = ?";
+    // Multimedia system related queries
+    const SELECT_MULTIMEDIA               = "SELECT * FROM multimedia ORDER BY guid ASC LIMIT 100";
+    const INSERT_MULTIMEDIA               = "INSERT INTO multimedia (uploader, url, media_thumbnail) VALUES (?, ?, ?)";
+    const SELECT_USER_MULTIMEDIA          = "SELECT * FROM multimedia WHERE uploader = ? ORDER BY guid ASC";
     // Minecraft servers network specific queries
     const SELECT_USER_CHARACTERS          = "SELECT * FROM xauth_account WHERE email = ?";
     const SELECT_USER_CHARACTER_BY_NAME   = "SELECT * FROM xauth_account WHERE playername = ?";

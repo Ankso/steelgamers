@@ -263,3 +263,27 @@ function GetArma2ServerStatus()
         timeout: 5000
     });
 }
+
+function LatinToHtml(input) {
+    var chars = {
+        "á" : "&aacute;",
+        "Á" : "&Aacute;",
+        "é" : "&eacute;",
+        "É" : "&Eacute;",
+        "í" : "&iacute;",
+        "Í" : "&Iacute;",
+        "ó" : "&oacute;",
+        "Ó" : "&Oacute;",
+        "ú" : "&uacute;",
+        "Ú" : "&Uacute;",
+        "ñ" : "&ntilde;",
+        "Ñ" : "&Ntilde;",
+        "ü" : "&uuml;",
+        "Ü" : "&Uuml;"
+    };
+    return input.replace(/[^ -~]/g, function(chr) {
+        return (chr in chars) 
+          ? chars[chr]
+          : "&#"+chr.charCodeAt(0)+";";
+    });
+}

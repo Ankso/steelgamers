@@ -2,7 +2,6 @@
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/SharedDefines.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/PreparedStatements.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
-require($_SERVER['DOCUMENT_ROOT'] . "/../common/Functions.jsConnect.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Layout.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/SessionHandler.Class.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/../classes/Database.Class.php");
@@ -32,10 +31,12 @@ if (isset($_SESSION['userId']))
         exit();
     }
 }
+// Initialize Layout class, that stores design options.
 $_Layout = new Layout();
+// Other initializations
 $db = new Database($DATABASES['USERS']);
 $news = array();
-if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
+if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 {
     while ($row = $result->fetch_assoc())
     {
@@ -53,42 +54,76 @@ if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))
 <html>
 <head>
 	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
-	<META NAME="DESCRIPTION" CONTENT="Zona dedicada a la saga ArmA dentro de la infraestructura de la comunidad Steel Gamers.">
-	<title>ArmA 2 - Steel Gamers</title>
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/metadata.php"); ?>
+	<title>Steel Gamers - Multimedia</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
+	<link type="text/css" rel="stylesheet" href="css/multimedia.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
+	<link type="text/css" rel="stylesheet" href="css/jquery.fancybox.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox.pack.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("a.multimediaHref").fancybox();
+		});
+	</script>
 </head>
 <body>
 <?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
-<div class="backToMainPageContainer">
-	<a href="http://steelgamers.es"><img src="/images/back_logo.png"></a>
-</div>
 <div class="wrapper">
 	<div class="bannerContainer">
-		<a href="/index.php"><img class="bannerLabelImg" src="images/banner_label.png"></a>
+		<a href="index.php"><img class="bannerLabelImg" src="images/banner.png"></a>
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">&Uacute;ltimas noticias</div>
-    		<?php 
-    		foreach ($news as $i => $new)
-    		{
-    		?>
-    		<div class="new">
-    			<h1><?php echo $new['title']; ?></h1>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Multimedia</div>
+    		<?php if ($loggedIn) { ?>
+			<div class="new">
     			<div class="newContainer">
-    				<?php echo $new['body']; ?>
-    				<div class="newDetails" data-newId="<?php echo $new['id']; ?>">Por <b><?php echo $new['writer']; ?></b> <span class="timestamp" data-timestamp="<?php echo strtotime($new['timestamp']); ?>">desconocido</span></div>
+    				Puedes subir una imagen o screenshot desde tu <a href="controlpanel.php">Panel de control</a>.
     			</div>
     		</div>
     		<?php
-            }
-            ?>
-    	</div>
+    		}
+    		if (isset($_GET['uploader']))
+    		    $result = $db->ExecuteStmt(Statements::SELECT_USER_MULTIMEDIA, $db->BuildStmtArray("s", $_GET['uploader']));
+    		else
+    		    $result = $db->Execute(Statements::SELECT_MULTIMEDIA);
+    		if ($result)
+    		{
+    		    if ($result->num_rows == 0)
+    		        echo '<div style="float:left; margin-top:10px; text-align:center; width:100%;">No hay elementos multimedia por el momento.</div>';
+    		    else
+    		    {
+    		        while ($row = $result->fetch_assoc())
+    		        {
+    		?>
+    		<div class="multimediaItem">
+    			<a class="multimediaHref plainLink" href="<?php echo $row['url']; ?>">
+    				<img class="multimediaThumbnail" src="<?php echo $row['media_thumbnail']; ?>">
+    			<?php 
+    			    if (parse_url($row['url'], PHP_URL_HOST) == "www.youtube.com")
+    			    {
+    			?>
+    			<img class="multimediaYoutubePlay" src="images/youtube.png">
+    			<?php
+    			    }
+    			?>
+    			</a>
+    			<div class="metaData">Por <b><?php echo $row['uploader']; ?></b> el <?php echo date("d-m-Y", strtotime($row['upload_date'])); ?></div>
+    		</div>
+    		<?php
+    		        }
+    		    }
+    		?>
+    		<?php 
+    		}
+    		else
+    		    echo '<div style="float:left; margin-top:10px; text-align:center; width:100%;">No hay elementos multimedia por el momento.</div>';
+    		?>
+		</div>
     	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/right.php"); ?>
 	</div>
 	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/footer.php"); ?>

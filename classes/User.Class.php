@@ -634,6 +634,19 @@ Class User
         return false;
     }
     
+    /**
+     * Adds a multimedia item to the database, uploaded by this user.
+     * @param string $url The url of the item.
+     * @param string $thumbNail The url of the item's thumbnail, for example for youtube videos.
+     * @return boolean Returns true on success, else false.
+     */
+    public function UploadMultimedia($url, $thumbNail)
+    {
+        if ($this->_db->ExecuteStmt(Statements::INSERT_MULTIMEDIA, $this->_db->BuildStmtArray("sss", $this->GetUsername(), $url, $thumbNail)))
+            return true;
+        return false;
+    }
+    
     private $_id;                // The user's unique ID
     private $_username;          // The user's username (nickname)
     private $_passwordSha1;      // The encripted user's password

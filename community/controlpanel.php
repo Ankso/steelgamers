@@ -31,6 +31,7 @@ $errors = array(
     'password_check' => ERROR_NONE,
     'email'          => ERROR_NONE,
     'server'         => ERROR_NONE,
+    'multimedia'     => ERROR_NONE,
 );
 $user = new User($_SESSION['userId']);
 if ($user->IsBanned())
@@ -107,6 +108,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
         else
             $errors['email'] = ERROR_INVALID;
     }
+    // User wants to upload an image or video to the media section
+    if (isset($_POST['multimedia']))
+    {
+        if (IsUrl($_POST['multimedia']))
+        {
+            if (IsImage($_POST['multimedia']))
+                $user->UploadMultimedia($_POST['multimedia'], $_POST['multimedia']);
+            else
+            {
+                // Check if it is a youtube link
+                $url_host = parse_url($_POST['multimedia'], PHP_URL_HOST);
+                if ($url_host == "www.youtube.com" || $url_host == "youtube.com")
+                {
+                    parse_str(parse_url($_POST['multimedia'], PHP_URL_QUERY), $url_parts);
+                    $user->UploadMultimedia($_POST['multimedia'], "http://img.youtube.com/vi/" . $url_parts['v'] . "/default.jpg");
+                }
+                else
+                    $errors['multimedia'] = ERROR_INVALID;
+            }
+        }
+        else
+            $errors['multimedia'] = ERROR_INVALID;
+    }
 }
 // Admins only code
 if ($isAdmin)
@@ -165,12 +189,13 @@ if ($isAdmin)
 <!DOCTYPE html>
 <html>
 <head>
+	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/metadata.php"); ?>
 	<title>Panel de control - Steel Gamers</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<link type="text/css" rel="stylesheet" href="css/controlpanel.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox-1.3.4.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -257,6 +282,23 @@ if ($isAdmin)
     				<?php
     				}
     				?>
+    			</div>
+    		</div>
+    		<div class="new">
+    			<h1>Multimedia</h1>
+    			<div class="newContainer">
+        			Desde aqu&iacute; puedes enviarnos im&aacute;genes o v&iacute;deos para que sean mostrados en el apartado multimedia de la p&aacute;gina web. Recuerda que las im&aacute;genes deben respetar nuestros <a href="http://steelgamers.es/docs/terminos_y_condiciones.html">T&eacute;rminos y Condiciones de Uso</a>. Tambi&eacute;n puedes ver tus subidas desde <a href="multimedia.php?uploader=<?php echo $user->GetUsername(); ?>">aqu&iacute;</a>.
+    				<form style="margin-top:20px;" action="controlpanel.php" method="post">
+    					<input type="hidden" name="from" value="controlpanel">
+            			<div class="formItem formItemLabel">URL de la imagen o v&iacute;deo:</div>
+                		<div class="formItem"><input type="text" name="multimedia" style="width:300px;"></div>
+                		<div class="formItem"><input class="button" type="submit" value="Enviar"></div>
+            		</form>
+            		<?php if (isset($_POST['multimedia']) && $errors['multimedia'] != ERROR_NONE) { ?>
+            		<span style="color:#FF0000;">Se ha producido un eror. Posiblemente la url sea inv&aacute;lida. Debe ser la direcci&oacute;n directa a la imagen, o un link a youtube.</span>
+            		<?php } elseif (isset($_POST['multimedia'])) { ?>
+            		<span style="color:#00FF00;">&iexcl;Operaci&oacute;n realizada con &eacute;xito!</span>
+            		<?php } ?>
     			</div>
     		</div>
     		<div class="new">

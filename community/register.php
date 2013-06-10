@@ -233,9 +233,9 @@ $_Layout = new Layout(true, false, false, false, false, true, true);
 	<link type="text/css" rel="stylesheet" href="css/fancyboxjQuery.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<link type="text/css" rel="stylesheet" href="css/register.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {

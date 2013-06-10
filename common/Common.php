@@ -555,4 +555,58 @@ function cut_byte(&$buffer, $length)
     $buffer = substr($buffer, $length);
     return $string;
 }
+
+/**
+ * Checks if the given url is valid.
+ * @param string $url
+ * @return boolean True if the url exists.
+ */
+function IsUrl($url)
+{
+    $file_headers = @get_headers($url);
+    if($file_headers[0] == 'HTTP/1.1 404 Not Found')
+        return false;
+    else 
+        return true;
+}
+
+/**
+ * Determines if the given url is valid and if it is an image.
+ * @param url string
+ * @return boolean True if the url is an image, else false.
+ */
+function IsImage($url)
+{
+    $params = array(
+    	'http' => array(
+			'method' => 'HEAD'
+        )
+    );
+    $ctx = stream_context_create($params);
+    $fp = @fopen($url, 'rb', false, $ctx);
+    if (!$fp) 
+        return false;  // Problem with url
+
+    $meta = stream_get_meta_data($fp);
+    if ($meta === false)
+    {
+        fclose($fp);
+        return false;  // Problem reading data from url
+    }
+
+    $wrapper_data = $meta["wrapper_data"];
+    if(is_array($wrapper_data))
+    {
+        foreach(array_keys($wrapper_data) as $hh)
+        {
+            if (substr($wrapper_data[$hh], 0, 19) == "Content-Type: image") // strlen("Content-Type: image") == 19 
+            {
+                fclose($fp);
+                return true;
+            }
+        }
+    }
+    fclose($fp);
+    return false;
+}
 ?>
