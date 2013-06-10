@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
                 if ($url_host == "www.youtube.com" || $url_host == "youtube.com")
                 {
                     parse_str(parse_url($_POST['multimedia'], PHP_URL_QUERY), $url_parts);
-                    $user->UploadMultimedia($_POST['multimedia'], "http://img.youtube.com/vi/" . $url_parts['v'] . "/default.jpg");
+                    $user->UploadMultimedia("http://www.youtube.com/embed/" . $url_parts['v'], "http://img.youtube.com/vi/" . $url_parts['v'] . "/default.jpg");
                 }
                 else
                     $errors['multimedia'] = ERROR_INVALID;
