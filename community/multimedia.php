@@ -110,17 +110,23 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     		        {
     		?>
     		<div class="multimediaItem">
-    			<a class="multimediaLink plainLink" rel="multimedia" href="<?php echo $row['url']; ?>">
-    				<img class="multimediaThumbnail" src="<?php echo $row['media_thumbnail']; ?>">
     			<?php 
     			    if (parse_url($row['url'], PHP_URL_HOST) == "www.youtube.com")
     			    {
     			?>
-    			<img class="multimediaYoutubePlay" src="images/youtube.png">
+    			<a class="multimediaLink plainLink fancybox.iframe" rel="multimedia" href="<?php echo $row['url']; ?>">
+    				<img class="multimediaThumbnail" src="<?php echo $row['media_thumbnail']; ?>">
+    				<img class="multimediaYoutubePlay" src="images/youtube.png">
+    			</a>
+    			<?php
+    			    } else {
+    			?>
+    			<a class="multimediaLink plainLink fancybox.image" rel="multimedia" href="<?php echo $row['url']; ?>">
+    				<img class="multimediaThumbnail" src="<?php echo $row['media_thumbnail']; ?>">
+    			</a>
     			<?php
     			    }
     			?>
-    			</a>
     			<div class="metaData">Por <b><?php echo $row['uploader']; ?></b> el <?php echo date("d-m-Y", strtotime($row['upload_date'])); ?></div>
     		</div>
     		<?php
