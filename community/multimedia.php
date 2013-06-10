@@ -62,10 +62,19 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.fancybox-media.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("a.multimediaHref").fancybox();
+			$("a.multimediaLink").fancybox();
+			$("img.multimediaThumbnail").click(function(event) {
+				event.preventDefault();
+				$(event.target.parentElement).trigger("click");
+			});
+			$("img.multimediaYoutubePlay").click(function(event) {
+				event.preventDefault();
+				$(event.target.parentElement).trigger("click");
+			});
 		});
 	</script>
 </head>
@@ -101,7 +110,7 @@ if ($result = $db->Execute(Statements::SELECT_LATEST_NEWS . MAX_DISPLAYED_NEWS))
     		        {
     		?>
     		<div class="multimediaItem">
-    			<a class="multimediaHref plainLink" href="<?php echo $row['url']; ?>">
+    			<a class="multimediaLink plainLink" rel="multimedia" href="<?php echo $row['url']; ?>">
     				<img class="multimediaThumbnail" src="<?php echo $row['media_thumbnail']; ?>">
     			<?php 
     			    if (parse_url($row['url'], PHP_URL_HOST) == "www.youtube.com")
