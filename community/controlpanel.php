@@ -309,7 +309,7 @@ if ($isAdmin)
             		{
             		?>
         			<div class="formItem">Desde aqu&iacute; puedes conectarte por primera vez a nuestro servidor de TeamSpeak 3, o si tu rango ha cambiado, puedes obtener los nuevos permisos haciendo click en el bot&oacute;n. <b>&iexcl;Recuerda a&ntilde;adir el servidor a tus bookmarks!</b></div>
-            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Sincronizar</a></div>
+            		<div class="formItem" style="margin-top:15px;"><a class="button" href="ts3server://steelgamers.es?nickname=[SGC]%20<?php echo $user->GetUsername(); ?>&addbookmark=Steel%20Gamers%20Community&token=<?php echo $ts3Token; ?>">Sincronizar</a></div>
             		<?php
             		}
             		else
