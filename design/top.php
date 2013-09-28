@@ -61,7 +61,7 @@
 			<div class="topBarSubMenuItem communityItem">Noticias antiguas</div>
 		</div>
 		<div id="topBarSubMenuServidores" class="topBarSubMenu">
-			<div class="topBarSubMenuItem serverItem" style="margin-top:5px;">
+			<div class="topBarSubMenuItem serverItem" style="margin-top:9px;">
 				<div><a href="http://minecraft.steelgamers.es/servidores/sgc1_minecraft.php"><img src="/images/servers/topbar/minecraft_logo.png"></a></div>
 			</div>
 			<div class="topBarSubMenuItem serverItem" style="margin-top:7px;">

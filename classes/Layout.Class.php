@@ -10,7 +10,7 @@ class Layout
      * @param boolean $showLogin True if you want to show the login box.
      * @param boolean $showTs3 True if you want to show the TeamSpeak3 server status box.
      * @param boolean $showWowTbc True if you want to show the WoW TBC server status box.
-     * @param boolean $showMitracraft True if you want to show the Mitracraft server status box.
+     * @param boolean $showMinecraft True if you want to show the Minecraft server status box.
      * @param boolean $showArma True if you want to show the ArmA 2 server status box.
      * @param boolean $showTwitter True if you want to show the Twitter widget.
      * @param boolean $showRecoverPassword True if you want to show the recover password box.
@@ -19,7 +19,7 @@ class Layout
         $showLogin      = true,
         $showTs3        = true,
         $showWowTbc     = true,
-        $showMitracraft = true,
+        $showMinecraft  = true,
         $showArma       = true,
         $showTwitter    = true,
         $showRecoverPassword = false)
@@ -28,7 +28,7 @@ class Layout
             LAYOUT_SHOW_LOGIN      => $showLogin,
             LAYOUT_SHOW_TS3        => $showTs3,
             LAYOUT_SHOW_WOW_TBC    => $showWowTbc,
-            LAYOUT_SHOW_MITRACRAFT => $showMitracraft,
+            LAYOUT_SHOW_MINECRAFT  => $showMinecraft,
             LAYOUT_SHOW_ARMA       => $showArma,
             LAYOUT_SHOW_TWITTER    => $showTwitter,
             LAYOUT_SHOW_RECOVER_PASSWORD => $showRecoverPassword,
