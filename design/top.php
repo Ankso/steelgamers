@@ -48,7 +48,7 @@
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dayz">DayZ</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dota-2">Dota 2</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/league-of-legends">League of Legends</a></div>
-    			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://mitracraft.es">Minecraft</a></div>
+    			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/minecraft">Minecraft</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/war-thunder">War Thunder</a></div>
 				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>
     		</div>
@@ -62,7 +62,7 @@
 		</div>
 		<div id="topBarSubMenuServidores" class="topBarSubMenu">
 			<div class="topBarSubMenuItem serverItem" style="margin-top:20px;">
-				<div><a href="http://minecraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/mitracraft.png"></a></div>
+				<div><a href="http://minecraft.steelgamers.es/servidores/sgc1_minecraft.php"><img src="/images/servers/topbar/minecraft_logo.png"></a></div>
 			</div>
 			<div class="topBarSubMenuItem serverItem" style="margin-top:7px;">
 				<div><a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php"><img src="/images/servers/topbar/sgc1_arma2.png"></a></div>

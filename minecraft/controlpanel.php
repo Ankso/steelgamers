@@ -298,21 +298,22 @@ $isControlPanel = true;
             		<div class="formItem formItemInput"><?php echo $RANK_NAMES[$userRank]; ?></div>
         		</div>
     		</div>
+    		<!-- 
     		<div class="new">
     			<h1>Tus personajes - Red Steel Gamers</h1>
     			<div class="newContainer">
     				Aqu&iacute; puedes gestionar todos los personajes de los diferentes servidores de Minecraft que forman parte de la red Steel Gamers.
     				<h2>Servidor: Mitracraft</h2>
-    				<?php
+    				<?php /*
     				if (isset($_POST['newCharacterName']) || isset($_POST['retrieveCharacterName']))
     				{
         				$text = "";
         				if ($errors['newCharacter'] == ERROR_NONE && $errors['newCharacterPass'] == ERROR_NONE && $errors['newCharacterCheck'] == ERROR_NONE
         				    && $errors['retrieveCharacter'] == ERROR_NONE)
         				{
-    				?>
+    				*/?>
     				<div class="minecraftError" style="padding:10px; margin-top:10px; margin-bottom:10px; border-radius:5px; background-color:#00FF00;">Operaci&oacute;n realizada con &eacute;xito.</div>
-    				<?php
+    				<?php /*
         				}
         				else
         				{
@@ -330,22 +331,22 @@ $isControlPanel = true;
             				    $text = "No se ha encontrado al personaje \"" . $_POST['retrieveCharacterName'] . "\" en la base de datos.";
             				elseif ($errors['retrieveCharacter'] == ERROR_LOGIN_PASSWORD)
             				    $text = "Contrase&ntilde;a incorrecta. Recuerda que tiene que ser la clave introducida al crear el personaje dentro del servidor.";
-    				?>
+    				*/?>
     				<div class="minecraftOk" style="padding:10px; margin-top:10px; margin-bottom:10px; border-radius:5px; background-color:#FF0000;">Se ha producido un error: <?php echo $text; ?></div>
-    				<?php
+    				<?php /*
         				}
     				}
     				if (count($characters) === 0)
     				{
-    				?>
+    				*/?>
     				<div>No tienes ning&uacute;n personaje en este servidor (o no tienes ning&uacute;n personaje asociado a la red Steel Gamers).</div>
     				<?php
-    				}
+    				/*}
     				else
     				{
         				foreach ($characters as $i => $character)
         				{
-    				?>
+    				*/?>
 					<div class="characterDataContainer">
     					<div class="formItem formItemLabel">Personaje:</div>
     					<div class="formItem formItemCharacterData"><?php echo $character['name']; ?> [ID: <?php echo $character['id']; ?>]</div>
@@ -354,10 +355,10 @@ $isControlPanel = true;
     					<div class="formItem formItemLabel">&Uacute;ltima conexi&oacute;n:</div>
     					<div class="formItem formItemCharacterData"><?php echo ($character['lastLoginDate'] == NULL || $character['lastLoginIp'] == NULL) ? "No hay datos" : date("d-m-Y H:i:s", strtotime($character['lastLoginDate'])) . " desde " . $character['lastLoginIp']; ?></div>
 					</div>
-    				<?php
+    				<?php /*
     				    }
     				}
-    				?>
+    				*/?>
     				<h3>Crear nuevo personaje</h3>
     				<form class="formBottomBorder" action="controlpanel.php" method="post">
     					<div class="formItem formItemLabel">Nombre de personaje:</div>
@@ -379,6 +380,7 @@ $isControlPanel = true;
     				</form>
     			</div>
     		</div>
+    		-->
     		<?php 
     		if ($isAdmin)
     		{
