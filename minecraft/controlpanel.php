@@ -171,6 +171,7 @@ if (!$isAdmin)
 $userRank = $user->GetRanks(GAME_MINECRAFT);
 // This operations are here because this is specific for each of the minecraft servers
 // Use the previous connection if it's available
+/*
 if (isset($minecraftDb))
     $db = $minecraftDb;
 else
@@ -189,6 +190,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
         );
     }
 }
+*/
 $_Layout = new Layout();
 $isControlPanel = true;
 ?>
@@ -332,7 +334,7 @@ $isControlPanel = true;
             				elseif ($errors['retrieveCharacter'] == ERROR_LOGIN_PASSWORD)
             				    $text = "Contrase&ntilde;a incorrecta. Recuerda que tiene que ser la clave introducida al crear el personaje dentro del servidor.";
     				*/?>
-    				<div class="minecraftOk" style="padding:10px; margin-top:10px; margin-bottom:10px; border-radius:5px; background-color:#FF0000;">Se ha producido un error: <?php echo $text; ?></div>
+    				<div class="minecraftOk" style="padding:10px; margin-top:10px; margin-bottom:10px; border-radius:5px; background-color:#FF0000;">Se ha producido un error: <?php //echo $text; ?></div>
     				<?php /*
         				}
     				}
@@ -349,11 +351,11 @@ $isControlPanel = true;
     				*/?>
 					<div class="characterDataContainer">
     					<div class="formItem formItemLabel">Personaje:</div>
-    					<div class="formItem formItemCharacterData"><?php echo $character['name']; ?> [ID: <?php echo $character['id']; ?>]</div>
+    					<div class="formItem formItemCharacterData"><?php //echo $character['name']; ?> [ID: <?php //echo $character['id']; ?>]</div>
     					<div class="formItem formItemLabel">Fecha de creaci&oacute;n:</div>
-    					<div class="formItem formItemCharacterData"><?php echo date("d-m-Y H:i:s", strtotime($character['registered'])); ?></div>
+    					<div class="formItem formItemCharacterData"><?php //echo date("d-m-Y H:i:s", strtotime($character['registered'])); ?></div>
     					<div class="formItem formItemLabel">&Uacute;ltima conexi&oacute;n:</div>
-    					<div class="formItem formItemCharacterData"><?php echo ($character['lastLoginDate'] == NULL || $character['lastLoginIp'] == NULL) ? "No hay datos" : date("d-m-Y H:i:s", strtotime($character['lastLoginDate'])) . " desde " . $character['lastLoginIp']; ?></div>
+    					<div class="formItem formItemCharacterData"><?php //echo ($character['lastLoginDate'] == NULL || $character['lastLoginIp'] == NULL) ? "No hay datos" : date("d-m-Y H:i:s", strtotime($character['lastLoginDate'])) . " desde " . $character['lastLoginIp']; ?></div>
 					</div>
     				<?php /*
     				    }
