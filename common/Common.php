@@ -185,7 +185,7 @@ function GetWowTbcServerStatus()
  * TODO: Create an object "ServerStatus" and return it instead of an array, for all the servers.
  * @return array Returns an array with basic data about the server status.
  */
-function GetMitracraftServerStatus()
+function GetMinecraftServerStatus()
 {
     $mitracraftStatus = array(
         'isOnline'      => false,
@@ -193,7 +193,7 @@ function GetMitracraftServerStatus()
         'currentOnline' => 0,
         'error'         => false,
     );
-    if ( $sock = @stream_socket_client("tcp://mitracraft.es:25565", $errno, $errstr, 1) )
+    if ( $sock = @stream_socket_client("tcp://minecraftserver.steelgamers.es:25565", $errno, $errstr, 1) )
     {
         $mitracraftStatus['isOnline'] = true;
 

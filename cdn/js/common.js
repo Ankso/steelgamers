@@ -175,34 +175,34 @@ function GetTs3ServerStatus()
     });
 }
 
-function GetMitracraftServerStatus()
+function GetMinecraftServerStatus()
 {
     $.ajax({
         dataType: "jsonp",
         data: "",
-        url: "http://cdn.steelgamers.es/ajax/mitracraft_server_status.php?callback=?",
+        url: "http://cdn.steelgamers.es/ajax/minecraft_server_status.php?callback=?",
         success: function(status) {
             if (status.error)
             {
-                $("div#mitracraftServerStatusLabel").text("Desconocido");
+                $("div#minecraftServerStatusLabel").text("Desconocido");
             }
             else
             {
                 if (status.isOnline)
                 {
-                    $("div#mitracraftServerStatusLabel").text("Online");
-                    $("div#mitracraftServerStatusLabel").attr("class", "serverStatus online");
-                    $("div#mitracraftServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
+                    $("div#minecraftServerStatusLabel").text("Online");
+                    $("div#minecraftServerStatusLabel").attr("class", "serverStatus online");
+                    $("div#minecraftServerGamersOnlineLabel").text("Gamers conectados: " + status.currentOnline + "/" + status.maxOnline);
                 }
                 else
                 {
-                    $("div#mitracraftServerStatusLabel").text("Offline");
-                    $("div#mitracraftServerStatusLabel").attr("class", "serverStatus offline");
+                    $("div#minecraftServerStatusLabel").text("Offline");
+                    $("div#minecraftServerStatusLabel").attr("class", "serverStatus offline");
                 }
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            $("div#mitracraftServerStatusLabel").text("Sin respuesta");
+            $("div#minecraftServerStatusLabel").text("Sin respuesta");
         },
         timeout: 5000
     });

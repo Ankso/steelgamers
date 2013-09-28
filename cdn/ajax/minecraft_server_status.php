@@ -5,6 +5,6 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../common/Common.php");
 if (!isset($_GET['callback']))
     die();
 
-$serverStatus = GetMitracraftServerStatus();
+$serverStatus = GetMinecraftServerStatus();
 echo $_GET['callback'] . "(" . json_encode($serverStatus) . ")";
 ?>

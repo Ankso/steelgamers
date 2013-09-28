@@ -114,9 +114,9 @@
 		<div class="rightItem">
 			<div class="serverStatusContainer">
     			<div><h3>Servidor Mitracraft</h3></div>
-                <div id="mitracraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
-                <div id="mitracraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-				<div class="serverStatusLabel">mitracraft.es</div>
+                <div id="minecraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
+                <div id="minecraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
+				<div class="serverStatusLabel">minecraftserver.steelgamers.es</div>
 			</div>
 		</div>
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_ARMA)) { ?>
