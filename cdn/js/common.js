@@ -52,7 +52,7 @@ $(document).ready(function() {
     // Get status of the different servers in the network
     GetWowTbcServerStatus();
     GetTs3ServerStatus();
-    GetMitracraftServerStatus();
+    GetMinecraftServerStatus();
     GetArma2ServerStatus();
 });
 

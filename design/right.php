@@ -110,10 +110,10 @@
 				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
 			</div>
 		</div>
-		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MITRACRAFT)) { ?>
+		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
-    			<div><h3>Servidor Mitracraft</h3></div>
+    			<div><h3>Servidor Minecraft</h3></div>
                 <div id="minecraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
                 <div id="minecraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
 				<div class="serverStatusLabel">minecraftserver.steelgamers.es</div>
