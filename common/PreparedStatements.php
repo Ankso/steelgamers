@@ -106,5 +106,9 @@ class Statements
     const INSERT_DOTA_2_NEWS              = "INSERT INTO dota2_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_DOTA_2_NEWS              = "SELECT * FROM dota2_news ORDER BY timestamp DESC LIMIT "; // Note that this query must be completed with the config option MAX_DISPLAYED_NEWS
     const DELETE_DOTA_2_NEWS              = "DELETE FROM dota2_news WHERE id = ?";
+    // War Thunder news system
+    const INSERT_WAR_THUNDER_NEWS         = "INSERT INTO wawrthunder_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_WAR_THUNDER_NEWS         = "SELECT * FROM warthunder_news ORDER BY timestamp DESC LIMIT ";
+    const DELETE_WAR_THUNDER_NEWS         = "DELETE FROM warthunder_news WHERE id = ?";
 }
 ?>
