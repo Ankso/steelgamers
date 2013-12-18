@@ -94,7 +94,7 @@ $isControlPanel = true;
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Panel de LoL - Steel Gamers</title>
+	<title>Panel de War Thunder - Steel Gamers</title>
 	<link type="text/css" rel="stylesheet" href="css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<link type="text/css" rel="stylesheet" href="css/controlpanel.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
