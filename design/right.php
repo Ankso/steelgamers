@@ -90,8 +90,16 @@
 		<?php
 	        } 
 		}
-		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TS3))
-		{
+		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER)) { ?>
+		<div style="margin-top:10px;">
+      		<a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
+    	</div>
+    	<div style="margin-top:10px;">
+			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    		<div class="g-page" data-href="https://plus.google.com/104321172907932626147/104321172907932626147" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-width="250"></div>
+		</div>
+		<?php
+		} if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TS3)) {
 		?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
@@ -133,15 +141,6 @@
 				<div class="serverStatusLabel">arma2server.steelgamers.es:2332</div>
 				<?php echo $_SERVER['SERVER_NAME']; ?>
 			</div>
-		</div>
-		<?php
-		} if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER)) { ?>
-		<div style="margin-top:10px;">
-      		<a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
-    	</div>
-    	<div style="margin-top:10px;">
-			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-    		<div class="g-page" data-href="https://plus.google.com/104321172907932626147/104321172907932626147" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-width="250"></div>
 		</div>
 		<?php } ?>
 	</div>
