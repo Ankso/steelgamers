@@ -90,7 +90,7 @@
 		<?php
 	        } 
 		}
-		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER)) { ?>
+		if ($_Layout->GetLayoutOption(LAYOUT_SHOW_SOCIAL)) { ?>
 		<div style="margin-top:10px;">
       		<a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
     	</div>
