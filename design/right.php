@@ -110,7 +110,7 @@
 				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
 			</div>
 		</div>
-		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT)) { ?>
+		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT) && false) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
     			<div><h3>Servidor Minecraft</h3></div>
@@ -137,6 +137,8 @@
 		<?php
 		} if ($_Layout->GetLayoutOption(LAYOUT_SHOW_TWITTER)) { ?>
 		<div style="margin-top:10px;"><a class="twitter-timeline" href="https://twitter.com/SteelGamersSGC" <?php  echo $isDark ? 'data-theme="dark"' : '' ?> data-widget-id="326778925160202241">Tweets por @SteelGamersSGC</a>
+		<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <div class="g-page" data-href="https://plus.google.com/104321172907932626147/104321172907932626147" data-theme="dark" data-width="250"></div>
 		<?php } ?>
 	</div>
 </div>

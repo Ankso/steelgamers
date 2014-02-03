@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
                         // Send verification mail
                         $from    = "administracion@steelgamers.es";
                         $to      = $email;
-                        $subject = "Activar cuenta - Steel Gamers Community";
+                        $subject = "Steel Gamers Community - Activar cuenta";
                         $body    = "
                         
                         ¡Gracias por registrarte en la comunidad Steel Gamers!

@@ -1,5 +1,5 @@
 <div class="bottomBarContainer">
-	<div class="bottomBarLeft">&copy; 2013 Steel Gamers Community.<br>Todos los derechos reservados.</div>
+	<div class="bottomBarLeft">&copy; 2013-2014 Steel Gamers Community.<br>Todos los derechos reservados.</div>
 	<div class="bottomBarCenter"><a target="_blank" href="http://www.w3.org/html/wg/drafts/html/master/"><img style="margin-top:4px;" src="/images/html5_logo_32.png"></a></div>
 	<div class="bottomBarRight">
 		<div class="bottomBarRightText">Steel Gamers recomienda: </div>
