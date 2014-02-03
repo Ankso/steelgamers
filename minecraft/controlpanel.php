@@ -191,7 +191,7 @@ if ($result = $db->ExecuteStmt(Statements::SELECT_USER_CHARACTERS, $db->BuildStm
     }
 }
 */
-$_Layout = new Layout();
+$_Layout = new Layout(true, true, false, true, false, true, false);
 $isControlPanel = true;
 ?>
 <!DOCTYPE html>

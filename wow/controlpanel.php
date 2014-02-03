@@ -176,7 +176,7 @@ if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $
         }
     }
 }
-$_Layout = new Layout();
+$_Layout = new Layout(true, true, true, false, false, true, false);
 $isControlPanel = true;
 ?>
 <!DOCTYPE html>

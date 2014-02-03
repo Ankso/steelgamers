@@ -12,7 +12,7 @@ class Layout
      * @param boolean $showWowTbc True if you want to show the WoW TBC server status box.
      * @param boolean $showMinecraft True if you want to show the Minecraft server status box.
      * @param boolean $showArma True if you want to show the ArmA 2 server status box.
-     * @param boolean $showTwitter True if you want to show the Twitter widget.
+     * @param boolean $showSocial True if you want to show the Twitter widget and Google+ widgets.
      * @param boolean $showRecoverPassword True if you want to show the recover password box.
      */
     function __construct(
@@ -21,7 +21,7 @@ class Layout
         $showWowTbc     = true,
         $showMinecraft  = true,
         $showArma       = true,
-        $showTwitter    = true,
+        $showSocial    = true,
         $showRecoverPassword = false)
     {
         $this->_layoutConfig = array(
@@ -30,7 +30,7 @@ class Layout
             LAYOUT_SHOW_WOW_TBC    => $showWowTbc,
             LAYOUT_SHOW_MINECRAFT  => $showMinecraft,
             LAYOUT_SHOW_ARMA       => $showArma,
-            LAYOUT_SHOW_TWITTER    => $showTwitter,
+            LAYOUT_SHOW_SOCIAL     => $showSocial,
             LAYOUT_SHOW_RECOVER_PASSWORD => $showRecoverPassword,
         );
     }

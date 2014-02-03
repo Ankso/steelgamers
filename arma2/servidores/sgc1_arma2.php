@@ -27,7 +27,7 @@ if (isset($_SESSION['userId']))
     $loggedIn = true;
     $user = new User($_SESSION['userId']);
 }
-$_Layout = new Layout();
+$_Layout = new Layout(true, true, false, false, true, true, false);
 ?>
 <!DOCTYPE html>
 <html>

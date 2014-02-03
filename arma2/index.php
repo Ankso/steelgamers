@@ -32,7 +32,7 @@ if (isset($_SESSION['userId']))
         exit();
     }
 }
-$_Layout = new Layout();
+$_Layout = new Layout(true, true, false, false, true, true, false);
 $db = new Database($DATABASES['USERS']);
 $news = array();
 if ($result = $db->Execute(Statements::SELECT_ARMA2_NEWS . MAX_DISPLAYED_NEWS))

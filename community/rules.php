@@ -31,7 +31,7 @@ if (isset($_SESSION['userId']))
         exit();
     }
 }
-$_Layout = new Layout(true, false, false, false, false, true);
+$_Layout = new Layout(true, true, false, false, false, true);
 $db = new Database($DATABASES['USERS']);
 ?>
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ $db = new Database($DATABASES['USERS']);
 	</div>
 	<div class="contentWrapper">
     	<div class="mainContainer">
-    		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/header.php"); ?>
+    		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
     		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Normas</div>
         		<div class="new">
         			<div class="newContainer">
