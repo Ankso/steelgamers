@@ -110,7 +110,7 @@
 				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
 			</div>
 		</div>
-		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT) && false) { ?>
+		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
     			<div><h3>Servidor Minecraft</h3></div>
@@ -122,12 +122,12 @@
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_ARMA)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
-    			<div><h3>Servidor ArmA 2</h3></div>
-                <div id="arma2ServerStatusLabelWasteland" class="serverStatus unknown">Wasteland...</div>
+    			<div><h3>Servidores ArmA 2/3</h3></div>
+                <div id="arma2ServerStatusLabelWasteland" class="serverStatus unknown">Servidor #1</div>
                 <div id="arma2ServerGamersOnlineLabelWasteland" class="serverStatusLabel">Gamers conectados: -/-</div>
                 <div id="arma2ServerMapLabelWasteland" class="serverStatusLabel">Mapa: -</div>
 				<div class="serverStatusLabel">arma2server.steelgamers.es:2302</div>
-				<div id="arma2ServerStatusLabelWarfare" class="serverStatus unknown" style="margin-top:10px;">Warfare BE...</div>
+				<div id="arma2ServerStatusLabelWarfare" class="serverStatus unknown" style="margin-top:10px;">Servidor #2</div>
                 <div id="arma2ServerGamersOnlineLabelWarfare" class="serverStatusLabel">Gamers conectados: -/-</div>
                 <div id="arma2ServerMapLabelWarfare" class="serverStatusLabel">Mapa: -</div>
 				<div class="serverStatusLabel">arma2server.steelgamers.es:2332</div>
