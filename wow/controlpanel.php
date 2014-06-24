@@ -127,6 +127,7 @@ if (!isset($wowAccountsDb))
     $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
 $wowCharactersDb = new Database($DATABASES['TBCSERVER_CHARS'], $TBCSERVER_INFO);
 $notSync = true;
+$premiumData = NULL;
 if ($result = $wowAccountsDb->ExecuteStmt(Statements::SELECT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("s", $user->GetUsername())))
 {
     if ($row = $result->fetch_assoc())

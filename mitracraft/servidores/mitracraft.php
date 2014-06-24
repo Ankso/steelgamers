@@ -32,7 +32,7 @@ $_Layout = new Layout(true, true, false, true, false, true, false);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Servidores Minecraft - Steel Gamers</title>
+	<title>Servidor Mitracraft - Steel Gamers</title>
 	<link type="text/css" rel="stylesheet" href="../css/main.css?v=<?php echo STEEL_GAMERS_VERSION; ?>">
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
@@ -50,24 +50,21 @@ $_Layout = new Layout(true, true, false, true, false, true, false);
 	<div class="contentWrapper">
     	<div class="mainContainer">
     		<?php include ($_SERVER['DOCUMENT_ROOT'] . "/../design/top.php"); ?>
-    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Minecraft: Servidor privado de la comunidad</div>
+    		<div class="latestNewsLabel <?php if (isset($user)) { echo $user->IsPremium() ? " premiumLatestNewsLabel" : ""; } ?>">Mitracraft: Servidor privado de la comunidad</div>
     		<div class="new">
     			<div class="newContainer">
     				<h2>Conexi&oacute;n</h2>
     				<ul>
-    					<li>Direcci&oacute;n IP: minecraftserver.steelgamers.es</li>
+    					<li>Direcci&oacute;n IP: server.mitracraft.es</li>
     					<li>Versi&oacute;n: 1.6.4</li>
     				</ul>
     				<h2>Caracter&iacute;sticas</h2>
     				<ul>
-    					<li>Procesador: 3.1GHz x2</li>
-    					<li>Memoria: 8Gb DDR3</li>
-    					<li>Ancho de banda: 100Mbps</li>
-    				</ul>
+    					<li>-</li>
     				<h2>Descripci&oacute;n</h2>
     				<ul>
-    			    	<li>Conectado a la red Steel Gamers: Si (Whitelist)</li>
-    					<li>Informaci&oacute;n detallada y c&oacute;mo conectarse: <a href="http://foro.steelgamers.es/index.php?p=/discussion/36/servidor-de-minecraft-de-la-comunidad">http://foro.steelgamers.es/index.php?p=/discussion/36/servidor-de-minecraft-de-la-comunidad</a></li>
+    			    	<li>Este servicio est&aacute; conectado a la red de Steel Gamers. La gesti&oacute;n de tus personajes se realiza directamente desde tu <a href="/controlpanel.php#characters" target="_blank">Panel de Control</a>.</li>
+    					<li>-</li>
     				</ul>
     			</div>
     		</div>

@@ -27,7 +27,7 @@
 				<div>League of<br>Legends</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://minecraft.steelgamers.es"><img src="/images/games/topbar_covers/minecraft_cover.jpg"></a></div>
+				<div><a href="http://mitracraft.steelgamers.es"><img src="/images/games/topbar_covers/minecraft_cover.jpg"></a></div>
 				<div>Minecraft</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
@@ -62,7 +62,7 @@
 		</div>
 		<div id="topBarSubMenuServidores" class="topBarSubMenu">
 			<div class="topBarSubMenuItem serverItem" style="margin-top:9px;">
-				<div><a href="http://minecraft.steelgamers.es/servidores/sgc1_minecraft.php"><img src="/images/servers/topbar/minecraft_logo.png"></a></div>
+				<div><a href="http://mitracraft.steelgamers.es/servidores/mitracraft.php"><img src="/images/servers/topbar/minecraft_logo.png"></a></div>
 			</div>
 			<div class="topBarSubMenuItem serverItem" style="margin-top:7px;">
 				<div><a href="http://arma2.steelgamers.es/servidores/sgc1_arma2.php"><img src="/images/servers/topbar/sgc1_arma2.png"></a></div>

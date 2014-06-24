@@ -1,5 +1,6 @@
 config/config.php
 foro/*
+cdn/massive_email.php
 .buildpath
 .project
 .settings/*

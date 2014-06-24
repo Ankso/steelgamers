@@ -67,7 +67,7 @@ class Statements
     const SELECT_MULTIMEDIA               = "SELECT * FROM multimedia ORDER BY guid DESC LIMIT 100";
     const INSERT_MULTIMEDIA               = "INSERT INTO multimedia (uploader, url, media_thumbnail) VALUES (?, ?, ?)";
     const SELECT_USER_MULTIMEDIA          = "SELECT * FROM multimedia WHERE uploader = ? ORDER BY guid DESC";
-    // Minecraft servers network specific queries
+    // Minecraft (Mitracraft) servers network specific queries
     const SELECT_USER_CHARACTERS          = "SELECT * FROM xauth_account WHERE email = ?";
     const SELECT_USER_CHARACTER_BY_NAME   = "SELECT * FROM xauth_account WHERE playername = ?";
     const UPDATE_USER_CHARACTER_EMAIL     = "UPDATE xauth_account SET email = ? WHERE playername = ?";

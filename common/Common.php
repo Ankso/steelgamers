@@ -163,7 +163,7 @@ function GetWowTbcServerStatus()
         'error'         => false, // Not used for the moment
     );
     $err = array('no' => NULL, 'str' => NULL);
-    $isOnline = @fsockopen("wowserver.steelgamers.es", 8085, $err['no'], $err['str'], (float)1.0);
+    $isOnline = @fsockopen($TBCSERVER_INFO['host'], 8085, $err['no'], $err['str'], (float)1.0);
     if(!$isOnline)
         $wowStatus['isOnline'] = false;
 	else
@@ -193,7 +193,7 @@ function GetMinecraftServerStatus()
         'currentOnline' => 0,
         'error'         => false,
     );
-    if ( $sock = @stream_socket_client("tcp://minecraftserver.steelgamers.es:25565", $errno, $errstr, 1) )
+    if ( $sock = @stream_socket_client("tcp://" . $MITRACRAFT_INFO['host'] . ":25565", $errno, $errstr, 1) )
     {
         $minecraftStatus['isOnline'] = true;
 

@@ -20,7 +20,7 @@
         case "dota2.steelgamers.es":
             $siteName = "dota2";
             break;
-        case "minecraft.steelgamers.es":
+        case "mitracraft.steelgamers.es":
             $isDark = false;
             $siteName = "minecraft";
             break;
@@ -115,16 +115,16 @@
     			<div><h3>Servidor World of Warcraft:<br>The Burning Crusade</h3></div>
                 <div id="wowServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
                 <div id="wowServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-				<div class="serverStatusLabel">wowserver.steelgamers.es</div>
+				<div class="serverStatusLabel"><?php echo $TBCSERVER_INFO['host']; ?></div>
 			</div>
 		</div>
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_MINECRAFT)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
-    			<div><h3>Servidor Minecraft</h3></div>
+    			<div><h3>Servidor Mitracraft</h3></div>
                 <div id="minecraftServerStatusLabel" class="serverStatus unknown">Comprobando...</div>
                 <div id="minecraftServerGamersOnlineLabel" class="serverStatusLabel">Gamers conectados: -/-</div>
-				<div class="serverStatusLabel">minecraftserver.steelgamers.es</div>
+				<div class="serverStatusLabel"><?php echo $MITRACRAFT_INFO['host']; ?></div>
 			</div>
 		</div>
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_ARMA)) { ?>
