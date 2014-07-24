@@ -32,7 +32,7 @@ if (isset($_SESSION['userId']))
         exit();
     }
 }
-$_Layout = new Layout(true, true, true, true, false, true, false);
+$_Layout = new Layout(true, true, false, true, false, true, false);
 $db = new Database($DATABASES['USERS']);
 $news = array();
 if ($result = $db->Execute(Statements::SELECT_MINECRAFT_NEWS . MAX_DISPLAYED_NEWS))
