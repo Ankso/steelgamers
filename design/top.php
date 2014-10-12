@@ -11,31 +11,23 @@
 	<div class="subMenuWrapper">
     	<div id="topBarSubMenuJuegos" class="topBarSubMenu">
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://arma2.steelgamers.es"><img src="/images/games/topbar_covers/arma2_cover.jpg"></a></div>
+				<div><a href="http://archeage.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/archeage_cover.jpg"></a></div>
+				<div>Archeage</div>
+			</div>
+			<div class="topBarSubMenuItem gameItem">
+				<div><a href="http://arma2.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/arma2_cover.jpg"></a></div>
 				<div>ArmA 2</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://dayz.steelgamers.es"><img src="/images/games/topbar_covers/dayz_cover.jpg"></a></div>
-				<div>DayZ</div>
-			</div>
-			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://dota2.steelgamers.es"><img src="/images/games/topbar_covers/dota2_cover.jpg"></a></div>
+				<div><a href="http://dota2.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/dota2_cover.jpg"></a></div>
 				<div>Dota 2</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://lol.steelgamers.es"><img src="/images/games/topbar_covers/league_of_legends_cover.jpg"></a></div>
-				<div>League of<br>Legends</div>
-			</div>
-			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://mitracraft.steelgamers.es"><img src="/images/games/topbar_covers/minecraft_cover.jpg"></a></div>
+				<div><a href="http://mitracraft.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/minecraft_cover.jpg"></a></div>
 				<div>Minecraft</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://warthunder.steelgamers.es"><img src="/images/games/topbar_covers/warthunder_cover.jpg"></a></div>
-				<div>War Thunder</div>
-			</div>
-			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://wow.steelgamers.es"><img src="/images/games/topbar_covers/wowtbc_cover.png"></a></div>
+				<div><a href="http://wow.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/wowtbc_cover.png"></a></div>
 				<div style="font-size:12px;">World of Warcraft<br>(TBC)</div>
 			</div>
 		</div>
@@ -44,10 +36,9 @@
 				<a class="plainLink" href="http://foro.steelgamers.es/"><div class="topBarSubMenuItem forumItem" style="float:none; text-align:center; font-size:16px;">General</div></a>
 			</div>
 			<div style="margin-top:10px;">
+				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/archeage">Archeage</a></div>
 				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/arma">ArmA 2</a></div>
-    			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dayz">DayZ</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/dota-2">Dota 2</a></div>
-    			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/league-of-legends">League of Legends</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/minecraft">Minecraft</a></div>
     			<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/war-thunder">War Thunder</a></div>
 				<div class="topBarSubMenuItem forumItem"><a class="plainLink" href="http://foro.steelgamers.es/index.php?p=/categories/world-of-warcraft-the-burning-crusade">World of Warcraft (TBC)</a></div>

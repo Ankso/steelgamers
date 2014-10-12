@@ -110,5 +110,9 @@ class Statements
     const INSERT_WAR_THUNDER_NEWS         = "INSERT INTO warthunder_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_WAR_THUNDER_NEWS         = "SELECT * FROM warthunder_news ORDER BY timestamp DESC LIMIT ";
     const DELETE_WAR_THUNDER_NEWS         = "DELETE FROM warthunder_news WHERE id = ?";
+    // Archeage news system
+    const INSERT_WAR_THUNDER_NEWS         = "INSERT INTO archeage_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
+    const SELECT_WAR_THUNDER_NEWS         = "SELECT * FROM archeage_news ORDER BY timestamp DESC LIMIT ";
+    const DELETE_WAR_THUNDER_NEWS         = "DELETE FROM archeage_news WHERE id = ?";
 }
 ?>

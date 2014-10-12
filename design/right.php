@@ -77,12 +77,12 @@
 			</div>
 		</div>
 	    <?php } else { ?>
-	    <div class="rightItem">
-			<form class="loginForm" action="login.php?redirect=<?php echo $siteName; ?>" method="post">
-				<div class="formItem">Usuario</div>
-				<div class="formItem"><input type="text" name="username"></div>
-				<div class="formItem">Contrase&ntilde;a</div>
-				<div class="formItem"><input type="password" name="password"></div>
+	    <div class="rightItem" style="height:260px;">
+			<form class="loginForm" style="margin-top:35px;" action="login.php?redirect=<?php echo $siteName; ?>" method="post">
+				<div class="formItem"><b>Usuario</b></div>
+				<div class="formItem"><input type="text" name="username"></div><br>
+				<div class="formItem"><b>Contrase&ntilde;a</b></div>
+				<div class="formItem"><input type="password" name="password"></div><br>
 				<div class="formItem"><input class="button" type="submit" value="Conectarse"></div>
 				<div class="formItem">o <a href="http://steelgamers.es/register.php">crear una cuenta</a></div>
 			</form>
