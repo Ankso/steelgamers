@@ -78,7 +78,7 @@
 		</div>
 	    <?php } else { ?>
 	    <div class="rightItem" style="height:260px;">
-			<form class="loginForm" style="margin-top:35px;" action="login.php?redirect=<?php echo $siteName; ?>" method="post">
+			<form class="loginForm" style="margin-top:35px;" action="http://steelgamers.es/login.php?redirect=<?php echo $siteName; ?>" method="post">
 				<div class="formItem"><b>Usuario</b></div>
 				<div class="formItem"><input type="text" name="username"></div><br>
 				<div class="formItem"><b>Contrase&ntilde;a</b></div>
