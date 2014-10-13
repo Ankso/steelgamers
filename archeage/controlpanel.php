@@ -100,7 +100,7 @@ $isControlPanel = true;
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/jquery-ui-1.9.0.custom.min.js"></script>
 	<script type="text/javascript" src="http://cdn.steelgamers.es/js/common.js?v=<?php echo STEEL_GAMERS_VERSION; ?>"></script>
-	<script src="//cdn.ckeditor.com/4.4.5/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.4.5/full/ckeditor.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		setTimeout(function() {
