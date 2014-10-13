@@ -83,11 +83,11 @@ $isAdmin = ($userRank > USER_RANK_MODERATOR);
 // If the user is not admin yet, check if he has the page specific rank
 if (!$isAdmin)
 {
-    $userRank = $user->GetRanks(GAME_DOTA_2);
+    $userRank = $user->GetRanks(GAME_ARCHEAGE);
     $isAdmin = ($userRank > USER_RANK_MODERATOR);
 }
 // Overwrite displayed user rank with the specific game rank, but save admin privileges if the user is admin globaly.
-$userRank = $user->GetRanks(GAME_DOTA_2);
+$userRank = $user->GetRanks(GAME_ARCHEAGE);
 $_Layout = new Layout();
 $isControlPanel = true;
 ?>

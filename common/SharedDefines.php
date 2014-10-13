@@ -48,7 +48,7 @@ define("USER_RANKS_COUNT", 8);
 define("GAME_NONE", -1);
 define("GAME_OVERALL", 0);
 define("GAME_ARMA2", 1);
-define("GAME_DAYZ", 2);
+define("GAME_ARCHEAGE", 2);
 define("GAME_DOTA_2", 3);
 define("GAME_LEAGUE_OF_LEGENDS", 4);
 define("GAME_MINECRAFT", 5);
@@ -61,7 +61,7 @@ define("GAMES_COUNT", 7); // GAME_OVERALL is not really a game
 $GAME_NAMES = array(
     0 => "Globales",
     1 => "Arma 2",
-    2 => "DayZ",
+    2 => "Archeage",
     3 => "DOTA 2",
     4 => "Minecraft",
     5 => "League of Legends",
