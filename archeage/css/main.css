@@ -286,14 +286,14 @@ a.plainLink {
 }
 
 .premiumLatestNewsLabel {
-	background: #A4A4A4; /* Old browsers */
-	background: -moz-linear-gradient(left,  #A4A4A4 49%, #996515 100%, #996515 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(49%,#A4A4A4), color-stop(100%,#996515), color-stop(100%,#996515)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  #A4A4A4 49%,#996515 100%,#996515 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  #A4A4A4 49%,#996515 100%,#996515 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  #A4A4A4 49%,#996515 100%,#996515 100%); /* IE10+ */
-	background: linear-gradient(to right,  #A4A4A4 49%,#996515 100%,#996515 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A4A4A4', endColorstr='#996515',GradientType=1 ); /* IE6-9 */
+    background: #c0c0c0; /* Old browsers */
+    background: -moz-linear-gradient(left,  #A4A4A4 50%, #996515 100%, #996515 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%,#A4A4A4), color-stop(100%,#996515), color-stop(100%,#996515)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #A4A4A4 50%,#996515 100%,#996515 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #A4A4A4 50%,#996515 100%,#996515 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #A4A4A4 50%,#996515 100%,#996515 100%); /* IE10+ */
+    background: linear-gradient(to right,  #A4A4A4 50%,#996515 100%,#996515 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A4A4A4', endColorstr='#996515',GradientType=1 ); /* IE6-9 */
 }
 
 .new {
@@ -344,7 +344,7 @@ a.plainLink {
 }
 
 .premiumRightItem {
-    border-color: #A4A4A4;
+    border-color: #996515;
 }
 
 .loginForm {
