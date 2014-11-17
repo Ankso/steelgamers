@@ -79,7 +79,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
 			Using organization. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with it's well trained crew, syncronized, can defeat ten manned by the members of a much more chaotic zerg guild.
 		</div>
-		<h2>Is there any requirements to join?</h2>
+		<h2>Are there any requirements to join?</h2>
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
 			Yes. Your guild must be based on the usage of TeamSpeak 3 (or any other voice communication software), at least for PvP. High activity of the guild members is also recommended. You must read and agree with the <a href="">Alliance rules</a>, and your diplomat must be able to communicate in english.
 		</div>
