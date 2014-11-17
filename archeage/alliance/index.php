@@ -51,7 +51,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div id="mainLogoText" style="display:none;">
 			<h1>Steel Gamers Alliance</h1>
 			<h2><i>The power of organization</i></h2>
-			<h3>Melissara server</h3>
+			<h3>EU Melisara server</h3>
 		</div>
 	</div>
 	<div class="bottomContent">
@@ -66,7 +66,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 	<div class="mediumContent" style="height:80%;">
 		<h2>What is it?</h2>
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-			Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melissara</b>.
+			Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melisara</b>.
 		</div>
 		<h2>How can we face the Zerg guilds or even Zerg alliances?</h2>
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
