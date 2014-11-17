@@ -32,6 +32,13 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		          scrollTop: 0
 		        }, 1000);
 			});
+			// Change font size if the screen has a small resolution (720p for example)
+			if ($('body').height() < 900)
+			{
+				$('body').css('font-size', '14px');
+				$('div.bottomContent').css('font-size', '20px');
+				$('div.topContent').css('font-size', '20px');
+			}
 			$('div#mainLogo').fadeIn(2000);
 			setTimeout(function() {
 			    $('div#mainLogoText').fadeIn(1000);
