@@ -47,15 +47,14 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 <div id="homePage" class="centralDiv" style="display:inherit;">
 	<div class="topContent"></div>
 	<div class="mediumContent">
-		<div id="mainLogo" style="height:60%; display:none;"><img class="mainLogo" src="images/steelgamers_logo_white.png"></div>
-		<div id="mainLogoText" style="margin-top:80px; display:none;">
+		<div id="mainLogo" style="height:60%; display:none; padding-top:40px;"><img class="mainLogo" src="images/steelgamers_logo_white.png"></div>
+		<div id="mainLogoText" style="display:none;">
 			<h1>Steel Gamers Alliance</h1>
 			<h2><i>The power of organization</i></h2>
 			<h3>Melissara server</h3>
 		</div>
 	</div>
 	<div class="bottomContent">
-		<div style="height:75%;"></div>
 		<div id="learnMoreLink" class="bottomRoute" style="display:none;"><b>Learn More</b></div>
 	</div>
 </div>
@@ -63,7 +62,8 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 	<div id="homePageLink" class="topContent">
 		<div class="topRoute"><b>Main page</b></div>
 	</div>
-	<div class="mediumContent">
+	<div style="height:10%; float:left; width:100%;"></div>
+	<div class="mediumContent" style="height:80%;">
 		<h2>What is it?</h2>
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
 			Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melissara</b>.
@@ -78,7 +78,6 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		</div>
 	</div>
 	<div class="bottomContent">
-		<div style="height:75%;"></div>
 		<div class="bottomRoute"><b>Apply to join!</b></div>
 	</div>
 </div>
