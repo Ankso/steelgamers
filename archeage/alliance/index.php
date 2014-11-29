@@ -32,6 +32,16 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		          scrollTop: 0
 		        }, 1000);
 			});
+			$('div#applyToJoinLink').click(function(event) {
+			    $('html,body').animate({
+		          scrollTop: $('div#learnMoreLinkBottom').offset().top
+		        }, 1000);
+			});
+			$('div#learnMoreLinkBottom').click(function(event) {
+			    $('html,body').animate({
+			      scrollTop: $('div#homePageLink').offset().top
+			    }, 1000);
+			});
 			// Change font size if the screen has a small resolution (720p for example)
 			if ($('body').height() < 900)
 			{
@@ -85,7 +95,62 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		</div>
 	</div>
 	<div class="bottomContent">
-		<div class="bottomRoute"><b>Apply to join!</b></div>
+		<div id="applyToJoinLink" class="bottomRoute"><b>Apply to join!</b></div>
+	</div>
+</div>
+<div id="applyToJoinContent" class="centralDiv" style="background: url('images/steelgamers_logo_background.png') no-repeat center center;">
+	<div id="learnMoreLinkBottom" class="topContent">
+		<div class="topRoute"><b>Learn More</b></div>
+	</div>
+	<div style="height:10%; float:left; width:100%;"></div>
+	<div class="mediumContent" style="height:90%;">
+		<div class="formContainerLeft">
+			<div class="applicationItem">Guild name:</div>
+			<div class="applicationItem">Diplomatic in-game contact(s):</div>
+			<div class="applicationItem">Normally online members:</div>
+			<div class="applicationItem">Total number of members:</div>
+		</div>
+		<div class="formContainerRight">
+			<div class="applicationItem"><input type="text" id="guildName"></div>
+			<div class="applicationItem"><input type="text" id="guildContact"></div>
+			<div class="applicationItem">
+				<select id="guildOnlineMembers">
+					<option value="null">Choose one...</option>
+					<option value="5-10">5 to 10</option>
+					<option value="10-20">10 to 20</option>
+					<option value="20-30">20 to 30</option>
+					<option value="30-40">30 to 40</option>
+					<option value="40-50">40 to 50</option>
+					<option value="50+">More than 50</option>
+				</select>
+			</div>
+			<div class="applicationItem">
+				<select id="guildTotalMembers">
+					<option value="null">Choose one...</option>
+					<option value="10-20">10 to 20</option>
+					<option value="20-40">20 to 40</option>
+					<option value="40-70">40 to 70</option>
+					<option value="70-100">70 to 100</option>
+					<option value="100-150">100 to 150</option>
+					<option value="150+">More than 150</option>
+				</select>
+			</div>
+		</div>
+		<div style="margin-left:35%; text-align:left;">
+			<div class="applicationItem">Brief description of your guild:</div>
+			<div class="applicationItem">
+				<textarea id="guildDescription" class="textbox"></textarea>
+			</div>
+		</div>
+		<div style="margin-left:35%; text-align:left;">
+			<div class="applicationItem">Explain briefly why do you want to join the Alliance?:</div>
+			<div class="applicationItem">
+				<textarea id="guildJoinReason" class="textbox"></textarea>
+			</div>
+		</div>
+		<div style="margin-top:20px;">
+			<div class="button" style="width:75px; margin:auto;">Submit</div>
+		</div>
 	</div>
 </div>
 </body>
