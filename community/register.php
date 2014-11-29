@@ -115,9 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
             if ($db->ExecuteStmt(Statements::INSERT_USERS, $data))
             {
                 $db->BeginTransaction();
-                // Now we can initialize the User object. Note that this is for obtain the user ID to create the rows in any related tables.
+                // Now we can initialize the User object. Note that this is to obtain the user ID and create the rows in any related tables.
                 $user = new User($username);
-                // Begin the transaction and insert the data. This is to create all the rows in the related tables of the users Database. Not used btw.
+                // Begin the transaction and insert the data. This is to create all the rows in the related tables of the user's Database. Not used btw.
                 $hash = md5("cosSjv .adf%" . microtime() * rand(0, 999999));
                 if ($db->ExecuteStmt(Statements::INSERT_USERS_EMAIL_VERIFICATION, $db->BuildStmtArray("iss", $user->GetId(), $hash, date("Y-m-d H:i:s"))))
                 {
@@ -198,12 +198,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['username']) && isset($
             else
             {
                 $db->CommitTransaction();
+                /*
+                 * Not used now, as the WoW server is not currently online
+                 * 
                 // Create account in the WoW server
                 $wowAccountsDb = new Database($DATABASES['TBCSERVER_ACCOUNTS'], $TBCSERVER_INFO);
                 // User object is created here already, else we can't be here.
                 // Also if this fails, it's not neccesary to cancel account creation, as wow account creation can be triggered later from the control panel.
                 // TODO: If this fails, inform the user!
                 $wowAccountsDb->ExecuteStmt(Statements::INSERT_USER_WOW_ACCOUNT, $wowAccountsDb->BuildStmtArray("ssissssssiisiiii", strtoupper($user->GetUsername()), CreateWoWServerSha1Pass($user->GetUsername(), $password), 0, "", "0", "0", $user->GetEmail(), time(), "0.0.0.0", 0, 0, "0000-00-00 00:00:00", 0, 1, 0, 0));
+            	*/
             }
         }
     }
