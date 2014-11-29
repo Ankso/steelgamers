@@ -106,11 +106,16 @@ img.mainLogo:hover {
 }
 
 .applicationItem {
-	padding:10px;
+	height:30px;
+	padding-bottom:10px;
+}
+
+.applicationItemBig {
+	padding:10px 0px 0px 0px;
 }
 
 .textbox {
-	width:55%;
+	width:56.5%;
 	height:125px;
 }
 

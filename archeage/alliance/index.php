@@ -79,19 +79,20 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 	<div id="homePageLink" class="topContent">
 		<div class="topRoute"><b>Main page</b></div>
 	</div>
-	<div style="height:10%; float:left; width:100%;"></div>
-	<div class="mediumContent" style="height:80%;">
-		<h2>What is it?</h2>
-		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-			Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melisara</b>.
-		</div>
-		<h2>How can we face Zerg guilds or even Zerg alliances?</h2>
-		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-			Using organization. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with it's well trained crew, syncronized, can defeat ten manned by the members of a much more chaotic zerg guild.
-		</div>
-		<h2>Are there any requirements to join?</h2>
-		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-			Yes. Your guild must be based on the usage of TeamSpeak 3 (or any other voice communication software), at least for PvP. High activity of the guild members is also recommended. You must read and agree with the <a href="">Alliance rules</a>, and your diplomat must be able to communicate in english.
+	<div class="mediumContent" style="height:90%;">
+		<div style="margin-top:5%;">
+			<h2>What is it?</h2>
+			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
+				Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melisara</b>.
+			</div>
+			<h2>How can we face Zerg guilds or even Zerg alliances?</h2>
+			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
+				Using organization. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with it's well trained crew, syncronized, can defeat ten manned by the members of a much more chaotic zerg guild.
+			</div>
+			<h2>Are there any requirements to join?</h2>
+			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
+				Yes. Your guild must be based on the usage of TeamSpeak 3 (or any other voice communication software), at least for PvP. High activity of the guild members is also recommended. You must read and agree with the <a href="">Alliance rules</a>, and your diplomat must be able to communicate in english.
+			</div>
 		</div>
 	</div>
 	<div class="bottomContent">
@@ -103,7 +104,6 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div class="topRoute"><b>Learn More</b></div>
 	</div>
 	<div style="height:10%; float:left; width:100%;"></div>
-	<div class="mediumContent" style="height:90%;">
 		<div class="formContainerLeft">
 			<div class="applicationItem">Guild name:</div>
 			<div class="applicationItem">Diplomatic in-game contact(s):</div>
@@ -137,14 +137,14 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 			</div>
 		</div>
 		<div style="margin-left:30%; text-align:left;">
-			<div class="applicationItem">Brief description of your guild:</div>
-			<div class="applicationItem">
+			<div class="applicationItemBig">Brief description of your guild:</div>
+			<div class="applicationItemBig">
 				<textarea id="guildDescription" class="textbox"></textarea>
 			</div>
 		</div>
 		<div style="margin-left:30%; text-align:left;">
-			<div class="applicationItem">Explain briefly why do you want to join the Alliance?:</div>
-			<div class="applicationItem">
+			<div class="applicationItemBig">Explain briefly why do you want to join the Alliance:</div>
+			<div class="applicationItemBig">
 				<textarea id="guildJoinReason" class="textbox"></textarea>
 			</div>
 		</div>
