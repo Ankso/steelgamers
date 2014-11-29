@@ -93,15 +93,15 @@ img.mainLogo:hover {
 
 .formContainerLeft {
     float:left;
-    width:15%;
-    margin-left:35%;
+    width:20%;
+    margin-left:30%;
     text-align:left;
 }
 
 .formContainerRight {
     float:left;
-    width:15%;
-    margin-right:35%;
+    width:20%;
+    margin-right:30%;
     text-align:right;
 }
 
@@ -110,7 +110,7 @@ img.mainLogo:hover {
 }
 
 .textbox {
-	width:45%;
+	width:55%;
 	height:125px;
 }
 

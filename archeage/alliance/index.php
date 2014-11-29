@@ -85,7 +85,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
 			Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melisara</b>.
 		</div>
-		<h2>How can we face the Zerg guilds or even Zerg alliances?</h2>
+		<h2>How can we face Zerg guilds or even Zerg alliances?</h2>
 		<div style="width:60%; margin-left:20%; margin-bottom:75px;">
 			Using organization. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with it's well trained crew, syncronized, can defeat ten manned by the members of a much more chaotic zerg guild.
 		</div>
@@ -136,13 +136,13 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 				</select>
 			</div>
 		</div>
-		<div style="margin-left:35%; text-align:left;">
+		<div style="margin-left:30%; text-align:left;">
 			<div class="applicationItem">Brief description of your guild:</div>
 			<div class="applicationItem">
 				<textarea id="guildDescription" class="textbox"></textarea>
 			</div>
 		</div>
-		<div style="margin-left:35%; text-align:left;">
+		<div style="margin-left:30%; text-align:left;">
 			<div class="applicationItem">Explain briefly why do you want to join the Alliance?:</div>
 			<div class="applicationItem">
 				<textarea id="guildJoinReason" class="textbox"></textarea>
