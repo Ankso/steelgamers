@@ -139,7 +139,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 	</script>
 </head>
 <body>
-<div id="homePage" class="centralDiv" style="display:inherit;">
+<div id="homePage" class="centralDiv" style="display:inherit; background:#000000;">
 	<div class="topContent"></div>
 	<div class="mediumContent">
 		<div id="mainLogo" style="height:60%; display:none; padding-top:40px;"><img class="mainLogo" src="images/steelgamers_logo_white.png"></div>
@@ -153,7 +153,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div id="learnMoreLink" class="bottomRoute" style="display:none;"><b>Learn More</b></div>
 	</div>
 </div>
-<div id="learnMoreContent" class="centralDiv" style="background: url('images/steelgamers_logo_background.png') no-repeat center center;">
+<div id="learnMoreContent" class="centralDiv">
 	<div id="homePageLink" class="topContent">
 		<div class="topRoute"><b>Main page</b></div>
 	</div>
@@ -178,7 +178,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div id="applyToJoinLink" class="bottomRoute"><b>Apply to join!</b></div>
 	</div>
 </div>
-<div id="applyToJoinContent" class="centralDiv" style="background: url('images/steelgamers_logo_background.png') no-repeat center center;">
+<div id="applyToJoinContent" class="centralDiv">
 	<div id="learnMoreLinkBottom" class="topContent">
 		<div class="topRoute"><b>Learn More</b></div>
 	</div>

@@ -1,5 +1,6 @@
 html, body {
-	background-color:#000000;
+	background:#000000 url('../images/steelgamers_logo_background.png') no-repeat center center;
+	background-attachment:fixed;
 	color:#B9B9B9;
 	height:100%;
 	width:100%;
