@@ -114,5 +114,7 @@ class Statements
     const INSERT_ARCHEAGE_NEWS            = "INSERT INTO archeage_news (writer_id, writer_name, title, body, timestamp) VALUES (?, ?, ?, ?, ?)";
     const SELECT_ARCHEAGE_NEWS            = "SELECT * FROM archeage_news ORDER BY timestamp DESC LIMIT ";
     const DELETE_ARCHEAGE_NEWS            = "DELETE FROM archeage_news WHERE id = ?";
+    // Archeage Alliance specific queries
+    const INSERT_ALLIANCE_APPLICATION     = "INSERT INTO archeage_alliance_requests (guild_name, guild_contacts, guild_webpage, guild_online_members, guild_total_members, guild_description, guild_join_reason, requester_ip) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 }
 ?>

@@ -42,6 +42,38 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 			      scrollTop: $('div#homePageLink').offset().top
 			    }, 1000);
 			});
+			$('div#applicationSendButton').click(function(event) {
+				// Check that all fields are filled up
+				var error = '';
+				var guildName = $('input#guildName').val();
+				var guildContact = $('input#guildContact').val();
+				var guildWebpage = $('input#guildWebpage').val();
+				var guildOnlineMembers = $('select#guildOnlineMembers').val();
+				var guildTotalMembers = $('select#guildTotalMembers').val();
+				var guildDescription = $('textarea#guildDescription').val();
+				var guildJoinReason = $('textarea#guildJoinReason').val();
+				if (guildName == '')
+					error = 'A guild Name is mandatory';
+				else if (guildContact == '')
+					error = 'At least one guild contact is mandatory';
+				else if (guildOnlineMembers == 'null')
+					error = 'You must choose one of the options for the average online members';
+				else if (guildTotalMembers == 'null')
+					error = 'You must choose one of the options for the total members count';
+				else if (guildDescription == '')
+					error = 'Please, write a brief description about your guild';
+				else if (guildJoinReason == '')
+					error = 'Please, specify briefly why you want to join the Alliance';
+
+				if (error == '')
+					SendApplicationRequest(guildName, guildContact, guildWebpage, guildOnlineMembers, guildTotalMembers, guildDescription, guildJoinReason);
+				else
+				{
+				    $('div#applicationStatus').css('color', '#CD0000');
+					$('div#applicationStatus').text(error);
+				}
+				
+			});
 			// Change font size if the screen has a small resolution (720p for example)
 			if ($('body').height() < 900)
 			{
@@ -51,13 +83,59 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 			}
 			$('div#mainLogo').fadeIn(2000);
 			setTimeout(function() {
-			    $('div#mainLogoText').fadeIn(1000);
+			    $('div#mainLogoText').fadeIn(1000); 
 			}, 1000);
 			setTimeout(function() {
 			    $('div#learnMoreLink').fadeIn(1000);
 			}, 2000);
-			
 		});
+
+		function SendApplicationRequest(name, contacts, webpage, onlineMembers, totalMembers, description, joinReason)
+		{ 
+			$('div#applicationStatus').css('color', '#B9B9B9');
+			$('div#applicationStatus').text('Sending...');
+			var data = {
+				name: name,
+				contacts: contacts,
+				webpage: webpage,
+				onlineMembers: onlineMembers,
+				totalMembers: totalMembers,
+				description: description,
+				joinReason: joinReason
+			};
+
+			$.ajax('application.php', {
+				type: "POST",
+				data: data,
+				success: function(result) {
+					if (result == 'SUCCESS')
+					{
+				    	$('div#applicationStatus').css('color', '#336600');
+						$('div#applicationStatus').text('Thanks for sending your application! We will contact your diplomats in-game soon.');
+					}
+					else
+					{
+					    $('div#applicationStatus').css('color', '#CD0000');
+						$('div#applicationStatus').text('An error has occurred on the server, the applications could be temporarily disabled, please try again later.');
+					}
+				},
+				error: function() {
+				    $('div#applicationStatus').css('color', '#CD0000');
+					$('div#applicationStatus').text('An error has occurred on the server, the applications could be temporarily disabled, please try again later.');
+				},
+			});
+		}
+
+		function SwitchFormStatus(enabled)
+		{
+		    $('input#guildName').val();
+			$('input#guildContact').val();
+			$('input#guildWebpage').val();
+			$('select#guildOnlineMembers').val();
+			$('select#guildTotalMembers').val();
+			$('textarea#guildDescription').val();
+			$('textarea#guildJoinReason').val();
+		}
 	</script>
 </head>
 <body>
@@ -107,12 +185,14 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div class="formContainerLeft">
 			<div class="applicationItem">Guild name:</div>
 			<div class="applicationItem">Diplomatic in-game contact(s):</div>
+			<div class="applicationItem">Guild webpage/forums (if any):</div>
 			<div class="applicationItem">Normally online members:</div>
 			<div class="applicationItem">Total number of members:</div>
 		</div>
 		<div class="formContainerRight">
 			<div class="applicationItem"><input type="text" id="guildName"></div>
 			<div class="applicationItem"><input type="text" id="guildContact"></div>
+			<div class="applicationItem"><input type="text" id="guildWebpage"></div>
 			<div class="applicationItem">
 				<select id="guildOnlineMembers">
 					<option value="null">Choose one...</option>
@@ -149,7 +229,10 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 			</div>
 		</div>
 		<div style="margin-top:20px;">
-			<div class="button" style="width:75px; margin:auto;">Submit</div>
+			<div id="applicationSendButton" class="button" style="width:75px; margin:auto;">Submit</div>
+		</div>
+		<div id="applicationStatus" style="margin-top:20px;">
+			
 		</div>
 	</div>
 </div>
