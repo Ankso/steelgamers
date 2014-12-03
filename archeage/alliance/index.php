@@ -161,15 +161,16 @@ require($_SERVER['DOCUMENT_ROOT'] . "/../classes/User.Class.php");
 		<div style="margin-top:5%;">
 			<h2>What is it?</h2>
 			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-				Steel Gamers Alliance (SGA) has born as an international project to join small to medium sized guilds under one banner and gain power against the well known <i>&quot;Zerg guilds&quot;</i>, based on large numbers of players, on the Archeage server <b>Melisara</b>.
+				Steel Gamers Alliance (SGA) was born as an international project to reunite small to medium size guilds under one banner and gain power against the well known "Zerg guilds", based on a large numbers of players, on the Archeage server <b>Melisara</b>.
 			</div>
 			<h2>How can we face Zerg guilds or even Zerg alliances?</h2>
 			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-				Using organization. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with it's well trained crew, syncronized, can defeat ten manned by the members of a much more chaotic zerg guild.
+				How can we face Zerg guilds or even Zerg alliances?
+				By being organized. The advantage of small and medium sized guilds is the high level of internal organization when doing PvP. The objective of SGA is to coordinate those small groups and make them a larger, more lethal force. Five galleons, each one with its well trained crew, syncronized, can defeat ten driven by the members of a much more chaotic zerg guild.
 			</div>
 			<h2>Are there any requirements to join?</h2>
 			<div style="width:60%; margin-left:20%; margin-bottom:75px;">
-				Yes. Your guild must be based on the usage of TeamSpeak 3 (or any other voice communication software), at least for PvP. High activity of the guild members is also recommended. You must read and agree with the <a href="">Alliance rules</a>, and your diplomat must be able to communicate in english.
+				Yes. Your guild must use TeamSpeak 3 (or any other voice communication software), at least for PvP. High activity members are also recommended. You must read and agree with the <a href="">Alliance rules</a>,  and your diplomat must be able to communicate in english.
 			</div>
 		</div>
 	</div>
