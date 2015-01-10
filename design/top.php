@@ -15,8 +15,8 @@
 				<div>Archeage</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
-				<div><a href="http://arma2.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/arma2_cover.jpg"></a></div>
-				<div>ArmA 2</div>
+				<div><a href="http://arma.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/arma2_cover.jpg"></a></div>
+				<div>ArmA</div>
 			</div>
 			<div class="topBarSubMenuItem gameItem">
 				<div><a href="http://dota2.steelgamers.es"><img src="http://cdn.steelgamers.es/web/images/topbar_covers/dota2_cover.jpg"></a></div>

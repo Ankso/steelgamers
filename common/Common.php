@@ -232,7 +232,7 @@ function GetArma2ServerStatus($port)
         'currentOnline' => 0,
         'error'         => false,
     );
-    $sock = fsockopen("udp://arma2server.steelgamers.es", $port, $errno, $errdesc);
+    $sock = fsockopen("udp://armaserver.steelgamers.es", $port, $errno, $errdesc);
     fwrite($sock, "\xFE\xFD\x09\xFF\xFF\xFF\x01");
     $challenge_packet = fread($sock, 4096);
     

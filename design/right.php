@@ -130,15 +130,11 @@
 		<?php } if ($_Layout->GetLayoutOption(LAYOUT_SHOW_ARMA)) { ?>
 		<div class="rightItem">
 			<div class="serverStatusContainer">
-    			<div><h3>Servidores ArmA 2/3</h3></div>
-                <div id="arma2ServerStatusLabelWasteland" class="serverStatus unknown">Servidor #1</div>
+    			<div><h3>Servidor ArmA 3</h3></div>
+                <div id="arma2ServerStatusLabelWasteland" class="serverStatus unknown">Comprobando...</div>
                 <div id="arma2ServerGamersOnlineLabelWasteland" class="serverStatusLabel">Gamers conectados: -/-</div>
                 <div id="arma2ServerMapLabelWasteland" class="serverStatusLabel">Mapa: -</div>
-				<div class="serverStatusLabel">arma2server.steelgamers.es:2302</div>
-				<div id="arma2ServerStatusLabelWarfare" class="serverStatus unknown" style="margin-top:10px;">Servidor #2</div>
-                <div id="arma2ServerGamersOnlineLabelWarfare" class="serverStatusLabel">Gamers conectados: -/-</div>
-                <div id="arma2ServerMapLabelWarfare" class="serverStatusLabel">Mapa: -</div>
-				<div class="serverStatusLabel">arma2server.steelgamers.es:2332</div>
+				<div class="serverStatusLabel">armaserver.steelgamers.es:2302</div>
 				<?php echo $_SERVER['SERVER_NAME']; ?>
 			</div>
 		</div>
