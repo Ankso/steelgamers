@@ -7,7 +7,7 @@
     {
         case "steelgamers.es":
             break;
-        case "arma2.steelgamers.es":
+        case "arma.steelgamers.es":
             $isDark = false;
             $siteName = "arma2";
             break;

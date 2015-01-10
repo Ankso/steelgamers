@@ -235,30 +235,9 @@ function GetArma2ServerStatus()
                 }
                 
             }
-            if (status.warfare.error)
-            {
-                $("div#arma2ServerStatusLabelWarfare").text("Warfare");
-            }
-            else
-            {
-                if (status.warfare.isOnline)
-                {
-                    $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
-                    $("div#arma2ServerStatusLabelWarfare").attr("class", "serverStatus online");
-                    $("div#arma2ServerGamersOnlineLabelWarfare").text("Gamers conectados: " + status.warfare.currentOnline + "/" + status.warfare.maxOnline);
-                    $("div#arma2ServerMapLabelWarfare").text("Mapa: " + status.warfare.map.substring(0, 1).toUpperCase() + status.warfare.map.substring(1));
-                }
-                else
-                {
-                    $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
-                    $("div#arma2ServerStatusLabelWarfare").attr("class", "serverStatus offline");
-                }
-                
-            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             $("div#arma2ServerStatusLabelWasteland").text("Wasteland");
-            $("div#arma2ServerStatusLabelWarfare").text("Warfare BE");
         },
         timeout: 5000
     });

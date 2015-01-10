@@ -7,7 +7,6 @@ if (!isset($_GET['callback']))
 
 $armaStatus = array(
     'wasteland' => GetArma2ServerStatus(2302),
-    'warfare'   => GetArma2ServerStatus(2332),
 );
 echo $_GET['callback'] . "(" . json_encode($armaStatus) . ")";
 ?>
