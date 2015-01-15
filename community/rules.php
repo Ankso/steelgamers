@@ -62,9 +62,9 @@ $db = new Database($DATABASES['USERS']);
         					<li>Faltar al respeto a cualquier miembro en la web o por un canal p&uacute;blico dentro de los servidores de juego. No podemos controlar todos los insultos que se hacen de forma privada, por ello en todos los juegos y en el foro existe una opci&oacute;n de ignorar. &Uacute;sala.</li>
         					<li>La utilizaci&oacute;n de cualquier sistema o parte de la infraestructura de la Red Steel Gamers para hacer spam.</li>
         					<li>Realizar cualquier tipo de comentario o publicar contenido racista o sexista.</li>
-        					<li>Hacer publicidad de otros servicios o empresas privadas agenas a la Red de Steel Gamers. La infracci&oacute;n de esta norma conllevar&aacute; un baneo indefinido de toda la Red Steel Gamers.</li>
+        					<li>Hacer publicidad de otros servicios o empresas privadas ajenas a la Red de Steel Gamers. La infracci&oacute;n de esta norma conllevar&aacute; un baneo indefinido de toda la Red Steel Gamers.</li>
         				</ol>
-        				Para m&aacute;s detalles a cerca de la normativa del sitio, puedes consultar los <a href="/docs/terminos_y_condiciones.html">T&eacute;rminos y Condiciones de Uso</a> que deber&iacute;as haber le&iacute;do al registrarte.
+        				Para m&aacute;s detalles acerca de la normativa del sitio, puedes consultar los <a href="/docs/terminos_y_condiciones.html">T&eacute;rminos y Condiciones de Uso</a> que deber&iacute;as haber le&iacute;do al registrarte.
         			</div>
     			</div>
     		</div>
